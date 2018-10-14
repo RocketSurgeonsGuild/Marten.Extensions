@@ -1,0 +1,199 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using FluentAssertions;
+using Marten;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using NodaTime;
+using NodaTime.Testing;
+using Npgsql;
+using Rocket.Surgery.Core.Marten;
+using Rocket.Surgery.Core.Marten.Builders;
+using Rocket.Surgery.Domain;
+using Rocket.Surgery.Extensions.DependencyInjection;
+using Rocket.Surgery.Extensions.Testing;
+using Xunit;
+using Xunit.Abstractions;
+
+namespace Rocket.Surgery.Marten.Tests
+{
+    public class SecurityQueryProviderTests : AutoTestBase, IClassFixture<PostgresFixture>
+    {
+        private readonly PostgresFixture _fixture;
+
+        public SecurityQueryProviderTests(PostgresFixture fixture, ITestOutputHelper testOutputHelper) : base(testOutputHelper)
+        {
+            _fixture = fixture;
+        }
+        class HaveOwner : IHaveOwner<string>
+        {
+            public string Id { get; set; }
+            public OwnerData<string> Owner { get; set; }
+        }
+
+        class CanBeAssigned : ICanBeAssigned<long>
+        {
+            public string Id { get; set; }
+            public AssignedUsersData<long> AssignedUsers { get; set; }
+        }
+
+        class UserLike
+        {
+            public string Id { get; set; }
+            public HashSet<string> Identities { get; } = new HashSet<string>();
+        }
+
+        class OwnerAndCanBeAssigned : IHaveOwner<Guid>, ICanBeAssigned<Guid>
+        {
+            public string Id { get; set; }
+            public OwnerData<Guid> Owner { get; set; }
+
+            public AssignedUsersData<Guid> AssignedUsers { get; set; }
+        }
+
+        [Fact]
+        public void Should_Work_With_Owner_Document()
+        {
+            AutoFake.Provide<IServiceCollection>(new ServiceCollection());
+            var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
+            servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
+            servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
+            servicesBuilder.Services.AddSingleton<IClock>(
+                new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now),
+                    Duration.FromSeconds(1))
+            );
+            var martenBuilder = servicesBuilder.WithMarten();
+            servicesBuilder.Services.AddScoped<IMartenUser>(_ => new MartenUser<string>(() => Guid.NewGuid().ToString()));
+
+            martenBuilder.UseDirtyTrackedSession();
+
+            var serviceProvider = servicesBuilder.Build();
+            var options = serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;
+            options.Connection(() => new NpgsqlConnection(_fixture.ConnectionString.ToString()));
+
+            using (var scope = serviceProvider.CreateScope())
+            {
+                using (var session = scope.ServiceProvider.GetService<IDocumentStore>().QuerySession())
+                {
+                    var c = session.Query<HaveOwner>()
+                        .ToCommand();
+                    c.CommandText.Should().Be("select d.data, d.id, d.mt_version from public.mt_doc_securityqueryprovidertests_haveowner as d where d.data -> 'owner' ->> 'id' LIKE :arg0");
+                }
+            }
+        }
+
+        [Fact]
+        public void Should_Work_With_OwnerAndCanBeAssigned_Document()
+        {
+            AutoFake.Provide<IServiceCollection>(new ServiceCollection());
+            var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
+            servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
+            servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
+            servicesBuilder.Services.AddSingleton<IClock>(
+                new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now),
+                    Duration.FromSeconds(1))
+            );
+            var martenBuilder = servicesBuilder.WithMarten();
+            servicesBuilder.Services.AddScoped<IMartenUser>(_ => new MartenUser<Guid>(() => Guid.NewGuid()));
+
+            martenBuilder.UseDirtyTrackedSession();
+
+            var serviceProvider = servicesBuilder.Build();
+            var options = serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;
+            options.Connection(() => new NpgsqlConnection(_fixture.ConnectionString.ToString()));
+
+            using (var scope = serviceProvider.CreateScope())
+            {
+                using (var session = scope.ServiceProvider.GetService<IDocumentStore>().QuerySession())
+                {
+                    var c = session.Query<OwnerAndCanBeAssigned>()
+                        .ToCommand();
+
+                    c.CommandText.Should().Be("select d.data, d.id, d.mt_version from public.mt_doc_securityqueryprovidertests_ownerandcanbeassigned as d where (CAST(d.data -> 'owner' ->> 'id' as uuid) = :arg0 or d.data @> :arg1)");
+                }
+            }
+        }
+
+        [Fact]
+        public void Should_Work_With_CanBeAssigned_Document()
+        {
+            AutoFake.Provide<IServiceCollection>(new ServiceCollection());
+            var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
+            servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
+            servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
+            servicesBuilder.Services.AddSingleton<IClock>(
+                new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now),
+                    Duration.FromSeconds(1))
+            );
+            var martenBuilder = servicesBuilder.WithMarten();
+            servicesBuilder.Services.AddScoped<IMartenUser>(_ => new MartenUser<long>(() => 123456));
+
+            martenBuilder.UseDirtyTrackedSession();
+
+            var serviceProvider = servicesBuilder.Build();
+            var options = serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;
+            options.Connection(() => new NpgsqlConnection(_fixture.ConnectionString.ToString()));
+
+            using (var scope = serviceProvider.CreateScope())
+            {
+                using (var session = scope.ServiceProvider.GetService<IDocumentStore>().QuerySession())
+                {
+                    var c = session.Query<CanBeAssigned>()
+                        .ToCommand();
+
+                    c.CommandText.Should().Be("select d.data, d.id, d.mt_version from public.mt_doc_securityqueryprovidertests_canbeassigned as d where d.data @> :arg0");
+                }
+            }
+        }
+
+        [Fact]
+        public void Should_Work_With_FirstOrDefaultAsync()
+        {
+            AutoFake.Provide<IServiceCollection>(new ServiceCollection());
+            var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
+            servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
+            servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
+            servicesBuilder.Services.AddSingleton<IClock>(
+                new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now),
+                    Duration.FromSeconds(1))
+            );
+            var martenBuilder = servicesBuilder.WithMarten();
+            servicesBuilder.Services.AddScoped<IMartenUser>(_ => new MartenUser<long>(() => 123456));
+            martenBuilder.UseDirtyTrackedSession();
+
+            var serviceProvider = servicesBuilder.Build();
+            var options = serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;
+            options.Connection(() => new NpgsqlConnection(_fixture.ConnectionString.ToString()));
+
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var store = scope.ServiceProvider.GetService<IDocumentStore>();
+                store.BulkInsert(new[] { new UserLike()
+                {
+                    Id = 123456.ToString(),
+                    Identities = { "123456", "456789" }
+                } });
+
+                using (var session = scope.ServiceProvider.GetService<IDocumentStore>().QuerySession())
+                {
+                    var c = session.Query<UserLike>()
+                        .Where(x => x.Identities.Contains("123456"))
+                        .FirstOrDefaultAsync();
+
+                    c.Should().NotBeNull();
+                }
+
+                using (var session = scope.ServiceProvider.GetService<IDocumentStore>().LightweightSession())
+                {
+                    var c = session.Query<UserLike>()
+                        .Where(x => x.Identities.Contains("456789"))
+                        .FirstOrDefaultAsync();
+
+                    c.Should().NotBeNull();
+                }
+            }
+        }
+    }
+}

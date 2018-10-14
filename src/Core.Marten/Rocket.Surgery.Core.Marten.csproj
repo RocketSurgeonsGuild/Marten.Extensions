@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Marten" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" />
+        <PackageReference Include="NodaTime" />
+        <PackageReference Include="NodaTime.Serialization.JsonNet" />
+        <PackageReference Include="Rocket.Surgery.Builders" />
+        <PackageReference Include="Rocket.Surgery.Domain" />
+        <PackageReference Include="Rocket.Surgery.Extensions.CommandLine.Abstractions" />
+        <PackageReference Include="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" />
+        <PackageReference Include="Rocket.Surgery.Extensions.Logging.Abstractions" />
+        <PackageReference Include="Rocket.Surgery.Extensions.Serilog.Abstractions" />
+        <PackageReference Include="Rocket.Surgery.Linq.Extensions" />
+        <PackageReference Include="Rocket.Surgery.Reactive.Extensions" />
+        <PackageReference Include="Scrutor" />
+        <PackageReference Include="System.Security.Claims" />
+    </ItemGroup>
+</Project>

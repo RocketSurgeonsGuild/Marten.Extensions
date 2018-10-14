@@ -1,0 +1,47 @@
+<Project>
+    <ItemGroup>
+        <PackageReference Update="Marten" Version="2.10.0" />
+        <PackageReference Update="Marten.CommandLine" Version="2.10.0" />
+        <PackageReference Update="Microsoft.AspNetCore.Hosting" Version="2.1.1" />
+        <PackageReference Update="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
+        <PackageReference Update="Microsoft.Azure.WebJobs" Version="3.0.0-beta8" />
+        <PackageReference Update="Microsoft.Azure.WebJobs.Extensions" Version="3.0.0-beta8" />
+        <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />
+        <PackageReference Update="Microsoft.Extensions.Configuration" Version="2.1.1" />
+        <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
+        <PackageReference Update="NodaTime" Version="2.4.0" />
+        <PackageReference Update="NodaTime.Serialization.JsonNet" Version="2.1.0-beta01" />
+        <PackageReference Update="NodaTime.Testing" Version="2.4.0" />
+        <PackageReference Update="Rocket.Surgery.Builders" Version="3.1.0" />
+        <PackageReference Update="Rocket.Surgery.Extensions" Version="0.9.0" />
+        <PackageReference Update="Rocket.Surgery.Domain" Version="0.4.1" />
+        <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="0.16.3" />
+        <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="0.12.1" />
+        <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="0.12.1" />
+        <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="0.9.1" />
+        <PackageReference Update="Rocket.Surgery.Extensions.Serilog.Abstractions" Version="0.9.1" />
+        <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="0.9.0" />
+        <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="0.10.0" />
+        <PackageReference Update="Scrutor" Version="3.0.1" />
+        <PackageReference Update="System.Security.Claims" Version="4.3.0" />
+        <PackageReference Update="ReadySelect.LocalDevelopment" Version="8.5.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Update="Rocket.Surgery.Build.Metadata" Version="3.0.0" PrivateAssets="All" />
+        <PackageReference Update="SourceLink.Embed.AllSourceFiles" Version="2.8.3" PrivateAssets="All" />
+        <PackageReference Update="SourceLink.Copy.PdbFiles" Version="2.8.3" PrivateAssets="All" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Update="Autofac.Extras.FakeItEasy" Version="5.0.1" />
+        <PackageReference Update="Bogus" Version="24.3.0" />
+        <PackageReference Update="coverlet.msbuild" Version="2.3.0" />
+        <PackageReference Update="FakeItEasy" Version="4.9.1" />
+        <PackageReference Update="FakeItEasy.Analyzer.CSharp" Version="4.9.1" />
+        <PackageReference Update="FluentAssertions" Version="5.4.2" />
+        <PackageReference Update="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+        <PackageReference Update="Rocket.Surgery.Extensions.Testing" Version="0.13.0" />
+        <PackageReference Update="xunit" Version="2.4.0" />
+        <PackageReference Update="xunit.runner.visualstudio" Version="2.4.0" />
+        <PackageReference Update="XunitXml.TestLogger" Version="2.0.0" />
+    </ItemGroup>
+</Project>

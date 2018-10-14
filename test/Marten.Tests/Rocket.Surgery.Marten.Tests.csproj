@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp2.0;netcoreapp2.1;net461</TargetFrameworks>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AspNetCore.Marten\Rocket.Surgery.AspNetCore.Marten.csproj" />
+    <ProjectReference Include="..\..\src\Core.Marten\Rocket.Surgery.Core.Marten.csproj" />
+    <PackageReference Include="NodaTime.Testing" />
+    <PackageReference Include="Rocket.Surgery.Extensions.DependencyInjection" />
+    <PackageReference Include="Rocket.Surgery.LocalDevelopment" />
+  </ItemGroup>
+</Project>
