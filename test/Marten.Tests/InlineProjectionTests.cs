@@ -10,15 +10,15 @@ using Marten.Events.Projections.Async;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Rocket.Surgery.Core.Marten.Builders;
-using Rocket.Surgery.Core.Marten.Projections;
+using Rocket.Surgery.Extensions.Marten.Builders;
+using Rocket.Surgery.Extensions.Marten.Projections;
 using Rocket.Surgery.Conventions.Reflection;
 using Rocket.Surgery.Conventions.Scanners;
 using Rocket.Surgery.Extensions.DependencyInjection;
 using Rocket.Surgery.Extensions.Testing;
 using Xunit;
 using Xunit.Abstractions;
-using ProjectionType = Rocket.Surgery.Core.Marten.Projections.ProjectionType;
+using ProjectionType = Rocket.Surgery.Extensions.Marten.Projections.ProjectionType;
 
 namespace Rocket.Surgery.Marten.Tests
 {

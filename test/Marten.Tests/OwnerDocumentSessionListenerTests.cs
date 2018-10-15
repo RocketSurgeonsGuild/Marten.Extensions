@@ -10,16 +10,16 @@ using Marten.Events.Projections;
 using Marten.Events.Projections.Async;
 using NodaTime;
 using NodaTime.Testing;
-using Rocket.Surgery.AspNetCore.Marten;
-using Rocket.Surgery.Core.Marten;
-using Rocket.Surgery.Core.Marten.Listeners;
-using Rocket.Surgery.Core.Marten.Projections;
-using Rocket.Surgery.Core.Marten.Security;
+using Rocket.Surgery.Extensions.Marten.AspNetCore;
+using Rocket.Surgery.Extensions.Marten;
+using Rocket.Surgery.Extensions.Marten.Listeners;
+using Rocket.Surgery.Extensions.Marten.Projections;
+using Rocket.Surgery.Extensions.Marten.Security;
 using Rocket.Surgery.Conventions.Reflection;
 using Rocket.Surgery.Conventions.Scanners;
 using Rocket.Surgery.Domain;
 using Xunit;
-using ProjectionType = Rocket.Surgery.Core.Marten.Projections.ProjectionType;
+using ProjectionType = Rocket.Surgery.Extensions.Marten.Projections.ProjectionType;
 
 namespace Rocket.Surgery.Marten.Tests
 {

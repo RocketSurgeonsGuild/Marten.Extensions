@@ -37,13 +37,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{87383726
 		tools\packages.config = tools\packages.config
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.AspNetCore.Marten", "src\AspNetCore.Marten\Rocket.Surgery.AspNetCore.Marten.csproj", "{683A223E-F00E-4D41-A9C8-E03F657AF5E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Extensions.Marten.AspNetCore", "src\AspNetCore\Rocket.Surgery.Extensions.Marten.AspNetCore.csproj", "{683A223E-F00E-4D41-A9C8-E03F657AF5E3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Core.Marten", "src\Core.Marten\Rocket.Surgery.Core.Marten.csproj", "{B3149027-38D6-4634-A293-A5C699E09235}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Extensions.Marten", "src\Marten\Rocket.Surgery.Extensions.Marten.csproj", "{B3149027-38D6-4634-A293-A5C699E09235}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Marten.Tests", "test\Marten.Tests\Rocket.Surgery.Marten.Tests.csproj", "{D6875FEE-8BB5-48B0-8B75-81340E8A1B26}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Azure.Functions.Marten", "src\Azure.Functions.Marten\Rocket.Surgery.Azure.Functions.Marten.csproj", "{30B13352-CC4A-47E6-A347-AA727BCEE2D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Marten.Tests", "test\Marten.Tests\Rocket.Surgery.Extensions.Marten.Tests.csproj", "{D6875FEE-8BB5-48B0-8B75-81340E8A1B26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,18 +89,6 @@ Global
 		{D6875FEE-8BB5-48B0-8B75-81340E8A1B26}.Release|x64.Build.0 = Release|Any CPU
 		{D6875FEE-8BB5-48B0-8B75-81340E8A1B26}.Release|x86.ActiveCfg = Release|Any CPU
 		{D6875FEE-8BB5-48B0-8B75-81340E8A1B26}.Release|x86.Build.0 = Release|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Debug|x64.Build.0 = Debug|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Debug|x86.Build.0 = Debug|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Release|x64.ActiveCfg = Release|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Release|x64.Build.0 = Release|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Release|x86.ActiveCfg = Release|Any CPU
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,7 +97,6 @@ Global
 		{683A223E-F00E-4D41-A9C8-E03F657AF5E3} = {D9AF5A88-4F7E-4E87-A754-A9E273156B34}
 		{B3149027-38D6-4634-A293-A5C699E09235} = {D9AF5A88-4F7E-4E87-A754-A9E273156B34}
 		{D6875FEE-8BB5-48B0-8B75-81340E8A1B26} = {8339FA60-2016-4880-9EC7-D8755AB7D4F1}
-		{30B13352-CC4A-47E6-A347-AA727BCEE2D3} = {D9AF5A88-4F7E-4E87-A754-A9E273156B34}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {18572E0C-AF86-4C28-985B-22DB74C9D75F}

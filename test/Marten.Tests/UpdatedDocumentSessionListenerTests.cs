@@ -2,8 +2,8 @@
 using FluentAssertions;
 using NodaTime;
 using NodaTime.Testing;
-using Rocket.Surgery.Core.Marten;
-using Rocket.Surgery.Core.Marten.Listeners;
+using Rocket.Surgery.Extensions.Marten;
+using Rocket.Surgery.Extensions.Marten.Listeners;
 using Rocket.Surgery.Domain;
 using Xunit;
 

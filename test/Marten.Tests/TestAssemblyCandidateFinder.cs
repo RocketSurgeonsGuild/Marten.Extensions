@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using Rocket.Surgery.AspNetCore.Marten;
-using Rocket.Surgery.Core.Marten;
+using Rocket.Surgery.Extensions.Marten.AspNetCore;
+using Rocket.Surgery.Extensions.Marten;
 using Rocket.Surgery.Conventions.Reflection;
 
 namespace Rocket.Surgery.Marten.Tests

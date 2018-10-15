@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Marten\Rocket.Surgery.Extensions.Marten.csproj" />
+        <PackageReference Include="Marten.CommandLine" />
+        <PackageReference Include="Microsoft.AspNetCore.Hosting" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" />
+    </ItemGroup>
+</Project>
