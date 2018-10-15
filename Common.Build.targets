@@ -24,7 +24,7 @@
         <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="0.10.0" />
         <PackageReference Update="Scrutor" Version="3.0.1" />
         <PackageReference Update="System.Security.Claims" Version="4.3.0" />
-        <PackageReference Update="ReadySelect.LocalDevelopment" Version="8.5.0" />
+        <PackageReference Update="Docker.DotNet" Version="3.125.2" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Update="Rocket.Surgery.Build.Metadata" Version="3.0.0" PrivateAssets="All" />
@@ -40,6 +40,7 @@
         <PackageReference Update="FluentAssertions" Version="5.4.2" />
         <PackageReference Update="Microsoft.NET.Test.Sdk" Version="15.8.0" />
         <PackageReference Update="Rocket.Surgery.Extensions.Testing" Version="0.13.0" />
+        <PackageReference Update="Rocket.Surgery.Extensions.Testing.Docker" Version="0.13.0" />
         <PackageReference Update="xunit" Version="2.4.0" />
         <PackageReference Update="xunit.runner.visualstudio" Version="2.4.0" />
         <PackageReference Update="XunitXml.TestLogger" Version="2.0.0" />

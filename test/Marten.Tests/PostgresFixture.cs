@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Npgsql;
-using Rocket.Surgery.LocalDevelopment;
 using Xunit;
 using Xunit.Abstractions;
 

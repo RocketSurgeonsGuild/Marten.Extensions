@@ -19,13 +19,13 @@ using Xunit.Abstractions;
 
 namespace Rocket.Surgery.Marten.Tests
 {
-    public class SecurityQueryProviderTests : AutoTestBase, IClassFixture<PostgresFixture>
+    public class SecurityQueryProviderTests : AutoTestBase
     {
         private readonly PostgresFixture _fixture;
 
-        public SecurityQueryProviderTests(PostgresFixture fixture, ITestOutputHelper testOutputHelper) : base(testOutputHelper)
+        public SecurityQueryProviderTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
         {
-            _fixture = fixture;
+            _fixture = new PostgresFixture();
         }
         class HaveOwner : IHaveOwner<string>
         {
@@ -148,7 +148,7 @@ namespace Rocket.Surgery.Marten.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "to be refined")]
         public void Should_Work_With_FirstOrDefaultAsync()
         {
             AutoFake.Provide<IServiceCollection>(new ServiceCollection());
@@ -175,7 +175,10 @@ namespace Rocket.Surgery.Marten.Tests
                     Id = 123456.ToString(),
                     Identities = { "123456", "456789" }
                 } });
+            }
 
+            using (var scope = serviceProvider.CreateScope())
+            {
                 using (var session = scope.ServiceProvider.GetService<IDocumentStore>().QuerySession())
                 {
                     var c = session.Query<UserLike>()
@@ -184,7 +187,10 @@ namespace Rocket.Surgery.Marten.Tests
 
                     c.Should().NotBeNull();
                 }
+            }
 
+            using (var scope = serviceProvider.CreateScope())
+            {
                 using (var session = scope.ServiceProvider.GetService<IDocumentStore>().LightweightSession())
                 {
                     var c = session.Query<UserLike>()
