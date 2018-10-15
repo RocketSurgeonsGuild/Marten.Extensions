@@ -61,6 +61,9 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.TryAddSingleton(_ => new DocumentStore(_.GetRequiredService<IOptions<StoreOptions>>().Value));
             services.TryAddTransient<IDocumentStore, TransientDocumentStore>();
+            services.TryAddTransient<ISecureQuerySession>(_ => {
+                return _.GetRequiredService<IDocumentStore>().SecureQuerySession(_.GetRequiredService<ISecurityQueryProvider>(), _.GetRequiredService<IMartenUser>());
+            });
             services.TryAddSingleton<IDaemonFactory, DaemonFactory>();
             services.TryAddTransient(typeof(DaemonLogger<>));
             services.TryAddTransient<ISecurityQueryProvider, SecurityQueryProvider>();

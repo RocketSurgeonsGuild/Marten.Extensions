@@ -17,15 +17,11 @@ namespace Rocket.Surgery.Extensions.Marten
     {
         private readonly DocumentStore _documentStore;
         private readonly IEnumerable<IDocumentSessionListener> _documentSessionListeners;
-        private readonly ISecurityQueryProvider _securityQueryProvider;
-        private readonly IMartenUser _martenUser;
 
-        public TransientDocumentStore(DocumentStore documentStore, IEnumerable<IDocumentSessionListener> documentSessionListeners, ISecurityQueryProvider securityQueryProvider, IMartenUser martenUser = null)
+        public TransientDocumentStore(DocumentStore documentStore, IEnumerable<IDocumentSessionListener> documentSessionListeners)
         {
             _documentStore = documentStore;
             _documentSessionListeners = documentSessionListeners;
-            _securityQueryProvider = securityQueryProvider;
-            _martenUser = martenUser;
         }
 
         void IDisposable.Dispose()
@@ -45,53 +41,53 @@ namespace Rocket.Surgery.Extensions.Marten
 
         IDocumentSession IDocumentStore.OpenSession(DocumentTracking tracking, IsolationLevel isolationLevel)
         {
-            return new SecureDocumentSession(_documentStore.OpenSession(tracking, isolationLevel).RegisterListeners(_documentSessionListeners), _securityQueryProvider, _martenUser);
+            return _documentStore.OpenSession(tracking, isolationLevel).RegisterListeners(_documentSessionListeners);
         }
 
         IDocumentSession IDocumentStore.OpenSession(string tenantId, DocumentTracking tracking,
             IsolationLevel isolationLevel)
         {
-            return new SecureDocumentSession(_documentStore.OpenSession(tenantId, tracking, isolationLevel).RegisterListeners(_documentSessionListeners), _securityQueryProvider, _martenUser);
+            return _documentStore.OpenSession(tenantId, tracking, isolationLevel).RegisterListeners(_documentSessionListeners);
         }
 
         IDocumentSession IDocumentStore.OpenSession(SessionOptions options)
         {
-            return new SecureDocumentSession(_documentStore.OpenSession(options).RegisterListeners(_documentSessionListeners), _securityQueryProvider, _martenUser);
+            return _documentStore.OpenSession(options).RegisterListeners(_documentSessionListeners);
         }
 
         IDocumentSession IDocumentStore.LightweightSession(IsolationLevel isolationLevel)
         {
-            return new SecureDocumentSession(_documentStore.LightweightSession(isolationLevel).RegisterListeners(_documentSessionListeners), _securityQueryProvider, _martenUser);
+            return _documentStore.LightweightSession(isolationLevel).RegisterListeners(_documentSessionListeners);
         }
 
         IDocumentSession IDocumentStore.LightweightSession(string tenantId, IsolationLevel isolationLevel)
         {
-            return new SecureDocumentSession(_documentStore.LightweightSession(tenantId, isolationLevel).RegisterListeners(_documentSessionListeners), _securityQueryProvider, _martenUser);
+            return _documentStore.LightweightSession(tenantId, isolationLevel).RegisterListeners(_documentSessionListeners);
         }
 
         IDocumentSession IDocumentStore.DirtyTrackedSession(IsolationLevel isolationLevel)
         {
-            return new SecureDocumentSession(_documentStore.DirtyTrackedSession(isolationLevel).RegisterListeners(_documentSessionListeners), _securityQueryProvider, _martenUser);
+            return _documentStore.DirtyTrackedSession(isolationLevel).RegisterListeners(_documentSessionListeners);
         }
 
         IDocumentSession IDocumentStore.DirtyTrackedSession(string tenantId, IsolationLevel isolationLevel)
         {
-            return new SecureDocumentSession(_documentStore.DirtyTrackedSession(tenantId, isolationLevel).RegisterListeners(_documentSessionListeners), _securityQueryProvider, _martenUser);
+            return _documentStore.DirtyTrackedSession(tenantId, isolationLevel).RegisterListeners(_documentSessionListeners);
         }
 
         IQuerySession IDocumentStore.QuerySession()
         {
-            return new SecureQuerySession(_documentStore.QuerySession(), _securityQueryProvider, _martenUser);
+            return _documentStore.QuerySession();
         }
 
         IQuerySession IDocumentStore.QuerySession(string tenantId)
         {
-            return new SecureQuerySession(_documentStore.QuerySession(tenantId), _securityQueryProvider, _martenUser);
+            return _documentStore.QuerySession(tenantId);
         }
 
         IQuerySession IDocumentStore.QuerySession(SessionOptions options)
         {
-            return new SecureQuerySession(_documentStore.QuerySession(options), _securityQueryProvider, _martenUser);
+            return _documentStore.QuerySession(options);
         }
 
         void IDocumentStore.BulkInsertDocuments(IEnumerable<object> documents, BulkInsertMode mode, int batchSize)
@@ -122,5 +118,23 @@ namespace Rocket.Surgery.Extensions.Marten
         EventGraph IDocumentStore.Events => _documentStore.Events;
 
         ITenancy IDocumentStore.Tenancy => _documentStore.Tenancy;
+    }
+
+    public static class SecureQuerySessionExtensions
+    {
+        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, ISecurityQueryProvider securityQueryProvider, IMartenUser martenUser)
+        {
+            return new SecureQuerySession(store.QuerySession(), securityQueryProvider, martenUser);
+        }
+
+        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, string tenantId, ISecurityQueryProvider securityQueryProvider, IMartenUser martenUser)
+        {
+            return new SecureQuerySession(store.QuerySession(tenantId), securityQueryProvider, martenUser);
+        }
+
+        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, SessionOptions options, ISecurityQueryProvider securityQueryProvider, IMartenUser martenUser)
+        {
+            return new SecureQuerySession(store.QuerySession(options), securityQueryProvider, martenUser);
+        }
     }
 }

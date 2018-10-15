@@ -88,7 +88,7 @@ namespace Rocket.Surgery.Marten.Tests
 
             using (var scope = serviceProvider.CreateScope())
             {
-                using (var session = scope.ServiceProvider.GetService<IDocumentStore>().QuerySession())
+                using (var session = scope.ServiceProvider.GetService<ISecureQuerySession>())
                 {
                     var c = session.Query<HaveOwner>()
                         .ToCommand();
@@ -119,7 +119,7 @@ namespace Rocket.Surgery.Marten.Tests
 
             using (var scope = serviceProvider.CreateScope())
             {
-                using (var session = scope.ServiceProvider.GetService<IDocumentStore>().QuerySession())
+                using (var session = scope.ServiceProvider.GetService<ISecureQuerySession>())
                 {
                     var c = session.Query<OwnerAndCanBeAssigned>()
                         .ToCommand();
@@ -151,7 +151,7 @@ namespace Rocket.Surgery.Marten.Tests
 
             using (var scope = serviceProvider.CreateScope())
             {
-                using (var session = scope.ServiceProvider.GetService<IDocumentStore>().QuerySession())
+                using (var session = scope.ServiceProvider.GetService<ISecureQuerySession>())
                 {
                     var c = session.Query<CanBeAssigned>()
                         .ToCommand();
@@ -189,7 +189,7 @@ namespace Rocket.Surgery.Marten.Tests
                     Identities = { "123456", "456789" }
                 } });
 
-                using (var session = scope.ServiceProvider.GetService<IDocumentStore>().QuerySession())
+                using (var session = scope.ServiceProvider.GetService<ISecureQuerySession>())
                 {
                     var c = session.Query<UserLike>()
                         .Where(x => x.Identities.Contains("123456"))
@@ -198,7 +198,7 @@ namespace Rocket.Surgery.Marten.Tests
                     c.Should().NotBeNull();
                 }
 
-                using (var session = scope.ServiceProvider.GetService<IDocumentStore>().LightweightSession())
+                using (var session = scope.ServiceProvider.GetService<ISecureQuerySession>())
                 {
                     var c = session.Query<UserLike>()
                         .Where(x => x.Identities.Contains("456789"))

@@ -12,7 +12,8 @@ using Rocket.Surgery.Extensions.Marten.Security;
 
 namespace Rocket.Surgery.Extensions.Marten
 {
-    public class SecureQuerySession : IQuerySession
+    public interface ISecureQuerySession : IQuerySession {}
+    public class SecureQuerySession : ISecureQuerySession
     {
         private readonly IQuerySession _querySession;
         private readonly ISecurityQueryProvider _securityQueryProvider;
