@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using FluentAssertions;
 using Marten;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,14 +20,26 @@ using Xunit.Abstractions;
 
 namespace Rocket.Surgery.Marten.Tests
 {
-    public class SecurityQueryProviderTests : AutoTestBase
+    public class SecurityQueryProviderTests : AutoTestBase, IAsyncLifetime
     {
-        private readonly PostgresFixture _fixture;
+        private readonly PostgresAutomation _fixture;
 
         public SecurityQueryProviderTests(ITestOutputHelper testOutputHelper) : base(testOutputHelper)
         {
-            _fixture = new PostgresFixture();
+            _fixture = PostgresAutomation.ForUnitTesting(typeof(SecurityQueryProviderTests));
         }
+
+        public async Task InitializeAsync()
+        {
+            await _fixture.Start();
+        }
+
+        public async Task DisposeAsync()
+        {
+            await Task.Yield();
+            await _fixture.DropDatabase();
+        }
+
         class HaveOwner : IHaveOwner<string>
         {
             public string Id { get; set; }
@@ -148,7 +161,7 @@ namespace Rocket.Surgery.Marten.Tests
             }
         }
 
-        [Fact(Skip = "to be refined")]
+        [Fact]
         public void Should_Work_With_FirstOrDefaultAsync()
         {
             AutoFake.Provide<IServiceCollection>(new ServiceCollection());
@@ -175,10 +188,7 @@ namespace Rocket.Surgery.Marten.Tests
                     Id = 123456.ToString(),
                     Identities = { "123456", "456789" }
                 } });
-            }
 
-            using (var scope = serviceProvider.CreateScope())
-            {
                 using (var session = scope.ServiceProvider.GetService<IDocumentStore>().QuerySession())
                 {
                     var c = session.Query<UserLike>()
@@ -187,10 +197,7 @@ namespace Rocket.Surgery.Marten.Tests
 
                     c.Should().NotBeNull();
                 }
-            }
 
-            using (var scope = serviceProvider.CreateScope())
-            {
                 using (var session = scope.ServiceProvider.GetService<IDocumentStore>().LightweightSession())
                 {
                     var c = session.Query<UserLike>()
