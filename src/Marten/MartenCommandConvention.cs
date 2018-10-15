@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Hosting;
 using Rocket.Surgery.Extensions.Marten.AspNetCore;
 using Rocket.Surgery.Conventions;
 using Rocket.Surgery.Extensions.CommandLine;
