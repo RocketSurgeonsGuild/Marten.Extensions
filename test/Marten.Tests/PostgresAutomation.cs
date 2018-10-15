@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -146,9 +147,13 @@ namespace Rocket.Surgery.Marten.Tests
             _containerName = containerName;
             _databaseName = finalDatabaseName ?? ConnectionString.Database;
             _originalDatabaseName = ConnectionString.Database;
+            Uri LocalDockerUri()
+            {
+                var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+                return isWindows ? new Uri("npipe://./pipe/docker_engine") : new Uri("unix:/var/run/docker.sock");
+            }
 
-            Client = new DockerClientConfiguration(new Uri("npipe://./pipe/docker_engine"))
-                .CreateClient();
+            Client = new DockerClientConfiguration(LocalDockerUri()).CreateClient();
         }
 
         public NpgsqlConnectionStringBuilder ConnectionString { get; }
