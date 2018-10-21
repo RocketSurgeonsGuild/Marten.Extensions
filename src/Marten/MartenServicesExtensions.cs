@@ -40,6 +40,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static MartenServicesBuilder WithMarten(this IServiceConventionContext context)
         {
             DefaultServices(context.Services);
+            NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
             context.Services.AddOptions();
             context.Services.AddMemoryCache();
 

@@ -31,15 +31,15 @@ namespace Rocket.Surgery.Extensions.Marten
 
         public T this[int index] => _mapper(_pagedList[index]);
 
-        public int Count => _pagedList.Count;
+        public long Count => _pagedList.Count;
 
-        public int PageNumber => _pagedList.PageNumber;
+        public long PageNumber => _pagedList.PageNumber;
 
-        public int PageSize => _pagedList.PageSize;
+        public long PageSize => _pagedList.PageSize;
 
-        public int PageCount => _pagedList.PageCount;
+        public long PageCount => _pagedList.PageCount;
 
-        public int TotalItemCount => _pagedList.TotalItemCount;
+        public long TotalItemCount => _pagedList.TotalItemCount;
 
         public bool HasPreviousPage => _pagedList.HasPreviousPage;
 
@@ -49,9 +49,9 @@ namespace Rocket.Surgery.Extensions.Marten
 
         public bool IsLastPage => _pagedList.IsLastPage;
 
-        public int FirstItemOnPage => _pagedList.FirstItemOnPage;
+        public long FirstItemOnPage => _pagedList.FirstItemOnPage;
 
-        public int LastItemOnPage => _pagedList.LastItemOnPage;
+        public long LastItemOnPage => _pagedList.LastItemOnPage;
 
         private T[] _values;
         public IEnumerable<T> Values => _values ?? (_values = this.ToArray());
