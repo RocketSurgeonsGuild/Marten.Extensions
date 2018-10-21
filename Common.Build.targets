@@ -21,7 +21,6 @@
         <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="0.13.1" />
         <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="0.13.1" />
         <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="0.10.1" />
-        <PackageReference Update="Rocket.Surgery.Extensions.Serilog.Abstractions" Version="0.10.1" />
         <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="0.10.0" />
         <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="0.10.0" />
         <PackageReference Update="Scrutor" Version="3.0.1" />
