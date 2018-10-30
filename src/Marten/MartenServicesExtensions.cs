@@ -31,6 +31,12 @@ using System.Linq;
 using System.Reflection;
 using Rocket.Surgery.Extensions.Marten.Listeners;
 using Rocket.Surgery.Extensions.Marten.Security;
+using NodaTime;
+using NpgsqlTypes;
+using Npgsql.TypeMapping;
+using Npgsql.TypeHandling;
+using Npgsql.BackendMessages;
+using Rocket.Surgery.Extensions.Marten.NodaTime;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -40,7 +46,31 @@ namespace Microsoft.Extensions.DependencyInjection
         public static MartenServicesBuilder WithMarten(this IServiceConventionContext context)
         {
             DefaultServices(context.Services);
-            NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
+            NpgsqlConnection.GlobalTypeMapper
+                .UseNodaTime()
+                .AddMapping(new NpgsqlTypeMappingBuilder
+                {
+                    PgTypeName = "timestamp",
+                    NpgsqlDbType = NpgsqlDbType.Timestamp,
+                    DbTypes = new[] { DbType.DateTime, DbType.DateTime2 },
+                    ClrTypes = new[] { typeof(Instant), typeof(LocalDateTime), typeof(DateTime), typeof(NpgsqlDateTime) },
+                    InferredDbType = DbType.DateTime,
+                    TypeHandlerFactory = new TimestampHandlerFactory()
+                }.Build())
+                .AddMapping(new NpgsqlTypeMappingBuilder
+                {
+                    PgTypeName = "timestamp with time zone",
+                    NpgsqlDbType = NpgsqlDbType.TimestampTz,
+                    ClrTypes = new[] { typeof(ZonedDateTime), typeof(OffsetDateTime), typeof(DateTimeOffset) },
+                    TypeHandlerFactory = new TimestampTzHandlerFactory()
+                }.Build())
+                .AddMapping(new NpgsqlTypeMappingBuilder
+                {
+                    PgTypeName = "interval",
+                    NpgsqlDbType = NpgsqlDbType.Interval,
+                    ClrTypes = new[] { typeof(Period), typeof(TimeSpan), typeof(NpgsqlTimeSpan) },
+                    TypeHandlerFactory = new IntervalHandlerFactory()
+                }.Build());
             context.Services.AddOptions();
             context.Services.AddMemoryCache();
 
