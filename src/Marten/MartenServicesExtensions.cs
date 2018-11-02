@@ -37,20 +37,29 @@ using Npgsql.TypeMapping;
 using Npgsql.TypeHandling;
 using Npgsql.BackendMessages;
 using Rocket.Surgery.Extensions.Marten.NodaTime;
+using Marten.Util;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class MartenServicesExtensions
     {
-        public static MartenServicesBuilder WithMarten(this IServiceConventionContext context)
+        static MartenServicesExtensions()
         {
-            DefaultServices(context.Services);
             NpgsqlConnection.GlobalTypeMapper
                 .UseNodaTime()
                 .AddMapping(new NpgsqlTypeMappingBuilder
                 {
                     PgTypeName = "timestamp",
+                    NpgsqlDbType = NpgsqlDbType.Timestamp,
+                    DbTypes = new[] { DbType.DateTime, DbType.DateTime2 },
+                    ClrTypes = new[] { typeof(Instant), typeof(LocalDateTime), typeof(DateTime), typeof(NpgsqlDateTime) },
+                    InferredDbType = DbType.DateTime,
+                    TypeHandlerFactory = new TimestampHandlerFactory()
+                }.Build())
+                .AddMapping(new NpgsqlTypeMappingBuilder
+                {
+                    PgTypeName = "timestamp without time zone",
                     NpgsqlDbType = NpgsqlDbType.Timestamp,
                     DbTypes = new[] { DbType.DateTime, DbType.DateTime2 },
                     ClrTypes = new[] { typeof(Instant), typeof(LocalDateTime), typeof(DateTime), typeof(NpgsqlDateTime) },
@@ -71,6 +80,23 @@ namespace Microsoft.Extensions.DependencyInjection
                     ClrTypes = new[] { typeof(Period), typeof(TimeSpan), typeof(NpgsqlTimeSpan) },
                     TypeHandlerFactory = new IntervalHandlerFactory()
                 }.Build());
+
+
+            var pgTypes = (Dictionary<Type, string>)typeof(TypeMappings).GetField("PgTypes", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null);
+            foreach (var mapping in NpgsqlConnection.GlobalTypeMapper.Mappings)
+            {
+                foreach (var t in mapping.ClrTypes)
+                {
+                    pgTypes[t] = mapping.PgTypeName;
+                }
+            }
+        }
+        public static MartenServicesBuilder WithMarten(this IServiceConventionContext context)
+        {
+            DefaultServices(context.Services);
+
+
+
             context.Services.AddOptions();
             context.Services.AddMemoryCache();
 
@@ -92,7 +118,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.TryAddSingleton(_ => new DocumentStore(_.GetRequiredService<IOptions<StoreOptions>>().Value));
             services.TryAddTransient<IDocumentStore, TransientDocumentStore>();
-            services.TryAddTransient<ISecureQuerySession>(_ => {
+            services.TryAddTransient<ISecureQuerySession>(_ =>
+            {
                 return _.GetRequiredService<IDocumentStore>().SecureQuerySession(_.GetRequiredService<ISecurityQueryProvider>(), _.GetRequiredService<IMartenUser>());
             });
             services.TryAddSingleton<IDaemonFactory, DaemonFactory>();
