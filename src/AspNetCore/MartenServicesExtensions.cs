@@ -20,11 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             builder.Parent.Services.TryAddEnumerable(ServiceDescriptor.Transient<IStartupFilter, MartenStartupFilter>());
             builder.Parent.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            builder.Parent.Services.TryAddScoped<IMartenUser>(_ =>
-            {
-                var context = _.GetRequiredService<IHttpContextAccessor>().HttpContext;
-                return new MartenUser<string>(() => context.User?.Claims.GetIdFromClaims());
-            });
+            builder.Parent.Services.TryAddScoped<IMartenUser, CoreMartenUser>();
             return builder;
         }
     }
