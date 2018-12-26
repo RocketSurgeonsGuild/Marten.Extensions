@@ -15,10 +15,11 @@ namespace Rocket.Surgery.Extensions.Marten
 
         public bool IsIdLikeClaim(Claim claim)
         {
-            if (IdClaims != null && IdClaims.Any(z => claim.Type == z))
+            if (IdClaims != null && IdClaims.Length > 0 && IdClaims.Any(z => claim.Type == z))
             {
                 return true;
             }
+
             if (claim.Type == ClaimTypes.NameIdentifier)
             {
                 return true;
