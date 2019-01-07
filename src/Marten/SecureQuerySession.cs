@@ -195,6 +195,36 @@ namespace Rocket.Surgery.Extensions.Marten
             return _querySession.VersionFor(entity);
         }
 
+        public IReadOnlyList<TDoc> Search<TDoc>(string queryText, string config = "english")
+        {
+            return _querySession.Search<TDoc>(queryText, config);
+        }
+
+        public Task<IReadOnlyList<TDoc>> SearchAsync<TDoc>(string queryText, string config = "english", CancellationToken token = default)
+        {
+            return _querySession.SearchAsync<TDoc>(queryText, config);
+        }
+
+        public IReadOnlyList<TDoc> PlainTextSearch<TDoc>(string searchTerm, string config = "english")
+        {
+            return _querySession.PlainTextSearch<TDoc>(searchTerm, config);
+        }
+
+        public Task<IReadOnlyList<TDoc>> PlainTextSearchAsync<TDoc>(string searchTerm, string config = "english", CancellationToken token = default)
+        {
+            return _querySession.PlainTextSearchAsync<TDoc>(searchTerm, config);
+        }
+
+        public IReadOnlyList<TDoc> PhraseSearch<TDoc>(string searchTerm, string config = "english")
+        {
+            return _querySession.PhraseSearch<TDoc>(searchTerm, config);
+        }
+
+        public Task<IReadOnlyList<TDoc>> PhraseSearchAsync<TDoc>(string searchTerm, string config = "english", CancellationToken token = default)
+        {
+            return _querySession.PhraseSearchAsync<TDoc>(searchTerm, config);
+        }
+
         public NpgsqlConnection Connection => _querySession.Connection;
 
         public IMartenSessionLogger Logger
