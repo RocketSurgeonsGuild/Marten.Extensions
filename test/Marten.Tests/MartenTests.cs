@@ -18,6 +18,7 @@ using Rocket.Surgery.Extensions.DependencyInjection;
 using Rocket.Surgery.Extensions.Testing;
 using Xunit;
 using Xunit.Abstractions;
+using Rocket.Surgery.Extensions.Marten.AspNetCore;
 
 namespace Rocket.Surgery.Marten.Tests
 {

@@ -11,7 +11,6 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 
-// ReSharper disable once CheckNamespace
 namespace Rocket.Surgery.Extensions.Marten.AspNetCore
 {
     public static class MartenServicesExtensions
