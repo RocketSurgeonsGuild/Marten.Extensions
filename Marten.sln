@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27110.0
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -42,6 +42,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Extensions.Marten", "src\Marten\Rocket.Surgery.Extensions.Marten.csproj", "{B3149027-38D6-4634-A293-A5C699E09235}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Marten.Tests", "test\Marten.Tests\Rocket.Surgery.Extensions.Marten.Tests.csproj", "{D6875FEE-8BB5-48B0-8B75-81340E8A1B26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rocket.Surgery.Extensions.Marten.Functions", "src\Functions\Rocket.Surgery.Extensions.Marten.Functions.csproj", "{EF9A4657-24E9-498E-AE65-52E63C26B4FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,18 @@ Global
 		{D6875FEE-8BB5-48B0-8B75-81340E8A1B26}.Release|x64.Build.0 = Release|Any CPU
 		{D6875FEE-8BB5-48B0-8B75-81340E8A1B26}.Release|x86.ActiveCfg = Release|Any CPU
 		{D6875FEE-8BB5-48B0-8B75-81340E8A1B26}.Release|x86.Build.0 = Release|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Debug|x64.Build.0 = Debug|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Debug|x86.Build.0 = Debug|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Release|x64.ActiveCfg = Release|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Release|x64.Build.0 = Release|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +111,7 @@ Global
 		{683A223E-F00E-4D41-A9C8-E03F657AF5E3} = {D9AF5A88-4F7E-4E87-A754-A9E273156B34}
 		{B3149027-38D6-4634-A293-A5C699E09235} = {D9AF5A88-4F7E-4E87-A754-A9E273156B34}
 		{D6875FEE-8BB5-48B0-8B75-81340E8A1B26} = {8339FA60-2016-4880-9EC7-D8755AB7D4F1}
+		{EF9A4657-24E9-498E-AE65-52E63C26B4FF} = {D9AF5A88-4F7E-4E87-A754-A9E273156B34}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {18572E0C-AF86-4C28-985B-22DB74C9D75F}

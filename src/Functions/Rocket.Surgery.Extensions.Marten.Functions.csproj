@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Marten\Rocket.Surgery.Extensions.Marten.csproj" />
+        <PackageReference Include="Rocket.Surgery.Azure.Functions" />
+    </ItemGroup>
+</Project>
