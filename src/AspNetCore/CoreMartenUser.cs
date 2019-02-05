@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         private readonly MartenOptions _options;
         private readonly IHttpContextAccessor _accessor;
-            private string _id;
+        private string _id;
 
         public CoreMartenUser(IOptions<MartenOptions> options, IHttpContextAccessor accessor)
         {
@@ -24,9 +24,16 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 if (string.IsNullOrEmpty(_id))
                 {
-                    _id = _accessor.HttpContext.User.Claims
-                      .Where(_options.IsIdLikeClaim)
-                      .FirstOrDefault()?.Value;
+                    if (_accessor.HttpContext.User.Identity.IsAuthenticated)
+                    {
+                        _id = _accessor.HttpContext.User.Claims
+                          .Where(_options.IsIdLikeClaim)
+                          .FirstOrDefault()?.Value;
+                    }
+                    else
+                    {
+                        _id = "**anonymous**";
+                    }
                 }
                 return _id;
             }

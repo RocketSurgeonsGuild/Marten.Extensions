@@ -52,6 +52,7 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
 
         private void InnerHandleUnitOfWork(IUnitOfWork unitOfWork, DateTimeOffset offset) {
             if (_martenUser is null) return;
+            if (_martenUser.Id == null) return;
             GetMethod(_martenUser.Id.GetType()).Invoke(this, new object[] { unitOfWork, offset });
         }
 
