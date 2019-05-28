@@ -1,6 +1,6 @@
 using Marten;
 using Marten.Events;
-using Marten.Services;
+using Marten.NodaTime;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -24,6 +24,8 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
             });
             options.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
             options.Events.StreamIdentity = StreamIdentity.AsString;
+
+            NodaTimeExtensions.UseNodaTime(options, false);
 
             options.Logger(new MartenLogger(_loggerFactory.CreateLogger<MartenLogger>()));
         }
