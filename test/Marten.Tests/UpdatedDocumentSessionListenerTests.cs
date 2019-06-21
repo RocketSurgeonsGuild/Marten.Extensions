@@ -34,11 +34,11 @@ namespace Rocket.Surgery.Marten.Tests
         {
             var listener = new MartenDocumentSessionListener(
                 new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now), Duration.FromSeconds(1)),
-                new MartenUser<string>(() => "abc123")
+                new MartenContext() { User = new MartenUser<string>(() => "abc123") }
             );
             var document = new CreatedDocument();
 
-            listener.Apply(document, DateTimeOffset.Now);
+            MartenDocumentSessionListener.Apply(document, "abc123", DateTimeOffset.Now);
 
             document.Created.By.Should().Be("abc123");
             document.Created.At.Should().BeCloseTo(DateTimeOffset.Now, 1000);
@@ -52,11 +52,14 @@ namespace Rocket.Surgery.Marten.Tests
             var guid = Guid.NewGuid();
             var listener = new MartenDocumentSessionListener(
                 new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now), Duration.FromSeconds(1)),
-                new MartenUser<Guid>(() => guid)
+                new MartenContext()
+                {
+                    User = new MartenUser<Guid>(() => guid)
+                }
             );
             var document = new UpdatedDocument();
 
-            listener.Apply(document, DateTimeOffset.Now);
+            MartenDocumentSessionListener.Apply(document, guid, DateTimeOffset.Now);
 
             document.Created?.By.Should().BeEmpty();
             document.Created?.At.Should().BeNull();
@@ -69,12 +72,15 @@ namespace Rocket.Surgery.Marten.Tests
         {
             var listener = new MartenDocumentSessionListener(
                 new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now), Duration.FromSeconds(1)),
-                new MartenUser<long>(() => 456789)
+                new MartenContext()
+                {
+                    User = new MartenUser<long>(() => 456789)
+                        }
             );
             var document = new CreatedUpdatedDocument();
 
-            listener.Apply((IHaveCreatedBy<long>) document, DateTimeOffset.Now);
-            listener.Apply((IHaveUpdatedBy<long>) document, DateTimeOffset.Now);
+            MartenDocumentSessionListener.Apply((IHaveCreatedBy<long>) document, 456789, DateTimeOffset.Now);
+            MartenDocumentSessionListener.Apply((IHaveUpdatedBy<long>) document, 456789, DateTimeOffset.Now);
 
             document.Created.By.Should().Be(456789);
             document.Created.At.Should().BeCloseTo(DateTimeOffset.Now, 1000);

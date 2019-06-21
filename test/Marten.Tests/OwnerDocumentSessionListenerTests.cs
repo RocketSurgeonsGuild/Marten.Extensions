@@ -37,11 +37,11 @@ namespace Rocket.Surgery.Marten.Tests
         {
             var listener = new MartenDocumentSessionListener(
                 new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now), Duration.FromSeconds(1)),
-                new MartenUser<string>(() => "abc123")
+                new MartenContext() { User = new MartenUser<string>(() => "abc123") }
             );
             var document = new OwnerDocument();
 
-            listener.Apply(document);
+            MartenDocumentSessionListener.Apply(document, "abc123");
 
             document.Owner.Id.Should().Be("abc123");
         }

@@ -76,7 +76,7 @@ namespace Rocket.Surgery.Marten.Tests
                 .AddStartupFilter()
                 .Configure(configurationDelegate)
                 .Configure(componentConfigurationDelegate);
-            servicesBuilder.Services.AddScoped<IMartenUser>(_ => new MartenUser<string>(() => "abc123"));
+            servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<string>(() => "abc123") });
 
             martenBuilder.UseDirtyTrackedSession();
 
@@ -108,7 +108,7 @@ namespace Rocket.Surgery.Marten.Tests
                 .AddStartupFilter()
                 .Configure(configurationDelegate)
                 .Configure(componentConfigurationDelegate);
-            servicesBuilder.Services.AddScoped<IMartenUser>(_ => new MartenUser<string>(() => "abc123"));
+            servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<string>(() => "abc123") });
 
             martenBuilder.UseDirtyTrackedSession();
 

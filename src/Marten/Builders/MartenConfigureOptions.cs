@@ -17,15 +17,10 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
 
         public void Configure(StoreOptions options)
         {
-            options.Serializer(new CustomJsonNetSerializer()
-            {
-                Casing = Casing.CamelCase,
-                EnumStorage = EnumStorage.AsString
-            });
+            options.UseDefaultSerialization(EnumStorage.AsString, Casing.CamelCase, CollectionStorage.Default);
+            options.UseNodaTime(true);
             options.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
             options.Events.StreamIdentity = StreamIdentity.AsString;
-
-            NodaTimeExtensions.UseNodaTime(options, false);
 
             options.Logger(new MartenLogger(_loggerFactory.CreateLogger<MartenLogger>()));
         }

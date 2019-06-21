@@ -25,22 +25,22 @@ namespace Rocket.Surgery.Extensions.Marten
             return documentSession;
         }
 
-        public static IQueryable<T> OnlyItemsTheUserCanSee<T>(this IQueryable<T> query, ISecurityQueryProvider securityQueryProvider, IMartenUser user)
+        public static IQueryable<T> OnlyItemsTheUserCanSee<T>(this IQueryable<T> query, ISecurityQueryProvider securityQueryProvider, IMartenContext context)
         {
-            if (user?.Id != null)
+            if (context.User?.Id != null)
             {
-                var expression = securityQueryProvider.GetExpression<T>(user.Id);
+                var expression = securityQueryProvider.GetExpression<T>(context.User.Id);
                 if (expression != null)
                     return query.Where(expression);
             }
             return query;
         }
 
-        public static IEnumerable<T> OnlyItemsTheUserCanSee<T>(this IEnumerable<T> results, ISecurityQueryProvider securityQueryProvider, IMartenUser user)
+        public static IEnumerable<T> OnlyItemsTheUserCanSee<T>(this IEnumerable<T> results, ISecurityQueryProvider securityQueryProvider, IMartenContext  context)
         {
-            if (user?.Id != null)
+            if (context.User?.Id != null)
             {
-                var expression = securityQueryProvider.GetExpression<T>(user.Id);
+                var expression = securityQueryProvider.GetExpression<T>(context.User.Id);
                 if (expression != null)
                     return results.Where(expression.Compile());
             }

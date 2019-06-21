@@ -78,7 +78,7 @@ namespace Rocket.Surgery.Marten.Tests
                     Duration.FromSeconds(1))
             );
             var martenBuilder = servicesBuilder.WithMarten();
-            servicesBuilder.Services.AddScoped<IMartenUser>(_ => new MartenUser<string>(() => Guid.NewGuid().ToString()));
+            servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<string>(() => Guid.NewGuid().ToString()) });
 
             martenBuilder.UseDirtyTrackedSession();
 
@@ -109,7 +109,7 @@ namespace Rocket.Surgery.Marten.Tests
                     Duration.FromSeconds(1))
             );
             var martenBuilder = servicesBuilder.WithMarten();
-            servicesBuilder.Services.AddScoped<IMartenUser>(_ => new MartenUser<Guid>(() => Guid.NewGuid()));
+            servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<Guid>(() => Guid.NewGuid()) });
 
             martenBuilder.UseDirtyTrackedSession();
 
@@ -141,7 +141,7 @@ namespace Rocket.Surgery.Marten.Tests
                     Duration.FromSeconds(1))
             );
             var martenBuilder = servicesBuilder.WithMarten();
-            servicesBuilder.Services.AddScoped<IMartenUser>(_ => new MartenUser<long>(() => 123456));
+            servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<long>(() => 123456) });
 
             martenBuilder.UseDirtyTrackedSession();
 
@@ -173,7 +173,7 @@ namespace Rocket.Surgery.Marten.Tests
                     Duration.FromSeconds(1))
             );
             var martenBuilder = servicesBuilder.WithMarten();
-            servicesBuilder.Services.AddScoped<IMartenUser>(_ => new MartenUser<long>(() => 123456));
+            servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<long>(() => 123456) });
             martenBuilder.UseDirtyTrackedSession();
 
             var serviceProvider = servicesBuilder.Build();

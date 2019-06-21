@@ -70,13 +70,14 @@ namespace Microsoft.Extensions.DependencyInjection
             services.TryAddTransient<IDocumentStore, TransientDocumentStore>();
             services.TryAddTransient<ISecureQuerySession>(_ =>
             {
-                return _.GetRequiredService<IDocumentStore>().SecureQuerySession(_.GetRequiredService<ISecurityQueryProvider>(), _.GetRequiredService<IMartenUser>());
+                return _.GetRequiredService<IDocumentStore>().SecureQuerySession(_.GetRequiredService<ISecurityQueryProvider>(), _.GetRequiredService<IMartenContext>());
             });
             services.TryAddSingleton<IDaemonFactory, DaemonFactory>();
             services.TryAddTransient(typeof(DaemonLogger<>));
             services.TryAddTransient<ISecurityQueryProvider, SecurityQueryProvider>();
             services.TryAddEnumerable(ServiceDescriptor.Transient<ISecurityQueryPart, HaveOwnerSecurityQueryPart>());
             services.TryAddEnumerable(ServiceDescriptor.Transient<ISecurityQueryPart, CanBeAssignedSecurityQueryPart>());
+            services.TryAddScoped<IMartenContext, MartenContext>();
         }
     }
 }

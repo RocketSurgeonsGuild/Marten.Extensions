@@ -14,7 +14,7 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
 {
     public class MartenDocumentSessionListener : DocumentSessionListenerBase
     {
-        private readonly IMartenUser _martenUser;
+        private readonly IMartenContext _context;
         private readonly IClock _clock;
         private static readonly BackingFieldHelper BackingFieldHelper = new BackingFieldHelper();
         private static MethodInfo HandleUnitOfWorkMethod = typeof(MartenDocumentSessionListener)
@@ -31,10 +31,10 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
         }
 
 
-        public MartenDocumentSessionListener(IClock clock, IMartenUser martenUser = null)
+        public MartenDocumentSessionListener(IClock clock, IMartenContext context)
         {
             _clock = clock;
-            _martenUser = martenUser;
+            _context = context;
         }
 
         public override Task BeforeSaveChangesAsync(IDocumentSession session, CancellationToken token)
@@ -45,60 +45,71 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
 
         public override void BeforeSaveChanges(IDocumentSession session)
         {
-            if (_martenUser is null) return;
+            if (_context is null) return;
             var now = _clock.GetCurrentInstant().ToDateTimeOffset();
             InnerHandleUnitOfWork(session.PendingChanges, now);
         }
 
-        private void InnerHandleUnitOfWork(IUnitOfWork unitOfWork, DateTimeOffset offset) {
-            if (_martenUser is null) return;
-            if (_martenUser.Id == null) return;
-            GetMethod(_martenUser.Id.GetType()).Invoke(this, new object[] { unitOfWork, offset });
+        private void InnerHandleUnitOfWork(IUnitOfWork unitOfWork, DateTimeOffset offset)
+        {
+            if (_context.User is null || _context.User.Id == null)
+            {
+                GetMethod(typeof(object)).Invoke(this, new object[] { unitOfWork, offset });
+            }
+            else
+            {
+                GetMethod(_context.User.Id.GetType()).Invoke(this, new object[] { unitOfWork, offset });
+            }
         }
 
         private void HandleUnitOfWork<TKey>(IUnitOfWork unitOfWork, DateTimeOffset offset)
         {
+            var userId = default(TKey);
+            if (_context.User?.Id != null)
+            {
+                userId = (TKey)_context.User?.Id;
+            }
             foreach (var item in unitOfWork.Inserts().Concat(unitOfWork.Updates()))
             {
                 if (item is IHaveOwner<TKey> hasOwner)
                 {
-                    Apply(hasOwner);
+                    Apply(hasOwner, userId);
                 }
                 if (item is IHaveCreatedBy<TKey> hasCreated && hasCreated.Created != null && hasCreated.Created.By.Equals(default(TKey)))
                 {
-                    Apply(hasCreated, offset);
+                    Apply(hasCreated, userId, offset);
                 }
                 if (item is IHaveUpdatedBy<TKey> hasUpdated)
                 {
-                    Apply(hasUpdated, offset);
+                    Apply(hasUpdated, userId, offset);
                 }
             }
         }
 
-        public void Apply<TKey>(IHaveOwner<TKey> document)
+        public static void Apply<TKey>(IHaveOwner<TKey> document, TKey value)
         {
             BackingFieldHelper.SetBackingField(
                 document,
                 x => x.Owner,
-                new OwnerData<TKey>((TKey)_martenUser.Id)
+                new OwnerData<TKey>(value)
             );
         }
 
-        public void Apply<TKey>(IHaveCreatedBy<TKey> document, DateTimeOffset offset)
+        public static void Apply<TKey>(IHaveCreatedBy<TKey> document, TKey value, DateTimeOffset offset)
         {
             BackingFieldHelper.SetBackingField(
                 document,
                 x => x.Created,
-                new ChangeData<TKey>((TKey)_martenUser.Id, offset)
+                new ChangeData<TKey>(value, offset)
             );
         }
 
-        public void Apply<TKey>(IHaveUpdatedBy<TKey> document, DateTimeOffset offset)
+        public static void Apply<TKey>(IHaveUpdatedBy<TKey> document, TKey value, DateTimeOffset offset)
         {
             BackingFieldHelper.SetBackingField(
                 document,
                 x => x.Updated,
-                new ChangeData<TKey>((TKey)_martenUser.Id, offset)
+                new ChangeData<TKey>(value, offset)
             );
         }
     }
