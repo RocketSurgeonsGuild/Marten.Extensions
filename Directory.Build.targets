@@ -31,7 +31,6 @@
         <PackageReference Update="System.Security.Claims" Version="4.3.0" />
         <PackageReference Update="Rocket.Surgery.Extensions.Testing.Docker" Version="1.1.7" />
         <PackageReference Update="Docker.DotNet" Version="3.125.2" />
-        <PackageReference Update="Rocket.Surgery.Azure.Functions" Version="2.0.0-beta.10" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Rocket.Surgery.Build.Metadata" Version="3.3.0" PrivateAssets="All" />
