@@ -17,13 +17,13 @@ namespace Rocket.Surgery.Extensions.Marten
     {
         private readonly IQuerySession _querySession;
         private readonly ISecurityQueryProvider _securityQueryProvider;
-        private readonly IMartenUser _martenUser;
+        private readonly IMartenContext _martenContext;
 
-        public SecureQuerySession(IQuerySession querySession, ISecurityQueryProvider securityQueryProvider, IMartenUser martenUser = null)
+        public SecureQuerySession(IQuerySession querySession, ISecurityQueryProvider securityQueryProvider, IMartenContext martenContext)
         {
             _querySession = querySession;
             _securityQueryProvider = securityQueryProvider;
-            _martenUser = martenUser;
+            _martenContext = martenContext;
         }
 
         public void Dispose()
@@ -74,20 +74,20 @@ namespace Rocket.Surgery.Extensions.Marten
         public IMartenQueryable<T> Query<T>()
         {
             return (IMartenQueryable<T>) _querySession.Query<T>()
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser);
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext);
         }
 
         public IReadOnlyList<T> Query<T>(string sql, params object[] parameters)
         {
             return _querySession.Query<T>(sql, parameters)
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public async Task<IReadOnlyList<T>> QueryAsync<T>(string sql, CancellationToken token = new CancellationToken(), params object[] parameters)
         {
             return (await _querySession.QueryAsync<T>(sql, token, parameters).ConfigureAwait(false))
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
@@ -109,84 +109,84 @@ namespace Rocket.Surgery.Extensions.Marten
         public IReadOnlyList<T> LoadMany<T>(params string[] ids)
         {
             return _querySession.LoadMany<T>(ids)
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public IReadOnlyList<T> LoadMany<T>(params Guid[] ids)
         {
             return _querySession.LoadMany<T>(ids)
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public IReadOnlyList<T> LoadMany<T>(params int[] ids)
         {
             return _querySession.LoadMany<T>(ids)
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public IReadOnlyList<T> LoadMany<T>(params long[] ids)
         {
             return _querySession.LoadMany<T>(ids)
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(params string[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(ids).ConfigureAwait(false))
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(params Guid[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(ids).ConfigureAwait(false))
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(params int[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(ids).ConfigureAwait(false))
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(params long[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(ids).ConfigureAwait(false))
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(CancellationToken token, params string[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(token, ids).ConfigureAwait(false))
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(CancellationToken token, params Guid[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(token, ids).ConfigureAwait(false))
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(CancellationToken token, params int[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(token, ids).ConfigureAwait(false))
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(CancellationToken token, params long[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(token, ids).ConfigureAwait(false))
-                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenUser)
+                .OnlyItemsTheUserCanSee(_securityQueryProvider, _martenContext)
                 .ToList();
         }
 
@@ -223,6 +223,17 @@ namespace Rocket.Surgery.Extensions.Marten
         public Task<IReadOnlyList<TDoc>> PhraseSearchAsync<TDoc>(string searchTerm, string config = "english", CancellationToken token = default)
         {
             return _querySession.PhraseSearchAsync<TDoc>(searchTerm, config);
+        }
+
+        public IReadOnlyList<TDoc> WebStyleSearch<TDoc>(string searchTerm, string regConfig = "english")
+        {
+            return _querySession.WebStyleSearch<TDoc>(searchTerm, regConfig);
+        }
+
+        public Task<IReadOnlyList<TDoc>> WebStyleSearchAsync<TDoc>(string searchTerm, string regConfig = "english",
+            CancellationToken token = new CancellationToken())
+        {
+            return _querySession.WebStyleSearchAsync<TDoc>(searchTerm, regConfig);
         }
 
         public NpgsqlConnection Connection => _querySession.Connection;

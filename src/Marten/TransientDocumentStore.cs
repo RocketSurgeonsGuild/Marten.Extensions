@@ -122,19 +122,19 @@ namespace Rocket.Surgery.Extensions.Marten
 
     public static class SecureQuerySessionExtensions
     {
-        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, ISecurityQueryProvider securityQueryProvider, IMartenUser martenUser)
+        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, ISecurityQueryProvider securityQueryProvider, IMartenContext martenContext)
         {
-            return new SecureQuerySession(store.QuerySession(), securityQueryProvider, martenUser);
+            return new SecureQuerySession(store.QuerySession(), securityQueryProvider, martenContext);
         }
 
-        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, string tenantId, ISecurityQueryProvider securityQueryProvider, IMartenUser martenUser)
+        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, string tenantId, ISecurityQueryProvider securityQueryProvider, IMartenContext martenContext)
         {
-            return new SecureQuerySession(store.QuerySession(tenantId), securityQueryProvider, martenUser);
+            return new SecureQuerySession(store.QuerySession(tenantId), securityQueryProvider, martenContext);
         }
 
-        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, SessionOptions options, ISecurityQueryProvider securityQueryProvider, IMartenUser martenUser)
+        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, SessionOptions options, ISecurityQueryProvider securityQueryProvider, IMartenContext martenContext)
         {
-            return new SecureQuerySession(store.QuerySession(options), securityQueryProvider, martenUser);
+            return new SecureQuerySession(store.QuerySession(options), securityQueryProvider, martenContext);
         }
     }
 }
