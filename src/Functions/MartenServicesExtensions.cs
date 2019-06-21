@@ -8,16 +8,16 @@ using Rocket.Surgery.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Security.Claims;
-using Rocket.Surgery.Azure.Functions;
 using Rocket.Surgery.Extensions.Marten.Functions;
 
-namespace Rocket.Surgery.Extensions.Marten.Functions
+// ReSharper disable once CheckNamespace
+namespace Rocket.Surgery.Conventions
 {
-    public static class MartenServicesExtensions
+    public static class MartenFunctionsUnitOfWorkConventionExtensions
     {
-        public static MartenServicesBuilder AddFunctionFilters(this MartenServicesBuilder builder)
+        public static IConventionHostBuilder AddMartenFunctionsUnitOfWork(this IConventionHostBuilder builder)
         {
-            builder.Parent.Services.TryAddEnumerable(ServiceDescriptor.Transient<IRocketSurgeryFunctionInvocationFilter, MartenFunctionInvocationFilter>());
+            builder.Scanner.AppendConvention(new MartenFunctionsUnitOfWorkConvention());
             return builder;
         }
     }
