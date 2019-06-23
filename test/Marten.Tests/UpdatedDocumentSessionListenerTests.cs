@@ -32,16 +32,13 @@ namespace Rocket.Surgery.Marten.Tests
         [Fact]
         public void Should_Work_With_Created_Document()
         {
-            var listener = new MartenDocumentSessionListener(
-                new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now), Duration.FromSeconds(1)),
-                new MartenContext() { User = new MartenUser<string>(() => "abc123") }
-            );
+            var instant = Instant.FromUtc(2019, 1, 1, 0, 0);
             var document = new CreatedDocument();
 
-            MartenDocumentSessionListener.Apply(document, "abc123", DateTimeOffset.Now);
+            MartenDocumentSessionListener.Apply(document, "abc123", instant);
 
             document.Created.By.Should().Be("abc123");
-            document.Created.At.Should().BeCloseTo(DateTimeOffset.Now, 1000);
+            document.Created.At.Should().Be(instant);
             document.Updated?.By.Should().BeNull();
             document.Updated?.At.Should().BeNull();
         }
@@ -49,43 +46,31 @@ namespace Rocket.Surgery.Marten.Tests
         [Fact]
         public void Should_Work_With_Updated_Document()
         {
+            var instant = Instant.FromUtc(2019, 1, 1, 0, 0);
             var guid = Guid.NewGuid();
-            var listener = new MartenDocumentSessionListener(
-                new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now), Duration.FromSeconds(1)),
-                new MartenContext()
-                {
-                    User = new MartenUser<Guid>(() => guid)
-                }
-            );
             var document = new UpdatedDocument();
 
-            MartenDocumentSessionListener.Apply(document, guid, DateTimeOffset.Now);
+            MartenDocumentSessionListener.Apply(document, guid, instant);
 
             document.Created?.By.Should().BeEmpty();
             document.Created?.At.Should().BeNull();
             document.Updated.By.Should().Be(guid);
-            document.Updated.At.Should().BeCloseTo(DateTimeOffset.Now, 1000);
+            document.Updated.At.Should().Be(instant);
         }
 
         [Fact]
         public void Should_Work_With_Created_And_Updated_Document()
         {
-            var listener = new MartenDocumentSessionListener(
-                new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now), Duration.FromSeconds(1)),
-                new MartenContext()
-                {
-                    User = new MartenUser<long>(() => 456789)
-                        }
-            );
+            var instant = Instant.FromUtc(2019, 1, 1, 0, 0);
             var document = new CreatedUpdatedDocument();
 
-            MartenDocumentSessionListener.Apply((IHaveCreatedBy<long>) document, 456789, DateTimeOffset.Now);
-            MartenDocumentSessionListener.Apply((IHaveUpdatedBy<long>) document, 456789, DateTimeOffset.Now);
+            MartenDocumentSessionListener.Apply((IHaveCreatedBy<long>)document, 456789, instant);
+            MartenDocumentSessionListener.Apply((IHaveUpdatedBy<long>)document, 456789, instant.Plus(Duration.FromSeconds(1)));
 
             document.Created.By.Should().Be(456789);
-            document.Created.At.Should().BeCloseTo(DateTimeOffset.Now, 1000);
+            document.Created.At.Should().Be(instant);
             document.Updated.By.Should().Be(456789);
-            document.Updated.At.Should().BeCloseTo(DateTimeOffset.Now, 1000);
+            document.Updated.At.Should().Be(instant.Plus(Duration.FromSeconds(1)));
         }
     }
 }

@@ -46,11 +46,11 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
         public override void BeforeSaveChanges(IDocumentSession session)
         {
             if (_context is null) return;
-            var now = _clock.GetCurrentInstant().ToDateTimeOffset();
+            var now = _clock.GetCurrentInstant();
             InnerHandleUnitOfWork(session.PendingChanges, now);
         }
 
-        private void InnerHandleUnitOfWork(IUnitOfWork unitOfWork, DateTimeOffset offset)
+        private void InnerHandleUnitOfWork(IUnitOfWork unitOfWork, Instant offset)
         {
             if (_context.User is null || _context.User.Id == null)
             {
@@ -62,7 +62,7 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
             }
         }
 
-        private void HandleUnitOfWork<TKey>(IUnitOfWork unitOfWork, DateTimeOffset offset)
+        private void HandleUnitOfWork<TKey>(IUnitOfWork unitOfWork, Instant offset)
         {
             var userId = default(TKey);
             if (_context.User?.Id != null)
@@ -95,7 +95,7 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
             );
         }
 
-        public static void Apply<TKey>(IHaveCreatedBy<TKey> document, TKey value, DateTimeOffset offset)
+        public static void Apply<TKey>(IHaveCreatedBy<TKey> document, TKey value, Instant offset)
         {
             BackingFieldHelper.SetBackingField(
                 document,
@@ -104,7 +104,7 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
             );
         }
 
-        public static void Apply<TKey>(IHaveUpdatedBy<TKey> document, TKey value, DateTimeOffset offset)
+        public static void Apply<TKey>(IHaveUpdatedBy<TKey> document, TKey value, Instant offset)
         {
             BackingFieldHelper.SetBackingField(
                 document,
