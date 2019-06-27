@@ -14,7 +14,7 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.5.9
+      ref: refs/tags/v0.5.10
       endpoint: github
 
 variables:
@@ -29,6 +29,7 @@ variables:
   Artifacts: $(Build.ArtifactStagingDirectory)
   VstsArtifacts: "$(Artifacts)"
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
+  CodeCovToken: 'ed1436a4-a776-4296-87e9-fe419e291c15'
 
 jobs:
   - job: GitVersion
