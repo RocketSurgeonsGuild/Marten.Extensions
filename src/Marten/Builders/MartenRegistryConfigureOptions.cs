@@ -10,15 +10,28 @@ using Rocket.Surgery.Conventions.Reflection;
 
 namespace Rocket.Surgery.Extensions.Marten.Builders
 {
+    /// <summary>
+    /// Class MartenRegistryConfigureOptions.
+    /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
     class MartenRegistryConfigureOptions : IConfigureOptions<StoreOptions>
     {
         private readonly IEnumerable<MartenRegistry> _martenRegistries;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MartenRegistryConfigureOptions"/> class.
+        /// </summary>
+        /// <param name="martenRegistries">The marten registries.</param>
         public MartenRegistryConfigureOptions(IEnumerable<MartenRegistry> martenRegistries)
         {
             _martenRegistries = martenRegistries;
         }
 
+        /// <summary>
+        /// Invoked to configure a <typeparamref name="TOptions" /> instance.
+        /// </summary>
+        /// <param name="options">The options instance to configure.</param>
         public void Configure(StoreOptions options)
         {
             foreach (var registry in _martenRegistries)
@@ -28,6 +41,11 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
         }
     }
 
+    /// <summary>
+    /// Class MartenProjectionsConfigureOptions.
+    /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
     class MartenProjectionsConfigureOptions : IConfigureOptions<StoreOptions>
     {
         private static readonly MethodInfo _AddTransform = typeof(MartenProjectionsConfigureOptions)
@@ -40,6 +58,12 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
         private readonly IEnumerable<IInlineProjection> _inlineProjections;
         private readonly IEnumerable<IAsyncProjection> _asyncProjections;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MartenProjectionsConfigureOptions"/> class.
+        /// </summary>
+        /// <param name="projectionDescriptorCollection">The projection descriptor collection.</param>
+        /// <param name="inlineProjections">The inline projections.</param>
+        /// <param name="asyncProjections">The asynchronous projections.</param>
         public MartenProjectionsConfigureOptions(
             ProjectionDescriptorCollection projectionDescriptorCollection,
             IEnumerable<IInlineProjection> inlineProjections,
@@ -50,6 +74,10 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
             _asyncProjections = asyncProjections;
         }
 
+        /// <summary>
+        /// Configures the specified options.
+        /// </summary>
+        /// <param name="options">The options.</param>
         public void Configure(StoreOptions options)
         {
             foreach (var projection in _inlineProjections)

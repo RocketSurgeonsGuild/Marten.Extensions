@@ -5,15 +5,26 @@ using Rocket.Surgery.Conventions.Reflection;
 
 namespace Rocket.Surgery.Extensions.Marten.Projections
 {
+    /// <summary>
+    /// Class ProjectionDescriptorCollection.
+    /// </summary>
     class ProjectionDescriptorCollection
     {
         private readonly IAssemblyCandidateFinder assemblyCandidateFinder;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProjectionDescriptorCollection"/> class.
+        /// </summary>
+        /// <param name="assemblyCandidateFinder">The assembly candidate finder.</param>
         public ProjectionDescriptorCollection(IAssemblyCandidateFinder assemblyCandidateFinder)
         {
             this.assemblyCandidateFinder = assemblyCandidateFinder;
         }
 
+        /// <summary>
+        /// Gets the projection descriptors.
+        /// </summary>
+        /// <returns>IEnumerable&lt;ProjectionDescriptor&gt;.</returns>
         public IEnumerable<ProjectionDescriptor> GetProjectionDescriptors()
         {
             return assemblyCandidateFinder

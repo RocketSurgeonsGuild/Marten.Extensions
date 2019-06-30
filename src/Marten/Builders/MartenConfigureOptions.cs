@@ -6,15 +6,28 @@ using Microsoft.Extensions.Options;
 
 namespace Rocket.Surgery.Extensions.Marten.Builders
 {
+    /// <summary>
+    /// Class MartenConfigureOptions.
+    /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
     class MartenConfigureOptions : IConfigureOptions<StoreOptions>
     {
         private readonly ILoggerFactory _loggerFactory;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MartenConfigureOptions"/> class.
+        /// </summary>
+        /// <param name="loggerFactory">The logger factory.</param>
         public MartenConfigureOptions(ILoggerFactory loggerFactory)
         {
             _loggerFactory = loggerFactory;
         }
 
+        /// <summary>
+        /// Configures the specified options.
+        /// </summary>
+        /// <param name="options">The options.</param>
         public void Configure(StoreOptions options)
         {
             options.UseDefaultSerialization(EnumStorage.AsString, Casing.CamelCase, CollectionStorage.Default);

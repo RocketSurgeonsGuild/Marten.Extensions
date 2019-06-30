@@ -9,10 +9,22 @@ using Npgsql;
 
 namespace Rocket.Surgery.Extensions.Marten
 {
+    /// <summary>
+    /// Class MartenOptions.
+    /// </summary>
     public class MartenOptions
     {
+        /// <summary>
+        /// Gets or sets the identifier claims.
+        /// </summary>
+        /// <value>The identifier claims.</value>
         public string[] IdClaims { get; set; } = Array.Empty<string>();
 
+        /// <summary>
+        /// Determines whether [is identifier like claim] [the specified claim].
+        /// </summary>
+        /// <param name="claim">The claim.</param>
+        /// <returns><c>true</c> if [is identifier like claim] [the specified claim]; otherwise, <c>false</c>.</returns>
         public bool IsIdLikeClaim(Claim claim)
         {
             if (IdClaims != null && IdClaims.Length > 0 && IdClaims.Any(z => claim.Type == z))

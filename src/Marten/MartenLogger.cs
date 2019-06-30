@@ -7,25 +7,49 @@ using Npgsql;
 
 namespace Rocket.Surgery.Extensions.Marten
 {
+    /// <summary>
+    /// Class MartenLogger.
+    /// Implements the <see cref="Marten.IMartenLogger" />
+    /// Implements the <see cref="Marten.IMartenSessionLogger" />
+    /// </summary>
+    /// <seealso cref="Marten.IMartenLogger" />
+    /// <seealso cref="Marten.IMartenSessionLogger" />
     public class MartenLogger : IMartenLogger, IMartenSessionLogger
     {
         private readonly ILogger _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MartenLogger"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
         public MartenLogger(ILogger logger)
         {
             _logger = logger;
         }
 
+        /// <summary>
+        /// Starts the session.
+        /// </summary>
+        /// <param name="session">The session.</param>
+        /// <returns>IMartenSessionLogger.</returns>
         public IMartenSessionLogger StartSession(IQuerySession session)
         {
             return this;
         }
 
+        /// <summary>
+        /// Schemas the change.
+        /// </summary>
+        /// <param name="sql">The SQL.</param>
         public void SchemaChange(string sql)
         {
             _logger.LogTrace("Executing DDL change:\n{Sql}", sql);
         }
 
+        /// <summary>
+        /// Log a command that executed successfully
+        /// </summary>
+        /// <param name="command">The command.</param>
         public void LogSuccess(NpgsqlCommand command)
         {
             _logger.LogTrace(
@@ -35,6 +59,11 @@ namespace Rocket.Surgery.Extensions.Marten
             );
         }
 
+        /// <summary>
+        /// Log a command that failed
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <param name="ex">The ex.</param>
         public void LogFailure(NpgsqlCommand command, Exception ex)
         {
             _logger.LogTrace(
@@ -46,6 +75,11 @@ namespace Rocket.Surgery.Extensions.Marten
             );
         }
 
+        /// <summary>
+        /// Records the saved changes.
+        /// </summary>
+        /// <param name="session">The session.</param>
+        /// <param name="commit">The commit.</param>
         public void RecordSavedChanges(IDocumentSession session, IChangeSet commit)
         {
             _logger.LogTrace(

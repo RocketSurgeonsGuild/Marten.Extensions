@@ -12,6 +12,11 @@ using Rocket.Surgery.Reflection.Extensions;
 
 namespace Rocket.Surgery.Extensions.Marten.Listeners
 {
+    /// <summary>
+    /// Class MartenDocumentSessionListener.
+    /// Implements the <see cref="Marten.DocumentSessionListenerBase" />
+    /// </summary>
+    /// <seealso cref="Marten.DocumentSessionListenerBase" />
     public class MartenDocumentSessionListener : DocumentSessionListenerBase
     {
         private readonly IMartenContext _context;
@@ -31,18 +36,33 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
         }
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MartenDocumentSessionListener"/> class.
+        /// </summary>
+        /// <param name="clock">The clock.</param>
+        /// <param name="context">The context.</param>
         public MartenDocumentSessionListener(IClock clock, IMartenContext context)
         {
             _clock = clock;
             _context = context;
         }
 
+        /// <summary>
+        /// Befores the save changes asynchronous.
+        /// </summary>
+        /// <param name="session">The session.</param>
+        /// <param name="token">The token.</param>
+        /// <returns>Task.</returns>
         public override Task BeforeSaveChangesAsync(IDocumentSession session, CancellationToken token)
         {
             BeforeSaveChanges(session);
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Befores the save changes.
+        /// </summary>
+        /// <param name="session">The session.</param>
         public override void BeforeSaveChanges(IDocumentSession session)
         {
             if (_context is null) return;
@@ -86,6 +106,12 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
             }
         }
 
+        /// <summary>
+        /// Applies the specified document.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the t key.</typeparam>
+        /// <param name="document">The document.</param>
+        /// <param name="value">The value.</param>
         public static void Apply<TKey>(IHaveOwner<TKey> document, TKey value)
         {
             BackingFieldHelper.SetBackingField(
@@ -95,6 +121,13 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
             );
         }
 
+        /// <summary>
+        /// Applies the specified document.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the t key.</typeparam>
+        /// <param name="document">The document.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="offset">The offset.</param>
         public static void Apply<TKey>(IHaveCreatedBy<TKey> document, TKey value, Instant offset)
         {
             BackingFieldHelper.SetBackingField(
@@ -104,6 +137,13 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
             );
         }
 
+        /// <summary>
+        /// Applies the specified document.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the t key.</typeparam>
+        /// <param name="document">The document.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="offset">The offset.</param>
         public static void Apply<TKey>(IHaveUpdatedBy<TKey> document, TKey value, Instant offset)
         {
             BackingFieldHelper.SetBackingField(

@@ -6,18 +6,34 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Rocket.Surgery.Extensions.Marten.Security
 {
+    /// <summary>
+    /// Class SecurityQueryProvider.
+    /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryProvider" />
+    /// </summary>
+    /// <seealso cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryProvider" />
     public class SecurityQueryProvider : ISecurityQueryProvider
     {
         private readonly static TimeSpan _slidingDuration = TimeSpan.FromMinutes(20);
         private readonly IEnumerable<ISecurityQueryPart> _parts;
         private readonly IMemoryCache _cache;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SecurityQueryProvider"/> class.
+        /// </summary>
+        /// <param name="parts">The parts.</param>
+        /// <param name="cache">The cache.</param>
         public SecurityQueryProvider(IEnumerable<ISecurityQueryPart> parts, IMemoryCache cache)
         {
             _parts = parts;
             _cache = cache;
         }
 
+        /// <summary>
+        /// Gets the expression.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns>Expression&lt;Func&lt;T, System.Boolean&gt;&gt;.</returns>
         public Expression<Func<T, bool>> GetExpression<T>(object userId)
         {
             var param = Expression.Parameter(typeof(T), "p");

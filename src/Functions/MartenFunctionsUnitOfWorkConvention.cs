@@ -9,8 +9,17 @@ using Rocket.Surgery.Extensions.WebJobs;
 
 namespace Rocket.Surgery.Extensions.Marten.Functions
 {
+    /// <summary>
+    /// Class MartenFunctionsUnitOfWorkConvention.
+    /// Implements the <see cref="Rocket.Surgery.Extensions.WebJobs.IWebJobsConvention" />
+    /// </summary>
+    /// <seealso cref="Rocket.Surgery.Extensions.WebJobs.IWebJobsConvention" />
     public class MartenFunctionsUnitOfWorkConvention : IWebJobsConvention
     {
+        /// <summary>
+        /// Registers the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public void Register(IWebJobsConventionContext context)
         {
 #pragma warning disable 618

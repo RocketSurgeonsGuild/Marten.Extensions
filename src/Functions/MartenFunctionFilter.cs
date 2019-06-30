@@ -6,24 +6,53 @@ using Microsoft.Azure.WebJobs.Host;
 
 namespace Rocket.Surgery.Extensions.Marten.Functions
 {
+    /// <summary>
+    /// Class MartenFunctionFilter.
+    /// Implements the <see cref="Microsoft.Azure.WebJobs.Host.IFunctionInvocationFilter" />
+    /// Implements the <see cref="Microsoft.Azure.WebJobs.Host.IFunctionExceptionFilter" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Azure.WebJobs.Host.IFunctionInvocationFilter" />
+    /// <seealso cref="Microsoft.Azure.WebJobs.Host.IFunctionExceptionFilter" />
     class MartenFunctionFilter : IFunctionInvocationFilter, IFunctionExceptionFilter
     {
         private readonly IDocumentSession _documentSession;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MartenFunctionFilter"/> class.
+        /// </summary>
+        /// <param name="documentSession">The document session.</param>
         public MartenFunctionFilter(IDocumentSession documentSession)
         {
             _documentSession = documentSession;
         }
+        /// <summary>
+        /// Called when [executing asynchronous].
+        /// </summary>
+        /// <param name="executingContext">The executing context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task.</returns>
         public Task OnExecutingAsync(FunctionExecutingContext executingContext, CancellationToken cancellationToken)
         {
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Called when [executed asynchronous].
+        /// </summary>
+        /// <param name="executedContext">The executed context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task.</returns>
         public Task OnExecutedAsync(FunctionExecutedContext executedContext, CancellationToken cancellationToken)
         {
             return _documentSession.SaveChangesAsync(cancellationToken);
         }
 
+        /// <summary>
+        /// Called when [exception asynchronous].
+        /// </summary>
+        /// <param name="exceptionContext">The exception context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task.</returns>
         public Task OnExceptionAsync(FunctionExceptionContext exceptionContext, CancellationToken cancellationToken)
         {
             return Task.CompletedTask;

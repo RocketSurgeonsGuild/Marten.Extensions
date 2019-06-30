@@ -41,8 +41,16 @@ using Marten.Util;
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
 {
+    /// <summary>
+    /// Class MartenServicesExtensions.
+    /// </summary>
     public static class MartenServicesExtensions
     {
+        /// <summary>
+        /// Withes the marten.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>MartenServicesBuilder.</returns>
         public static MartenServicesBuilder WithMarten(this IServiceConventionContext context)
         {
             DefaultServices(context.Services);

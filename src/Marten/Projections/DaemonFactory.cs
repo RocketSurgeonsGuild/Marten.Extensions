@@ -6,17 +6,35 @@ using Microsoft.Extensions.Logging;
 
 namespace Rocket.Surgery.Extensions.Marten.Projections
 {
+    /// <summary>
+    /// Class DaemonFactory.
+    /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Projections.IDaemonFactory" />
+    /// </summary>
+    /// <seealso cref="Rocket.Surgery.Extensions.Marten.Projections.IDaemonFactory" />
     class DaemonFactory : IDaemonFactory
     {
         private readonly IDocumentStore _store;
         private readonly ILoggerFactory _factory;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DaemonFactory"/> class.
+        /// </summary>
+        /// <param name="store">The store.</param>
+        /// <param name="factory">The factory.</param>
         public DaemonFactory(IDocumentStore store, ILoggerFactory factory)
         {
             _store = store;
             _factory = factory;
         }
 
+        /// <summary>
+        /// Creates the daemon.
+        /// </summary>
+        /// <param name="loggerType">Type of the logger.</param>
+        /// <param name="viewTypes">The view types.</param>
+        /// <param name="settings">The settings.</param>
+        /// <param name="projections">The projections.</param>
+        /// <returns>IDaemon.</returns>
         public IDaemon CreateDaemon(Type loggerType, Type[] viewTypes = null, DaemonSettings settings = null, IProjection[] projections = null)
         {
             return _store.BuildProjectionDaemon(
@@ -27,6 +45,14 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
             );
         }
 
+        /// <summary>
+        /// Creates the daemon.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="viewTypes">The view types.</param>
+        /// <param name="settings">The settings.</param>
+        /// <param name="projections">The projections.</param>
+        /// <returns>IDaemon.</returns>
         public IDaemon CreateDaemon(ILogger logger, Type[] viewTypes = null, DaemonSettings settings = null, IProjection[] projections = null)
         {
             return _store.BuildProjectionDaemon(

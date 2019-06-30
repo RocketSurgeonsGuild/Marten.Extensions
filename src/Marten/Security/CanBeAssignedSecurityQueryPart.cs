@@ -6,8 +6,19 @@ using Rocket.Surgery.Domain;
 
 namespace Rocket.Surgery.Extensions.Marten.Security
 {
+    /// <summary>
+    /// Class CanBeAssignedSecurityQueryPart.
+    /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryPart" />
+    /// </summary>
+    /// <seealso cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryPart" />
     public class CanBeAssignedSecurityQueryPart : ISecurityQueryPart
     {
+        /// <summary>
+        /// Gets the expression.
+        /// </summary>
+        /// <param name="parameter">The parameter.</param>
+        /// <param name="constant">The constant.</param>
+        /// <returns>Expression.</returns>
         public Expression GetExpression(ParameterExpression parameter, ConstantExpression constant)
         {
             var idType = constant.Type;
@@ -23,6 +34,11 @@ namespace Rocket.Surgery.Extensions.Marten.Security
             );
         }
 
+        /// <summary>
+        /// Shoulds the apply.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ShouldApply(Type type)
         {
             return type.GetInterface(nameof(ICanBeAssigned<object>)+"`1") != null;

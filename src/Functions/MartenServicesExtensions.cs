@@ -13,8 +13,16 @@ using Rocket.Surgery.Extensions.Marten.Functions;
 // ReSharper disable once CheckNamespace
 namespace Rocket.Surgery.Conventions
 {
+    /// <summary>
+    /// Class MartenFunctionsUnitOfWorkConventionExtensions.
+    /// </summary>
     public static class MartenFunctionsUnitOfWorkConventionExtensions
     {
+        /// <summary>
+        /// Adds the marten functions unit of work.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IConventionHostBuilder.</returns>
         public static IConventionHostBuilder AddMartenFunctionsUnitOfWork(this IConventionHostBuilder builder)
         {
             builder.Scanner.AppendConvention(new MartenFunctionsUnitOfWorkConvention());

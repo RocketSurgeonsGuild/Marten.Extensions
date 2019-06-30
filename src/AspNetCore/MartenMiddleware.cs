@@ -13,15 +13,21 @@ namespace Rocket.Surgery.Extensions.Marten.AspNetCore
     {
         private readonly RequestDelegate _next;
 
-        /// <param name="next"></param>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MartenMiddleware"/> class.
+        /// </summary>
+        /// <param name="next">The next.</param>
         public MartenMiddleware(RequestDelegate next)
         {
             _next = next;
         }
 
-        /// <param name="httpContext"></param>
-        /// <param name="session"></param>
-        /// <returns></returns>
+        /// <summary>
+        /// Invokes the specified HTTP context.
+        /// </summary>
+        /// <param name="httpContext">The HTTP context.</param>
+        /// <param name="session">The session.</param>
+        /// <returns>Task.</returns>
         public async Task Invoke(HttpContext httpContext, IDocumentSession session)
         {
             await _next(httpContext);

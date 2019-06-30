@@ -6,6 +6,11 @@ using Rocket.Surgery.Domain;
 
 namespace Rocket.Surgery.Extensions.Marten.Security
 {
+    /// <summary>
+    /// Class HaveOwnerSecurityQueryPart.
+    /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryPart" />
+    /// </summary>
+    /// <seealso cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryPart" />
     public class HaveOwnerSecurityQueryPart : ISecurityQueryPart
     {
         public Expression GetExpression(ParameterExpression parameter, ConstantExpression constant)

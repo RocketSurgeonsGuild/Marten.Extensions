@@ -6,8 +6,16 @@ using Rocket.Surgery.Extensions.Marten.Builders;
 
 namespace Rocket.Surgery.Extensions.Marten.AspNetCore
 {
+    /// <summary>
+    /// Class MartenServicesExtensions.
+    /// </summary>
     public static class MartenServicesExtensions
     {
+        /// <summary>
+        /// Adds the startup filter.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>MartenServicesBuilder.</returns>
         public static MartenServicesBuilder AddStartupFilter(this MartenServicesBuilder builder)
         {
             builder.Parent.Services.TryAddEnumerable(ServiceDescriptor.Transient<IStartupFilter, MartenStartupFilter>());
