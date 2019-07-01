@@ -13,7 +13,7 @@ using Rocket.Surgery.Reflection.Extensions;
 namespace Rocket.Surgery.Extensions.Marten.Listeners
 {
     /// <summary>
-    /// Class MartenDocumentSessionListener.
+    ///  MartenDocumentSessionListener.
     /// Implements the <see cref="Marten.DocumentSessionListenerBase" />
     /// </summary>
     /// <seealso cref="Marten.DocumentSessionListenerBase" />

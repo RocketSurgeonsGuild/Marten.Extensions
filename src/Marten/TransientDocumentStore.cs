@@ -14,7 +14,7 @@ using Rocket.Surgery.Extensions.Marten.Security;
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Class TransientDocumentStore.
+    ///  TransientDocumentStore.
     /// Implements the <see cref="Marten.IDocumentStore" />
     /// </summary>
     /// <seealso cref="Marten.IDocumentStore" />
@@ -131,7 +131,7 @@ namespace Rocket.Surgery.Extensions.Marten
     }
 
     /// <summary>
-    /// Class SecureQuerySessionExtensions.
+    ///  SecureQuerySessionExtensions.
     /// </summary>
     public static class SecureQuerySessionExtensions
     {

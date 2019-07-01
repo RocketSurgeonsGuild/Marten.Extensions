@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 namespace Rocket.Surgery.Extensions.Marten.Builders
 {
     /// <summary>
-    /// Class MartenDelegateConfigureOptions.
+    ///  MartenDelegateConfigureOptions.
     /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
     /// </summary>
     /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />

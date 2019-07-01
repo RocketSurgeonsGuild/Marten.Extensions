@@ -7,7 +7,7 @@ using Microsoft.Extensions.Caching.Memory;
 namespace Rocket.Surgery.Extensions.Marten.Security
 {
     /// <summary>
-    /// Class SecurityQueryProvider.
+    ///  SecurityQueryProvider.
     /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryProvider" />
     /// </summary>
     /// <seealso cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryProvider" />

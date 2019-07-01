@@ -42,7 +42,7 @@ using Marten.Util;
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    /// Class MartenServicesExtensions.
+    ///  MartenServicesExtensions.
     /// </summary>
     public static class MartenServicesExtensions
     {

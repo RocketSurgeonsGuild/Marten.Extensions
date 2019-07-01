@@ -5,7 +5,7 @@
 namespace Rocket.Surgery.Conventions
 {
     /// <summary>
-    /// Class MartenMiddlewareUnitOfWorkConventionExtensions.
+    ///  MartenMiddlewareUnitOfWorkConventionExtensions.
     /// </summary>
     public static class MartenMiddlewareUnitOfWorkConventionExtensions
     {

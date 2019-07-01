@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 namespace Rocket.Surgery.Extensions.Marten.Security
 {
     /// <summary>
-    /// Interface ISecurityQueryProvider
+    ///  ISecurityQueryProvider
     /// </summary>
     public interface ISecurityQueryProvider
     {

@@ -10,7 +10,7 @@ using Npgsql;
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Class MartenOptions.
+    ///  MartenOptions.
     /// </summary>
     public class MartenOptions
     {

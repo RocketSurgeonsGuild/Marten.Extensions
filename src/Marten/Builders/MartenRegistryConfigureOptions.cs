@@ -11,7 +11,7 @@ using Rocket.Surgery.Conventions.Reflection;
 namespace Rocket.Surgery.Extensions.Marten.Builders
 {
     /// <summary>
-    /// Class MartenRegistryConfigureOptions.
+    ///  MartenRegistryConfigureOptions.
     /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
     /// </summary>
     /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
@@ -42,7 +42,7 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
     }
 
     /// <summary>
-    /// Class MartenProjectionsConfigureOptions.
+    ///  MartenProjectionsConfigureOptions.
     /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
     /// </summary>
     /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />

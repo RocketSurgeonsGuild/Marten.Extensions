@@ -3,7 +3,7 @@ using System;
 namespace Rocket.Surgery.Extensions.Marten.Builders
 {
     /// <summary>
-    /// Class MartenConfigurationDelegateContainer.
+    ///  MartenConfigurationDelegateContainer.
     /// </summary>
     class MartenConfigurationDelegateContainer
     {

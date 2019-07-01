@@ -1,7 +1,7 @@
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Interface IMartenContext
+    ///  IMartenContext
     /// </summary>
     public interface IMartenContext
     {
@@ -12,7 +12,7 @@ namespace Rocket.Surgery.Extensions.Marten
         IMartenUser User { get; set; }
     }
     /// <summary>
-    /// Class MartenContext.
+    ///  MartenContext.
     /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.IMartenContext" />
     /// </summary>
     /// <seealso cref="Rocket.Surgery.Extensions.Marten.IMartenContext" />

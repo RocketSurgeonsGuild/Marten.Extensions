@@ -10,7 +10,7 @@ using Rocket.Surgery.Extensions.WebJobs;
 namespace Rocket.Surgery.Extensions.Marten.Functions
 {
     /// <summary>
-    /// Class MartenFunctionsUnitOfWorkConvention.
+    ///  MartenFunctionsUnitOfWorkConvention.
     /// Implements the <see cref="Rocket.Surgery.Extensions.WebJobs.IWebJobsConvention" />
     /// </summary>
     /// <seealso cref="Rocket.Surgery.Extensions.WebJobs.IWebJobsConvention" />

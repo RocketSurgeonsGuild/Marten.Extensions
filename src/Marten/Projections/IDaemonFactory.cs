@@ -11,7 +11,7 @@ using Rocket.Surgery.Conventions.Reflection;
 namespace Rocket.Surgery.Extensions.Marten.Projections
 {
     /// <summary>
-    /// Interface IDaemonFactory
+    ///  IDaemonFactory
     /// </summary>
     public interface IDaemonFactory
     {

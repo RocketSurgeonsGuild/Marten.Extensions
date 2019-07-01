@@ -14,7 +14,7 @@ using Rocket.Surgery.Extensions.Marten.Functions;
 namespace Rocket.Surgery.Conventions
 {
     /// <summary>
-    /// Class MartenFunctionsUnitOfWorkConventionExtensions.
+    ///  MartenFunctionsUnitOfWorkConventionExtensions.
     /// </summary>
     public static class MartenFunctionsUnitOfWorkConventionExtensions
     {

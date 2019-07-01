@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Class MappedPagedList.
+    ///  MappedPagedList.
     /// Implements the <see cref="Marten.Pagination.IPagedList{T}" />
     /// </summary>
     /// <typeparam name="T"></typeparam>

@@ -10,7 +10,7 @@ using Microsoft.Extensions.Options;
 namespace Rocket.Surgery.Extensions.Marten.Builders
 {
     /// <summary>
-    /// Class MartenServicesBuilderExtensions.
+    ///  MartenServicesBuilderExtensions.
     /// </summary>
     public static class MartenServicesBuilderExtensions
     {

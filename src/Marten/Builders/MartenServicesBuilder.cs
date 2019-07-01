@@ -5,7 +5,7 @@ using Rocket.Surgery.Extensions.DependencyInjection;
 namespace Rocket.Surgery.Extensions.Marten.Builders
 {
     /// <summary>
-    /// Class MartenServicesBuilder.
+    ///  MartenServicesBuilder.
     /// Implements the <see cref="Rocket.Surgery.Builders.Builder{Rocket.Surgery.Extensions.DependencyInjection.IServiceConventionContext}" />
     /// </summary>
     /// <seealso cref="Rocket.Surgery.Builders.Builder{Rocket.Surgery.Extensions.DependencyInjection.IServiceConventionContext}" />

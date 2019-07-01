@@ -3,7 +3,7 @@
 namespace Rocket.Surgery.Extensions.Marten.Projections
 {
     /// <summary>
-    /// Class ProjectionDescriptor.
+    ///  ProjectionDescriptor.
     /// </summary>
     class ProjectionDescriptor
     {

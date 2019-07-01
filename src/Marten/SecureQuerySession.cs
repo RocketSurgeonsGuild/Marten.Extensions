@@ -13,13 +13,13 @@ using Rocket.Surgery.Extensions.Marten.Security;
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Interface ISecureQuerySession
+    ///  ISecureQuerySession
     /// Implements the <see cref="Marten.IQuerySession" />
     /// </summary>
     /// <seealso cref="Marten.IQuerySession" />
     public interface ISecureQuerySession : IQuerySession {}
     /// <summary>
-    /// Class SecureQuerySession.
+    ///  SecureQuerySession.
     /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.ISecureQuerySession" />
     /// </summary>
     /// <seealso cref="Rocket.Surgery.Extensions.Marten.ISecureQuerySession" />

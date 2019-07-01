@@ -3,7 +3,7 @@
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Class MartenUser.
+    ///  MartenUser.
     /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.IMartenUser" />
     /// </summary>
     /// <typeparam name="T"></typeparam>

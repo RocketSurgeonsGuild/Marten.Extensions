@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Rocket.Surgery.Extensions.Marten.AspNetCore
 {
     /// <summary>
-    /// Class MartenCommandConvention.
+    ///  MartenCommandConvention.
     /// Implements the <see cref="Rocket.Surgery.Extensions.CommandLine.ICommandLineConvention" />
     /// </summary>
     /// <seealso cref="Rocket.Surgery.Extensions.CommandLine.ICommandLineConvention" />

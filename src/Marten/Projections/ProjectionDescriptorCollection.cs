@@ -6,7 +6,7 @@ using Rocket.Surgery.Conventions.Reflection;
 namespace Rocket.Surgery.Extensions.Marten.Projections
 {
     /// <summary>
-    /// Class ProjectionDescriptorCollection.
+    ///  ProjectionDescriptorCollection.
     /// </summary>
     class ProjectionDescriptorCollection
     {

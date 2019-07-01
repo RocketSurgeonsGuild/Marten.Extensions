@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 namespace Rocket.Surgery.Extensions.Marten.AspNetCore
 {
     /// <summary>
-    /// Class MartenCommand.
+    ///  MartenCommand.
     /// </summary>
     [Command(ThrowOnUnexpectedArgument = false)]
     public class MartenCommand

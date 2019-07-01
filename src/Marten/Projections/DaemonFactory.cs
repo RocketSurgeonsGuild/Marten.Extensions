@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 namespace Rocket.Surgery.Extensions.Marten.Projections
 {
     /// <summary>
-    /// Class DaemonFactory.
+    ///  DaemonFactory.
     /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Projections.IDaemonFactory" />
     /// </summary>
     /// <seealso cref="Rocket.Surgery.Extensions.Marten.Projections.IDaemonFactory" />

@@ -7,7 +7,7 @@ using Rocket.Surgery.Extensions.Marten.Builders;
 namespace Rocket.Surgery.Extensions.Marten.AspNetCore
 {
     /// <summary>
-    /// Class MartenServicesExtensions.
+    ///  MartenServicesExtensions.
     /// </summary>
     public static class MartenServicesExtensions
     {

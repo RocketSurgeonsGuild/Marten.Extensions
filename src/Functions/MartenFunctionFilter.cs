@@ -7,7 +7,7 @@ using Microsoft.Azure.WebJobs.Host;
 namespace Rocket.Surgery.Extensions.Marten.Functions
 {
     /// <summary>
-    /// Class MartenFunctionFilter.
+    ///  MartenFunctionFilter.
     /// Implements the <see cref="Microsoft.Azure.WebJobs.Host.IFunctionInvocationFilter" />
     /// Implements the <see cref="Microsoft.Azure.WebJobs.Host.IFunctionExceptionFilter" />
     /// </summary>

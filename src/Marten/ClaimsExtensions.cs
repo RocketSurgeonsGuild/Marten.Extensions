@@ -6,7 +6,7 @@ using System;
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Class ClaimsExtensions.
+    ///  ClaimsExtensions.
     /// </summary>
     public static class ClaimsExtensions
     {
