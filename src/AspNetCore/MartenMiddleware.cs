@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Marten;
 using Microsoft.AspNetCore.Http;
 using Rocket.Surgery.Conventions;
@@ -7,9 +8,10 @@ using Rocket.Surgery.Conventions;
 namespace Rocket.Surgery.Extensions.Marten.AspNetCore
 {
     /// <summary>
-    /// Middleare that ensures that changes are saved after each request
+    /// Middleware that ensures that changes are saved after each request
     /// </summary>
-    public class MartenMiddleware
+    [UsedImplicitly]
+    class MartenMiddleware
     {
         private readonly RequestDelegate _next;
 

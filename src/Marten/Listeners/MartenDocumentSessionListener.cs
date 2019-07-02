@@ -17,7 +17,7 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
     /// Implements the <see cref="DocumentSessionListenerBase" />
     /// </summary>
     /// <seealso cref="DocumentSessionListenerBase" />
-    public class MartenDocumentSessionListener : DocumentSessionListenerBase
+    class MartenDocumentSessionListener : DocumentSessionListenerBase
     {
         private readonly IMartenContext _context;
         private readonly IClock _clock;

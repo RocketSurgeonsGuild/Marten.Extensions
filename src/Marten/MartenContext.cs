@@ -1,10 +1,13 @@
+using JetBrains.Annotations;
+
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
     /// MartenContext.
-    /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.IMartenContext" />
+    /// Implements the <see cref="IMartenContext" />
     /// </summary>
-    /// <seealso cref="Rocket.Surgery.Extensions.Marten.IMartenContext" />
+    /// <seealso cref="IMartenContext" />
+    [UsedImplicitly]
     class MartenContext : IMartenContext
     {
         /// <summary>

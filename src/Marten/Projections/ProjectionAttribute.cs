@@ -4,9 +4,9 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
 {
     /// <summary>
     /// ProjectionAttribute. This class cannot be inherited.
-    /// Implements the <see cref="System.Attribute" />
+    /// Implements the <see cref="Attribute" />
     /// </summary>
-    /// <seealso cref="System.Attribute" />
+    /// <seealso cref="Attribute" />
     [AttributeUsage(AttributeTargets.Class)]
     public sealed class ProjectionAttribute : Attribute
     {

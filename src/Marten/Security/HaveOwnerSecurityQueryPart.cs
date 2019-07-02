@@ -8,10 +8,10 @@ namespace Rocket.Surgery.Extensions.Marten.Security
 {
     /// <summary>
     /// HaveOwnerSecurityQueryPart.
-    /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryPart" />
+    /// Implements the <see cref="ISecurityQueryPart" />
     /// </summary>
-    /// <seealso cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryPart" />
-    public class HaveOwnerSecurityQueryPart : ISecurityQueryPart
+    /// <seealso cref="ISecurityQueryPart" />
+    class HaveOwnerSecurityQueryPart : ISecurityQueryPart
     {
         /// <summary>
         /// Gets the expression.

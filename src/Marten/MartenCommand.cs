@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Marten;
 using Marten.CommandLine;
 using McMaster.Extensions.CommandLineUtils;
@@ -9,6 +10,7 @@ namespace Rocket.Surgery.Extensions.Marten
     /// MartenCommand.
     /// </summary>
     [Command("marten", ThrowOnUnexpectedArgument = false)]
+    [UsedImplicitly]
     public class MartenCommand
     {
         private readonly IOptions<StoreOptions> _options;
@@ -26,7 +28,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// Gets the remaining arguments.
         /// </summary>
         /// <value>The remaining arguments.</value>
-        public string[] RemainingArguments { get; }
+        [UsedImplicitly] public string[] RemainingArguments { get; }
 
         /// <summary>
         /// Called when [execute].

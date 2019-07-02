@@ -4,10 +4,10 @@ namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
     /// MartenUser.
-    /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.IMartenUser" />
+    /// Implements the <see cref="IMartenUser" />
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <seealso cref="Rocket.Surgery.Extensions.Marten.IMartenUser" />
+    /// <seealso cref="IMartenUser" />
     public class MartenUser<T> : IMartenUser
     {
         private readonly Func<T> _idFunc;

@@ -8,10 +8,10 @@ namespace Rocket.Surgery.Extensions.Marten.Security
 {
     /// <summary>
     /// SecurityQueryProvider.
-    /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryProvider" />
+    /// Implements the <see cref="ISecurityQueryProvider" />
     /// </summary>
-    /// <seealso cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryProvider" />
-    public class SecurityQueryProvider : ISecurityQueryProvider
+    /// <seealso cref="ISecurityQueryProvider" />
+    class SecurityQueryProvider : ISecurityQueryProvider
     {
         private readonly IEnumerable<ISecurityQueryPart> _parts;
 

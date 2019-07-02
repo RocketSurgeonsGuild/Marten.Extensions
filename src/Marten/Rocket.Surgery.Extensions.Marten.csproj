@@ -22,4 +22,7 @@
     <PackageReference Include="Scrutor" />
     <PackageReference Include="System.Security.Claims" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
 </Project>

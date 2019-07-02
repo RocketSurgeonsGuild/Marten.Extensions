@@ -40,7 +40,7 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
             servicesBuilder.Scanner.AppendConvention<MartenConvention>();
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
-            servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
+            servicesBuilder.Services.AddSingleton(LoggerFactory);
             servicesBuilder.Services.AddSingleton<IClock>(
                 new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now),
                 Duration.FromSeconds(1))
@@ -66,7 +66,7 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
-            servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
+            servicesBuilder.Services.AddSingleton(LoggerFactory);
             servicesBuilder.Services.AddSingleton<IClock>(
                 new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now),
                     Duration.FromSeconds(1))

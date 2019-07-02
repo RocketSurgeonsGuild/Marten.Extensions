@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
@@ -6,9 +7,10 @@ namespace Rocket.Surgery.Extensions.Marten.AspNetCore
 {
     /// <summary>
     /// Startup filter to ensure that save changes is called on each request
-    /// Implements the <see cref="Microsoft.AspNetCore.Hosting.IStartupFilter" />
+    /// Implements the <see cref="IStartupFilter" />
     /// </summary>
-    /// <seealso cref="Microsoft.AspNetCore.Hosting.IStartupFilter" />
+    /// <seealso cref="IStartupFilter" />
+    [UsedImplicitly]
     public class MartenStartupFilter : IStartupFilter
     {
         /// <summary>

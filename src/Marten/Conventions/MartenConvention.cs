@@ -12,9 +12,9 @@ namespace Rocket.Surgery.Extensions.Marten.Conventions
 {
     /// <summary>
     ///  MartenConvention.
-    /// Implements the <see cref="Rocket.Surgery.Extensions.DependencyInjection.IServiceConvention" />
+    /// Implements the <see cref="IServiceConvention" />
     /// </summary>
-    /// <seealso cref="Rocket.Surgery.Extensions.DependencyInjection.IServiceConvention" />
+    /// <seealso cref="IServiceConvention" />
     public class MartenConvention : IServiceConvention
     {
         private readonly MartenOptions _options;

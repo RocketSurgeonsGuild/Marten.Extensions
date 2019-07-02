@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using JetBrains.Annotations;
 using Marten;
 using Marten.Events;
 using Marten.Events.Projections;
@@ -18,10 +19,9 @@ namespace Rocket.Surgery.Extensions.Marten
     /// <summary>
     /// TransientDocumentStore.
     /// Implements the <see cref="IDocumentStore" />
-    /// Implements the <see cref="Marten.IDocumentStore" />
     /// </summary>
-    /// <seealso cref="Marten.IDocumentStore" />
     /// <seealso cref="IDocumentStore" />
+    [UsedImplicitly]
     internal class TransientDocumentStore : IDocumentStore
     {
         private readonly DocumentStore _documentStore;

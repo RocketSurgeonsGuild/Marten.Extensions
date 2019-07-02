@@ -1,4 +1,5 @@
 using System;
+using JetBrains.Annotations;
 using Marten;
 using Marten.Events.Projections;
 using Marten.Events.Projections.Async;
@@ -8,9 +9,10 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
 {
     /// <summary>
     /// DaemonFactory.
-    /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Projections.IDaemonFactory" />
+    /// Implements the <see cref="IDaemonFactory" />
     /// </summary>
-    /// <seealso cref="Rocket.Surgery.Extensions.Marten.Projections.IDaemonFactory" />
+    /// <seealso cref="IDaemonFactory" />
+    [UsedImplicitly]
     class DaemonFactory : IDaemonFactory
     {
         private readonly IDocumentStore _store;

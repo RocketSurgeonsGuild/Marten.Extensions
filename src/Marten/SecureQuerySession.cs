@@ -14,9 +14,9 @@ namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
     /// SecureQuerySession.
-    /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.ISecureQuerySession" />
+    /// Implements the <see cref="ISecureQuerySession" />
     /// </summary>
-    /// <seealso cref="Rocket.Surgery.Extensions.Marten.ISecureQuerySession" />
+    /// <seealso cref="ISecureQuerySession" />
     public class SecureQuerySession : ISecureQuerySession
     {
         private readonly IQuerySession _querySession;
@@ -403,7 +403,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <returns>Task{IReadOnlyList{TDoc}}.</returns>
         public Task<IReadOnlyList<TDoc>> SearchAsync<TDoc>(string queryText, string config = "english", CancellationToken token = default)
         {
-            return _querySession.SearchAsync<TDoc>(queryText, config);
+            return _querySession.SearchAsync<TDoc>(queryText, config, token);
         }
 
         /// <summary>
@@ -428,7 +428,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <returns>Task{IReadOnlyList{TDoc}}.</returns>
         public Task<IReadOnlyList<TDoc>> PlainTextSearchAsync<TDoc>(string searchTerm, string config = "english", CancellationToken token = default)
         {
-            return _querySession.PlainTextSearchAsync<TDoc>(searchTerm, config);
+            return _querySession.PlainTextSearchAsync<TDoc>(searchTerm, config, token);
         }
 
         /// <summary>
@@ -453,7 +453,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <returns>Task{IReadOnlyList{TDoc}}.</returns>
         public Task<IReadOnlyList<TDoc>> PhraseSearchAsync<TDoc>(string searchTerm, string config = "english", CancellationToken token = default)
         {
-            return _querySession.PhraseSearchAsync<TDoc>(searchTerm, config);
+            return _querySession.PhraseSearchAsync<TDoc>(searchTerm, config, token);
         }
 
         /// <summary>
@@ -479,7 +479,7 @@ namespace Rocket.Surgery.Extensions.Marten
         public Task<IReadOnlyList<TDoc>> WebStyleSearchAsync<TDoc>(string searchTerm, string regConfig = "english",
             CancellationToken token = new CancellationToken())
         {
-            return _querySession.WebStyleSearchAsync<TDoc>(searchTerm, regConfig);
+            return _querySession.WebStyleSearchAsync<TDoc>(searchTerm, regConfig, token);
         }
 
         /// <summary>

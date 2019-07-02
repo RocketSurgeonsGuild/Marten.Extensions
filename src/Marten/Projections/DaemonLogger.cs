@@ -238,10 +238,10 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
 
     /// <summary>
     /// A default logger that can be resolved by convention
-    /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Projections.DaemonLogger" />
+    /// Implements the <see cref="DaemonLogger" />
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <seealso cref="Rocket.Surgery.Extensions.Marten.Projections.DaemonLogger" />
+    /// <seealso cref="DaemonLogger" />
     public class DaemonLogger<T> : DaemonLogger
     {
         /// <summary>

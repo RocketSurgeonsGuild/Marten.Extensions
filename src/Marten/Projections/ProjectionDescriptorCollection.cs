@@ -10,7 +10,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
     /// </summary>
     class ProjectionDescriptorCollection
     {
-        private readonly IAssemblyCandidateFinder assemblyCandidateFinder;
+        private readonly IAssemblyCandidateFinder _assemblyCandidateFinder;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProjectionDescriptorCollection" /> class.
@@ -18,7 +18,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         /// <param name="assemblyCandidateFinder">The assembly candidate finder.</param>
         public ProjectionDescriptorCollection(IAssemblyCandidateFinder assemblyCandidateFinder)
         {
-            this.assemblyCandidateFinder = assemblyCandidateFinder;
+            this._assemblyCandidateFinder = assemblyCandidateFinder;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         /// <returns>IEnumerable{ProjectionDescriptor}.</returns>
         public IEnumerable<ProjectionDescriptor> GetProjectionDescriptors()
         {
-            return assemblyCandidateFinder
+            return _assemblyCandidateFinder
                 .GetCandidateAssemblies("Rocket.Surgery.Extensions.Marten")
                 .SelectMany(x => x.DefinedTypes)
                 .Where(x => x.IsClass)

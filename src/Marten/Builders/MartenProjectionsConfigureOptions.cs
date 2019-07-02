@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 using Marten;
 using Marten.Events.Projections;
 using Microsoft.Extensions.Options;
@@ -14,6 +15,7 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
     /// Implements the <see cref="IConfigureOptions{StoreOptions}" />
     /// </summary>
     /// <seealso cref="IConfigureOptions{StoreOptions}" />
+    [UsedImplicitly]
     class MartenProjectionsConfigureOptions : IConfigureOptions<StoreOptions>
     {
         private static readonly MethodInfo AddTransformMethod = typeof(MartenProjectionsConfigureOptions)

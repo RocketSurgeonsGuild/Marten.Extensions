@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Marten;
 using Marten.Events;
 using Marten.NodaTime;
@@ -9,10 +10,9 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
     /// <summary>
     /// MartenConfigureOptions.
     /// Implements the <see cref="IConfigureOptions{StoreOptions}" />
-    /// Implements the <see cref="IConfigureOptions{StoreOptions}" />
     /// </summary>
     /// <seealso cref="IConfigureOptions{StoreOptions}" />
-    /// <seealso cref="IConfigureOptions{StoreOptions}" />
+    [UsedImplicitly]
     class MartenConfigureOptions : IConfigureOptions<StoreOptions>
     {
         private readonly ILoggerFactory _loggerFactory;

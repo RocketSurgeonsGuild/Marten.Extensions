@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Marten;
 using Microsoft.Azure.WebJobs.Host;
 #pragma warning disable 618
@@ -8,11 +9,12 @@ namespace Rocket.Surgery.Extensions.Marten.Functions
 {
     /// <summary>
     /// MartenFunctionFilter.
-    /// Implements the <see cref="Microsoft.Azure.WebJobs.Host.IFunctionInvocationFilter" />
-    /// Implements the <see cref="Microsoft.Azure.WebJobs.Host.IFunctionExceptionFilter" />
+    /// Implements the <see cref="IFunctionInvocationFilter" />
+    /// Implements the <see cref="IFunctionExceptionFilter" />
     /// </summary>
-    /// <seealso cref="Microsoft.Azure.WebJobs.Host.IFunctionInvocationFilter" />
-    /// <seealso cref="Microsoft.Azure.WebJobs.Host.IFunctionExceptionFilter" />
+    /// <seealso cref="IFunctionInvocationFilter" />
+    /// <seealso cref="IFunctionExceptionFilter" />
+    [UsedImplicitly]
     class MartenFunctionFilter : IFunctionInvocationFilter, IFunctionExceptionFilter
     {
         private readonly IDocumentSession _documentSession;

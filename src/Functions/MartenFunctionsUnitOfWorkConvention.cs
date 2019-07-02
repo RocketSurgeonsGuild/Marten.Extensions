@@ -12,9 +12,9 @@ namespace Rocket.Surgery.Extensions.Marten.Functions
 {
     /// <summary>
     /// MartenFunctionsUnitOfWorkConvention.
-    /// Implements the <see cref="Rocket.Surgery.Extensions.WebJobs.IWebJobsConvention" />
+    /// Implements the <see cref="IWebJobsConvention" />
     /// </summary>
-    /// <seealso cref="Rocket.Surgery.Extensions.WebJobs.IWebJobsConvention" />
+    /// <seealso cref="IWebJobsConvention" />
     public class MartenFunctionsUnitOfWorkConvention : IWebJobsConvention
     {
         private readonly MartenOptions _options;

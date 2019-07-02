@@ -37,7 +37,7 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             servicesBuilder.Services.AddTransient<IAsyncProjection, AsyncProjection>();
             servicesBuilder.Services.AddTransient<IInlineProjection, InlineTransform>();
             servicesBuilder.Services.AddTransient<IAsyncProjection, AsyncTransform>();
-            servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
+            servicesBuilder.Services.AddSingleton(LoggerFactory);
             var martenBuilder = servicesBuilder
                 .WithMarten();
             _serviceProvider = servicesBuilder.Build();

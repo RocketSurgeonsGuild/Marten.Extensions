@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Marten;
 using Microsoft.Extensions.Options;
 using Rocket.Surgery.Conventions.Reflection;
@@ -10,6 +11,7 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
     /// Implements the <see cref="IConfigureOptions{StoreOptions}" />
     /// </summary>
     /// <seealso cref="IConfigureOptions{StoreOptions}" />
+    [UsedImplicitly]
     class MartenRegistryConfigureOptions : IConfigureOptions<StoreOptions>
     {
         private readonly IEnumerable<MartenRegistry> _martenRegistries;

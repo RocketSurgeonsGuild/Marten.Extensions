@@ -8,9 +8,9 @@ namespace Rocket.Surgery.Extensions.Marten.Conventions
 {
     /// <summary>
     /// MartenCommandConvention.
-    /// Implements the <see cref="Rocket.Surgery.Extensions.CommandLine.ICommandLineConvention" />
+    /// Implements the <see cref="ICommandLineConvention" />
     /// </summary>
-    /// <seealso cref="Rocket.Surgery.Extensions.CommandLine.ICommandLineConvention" />
+    /// <seealso cref="ICommandLineConvention" />
     public class MartenCommandConvention : ICommandLineConvention
     {
         /// <summary>
