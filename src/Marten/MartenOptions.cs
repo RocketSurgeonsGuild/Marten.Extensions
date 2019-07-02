@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using Marten;
 using Marten.Services;
@@ -10,7 +11,7 @@ using Npgsql;
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Class MartenOptions.
+    /// MartenOptions.
     /// </summary>
     public class MartenOptions
     {
@@ -45,5 +46,28 @@ namespace Rocket.Surgery.Extensions.Marten
 
             return claim.Type == "user_id" || claim.Type == "sub";
         }
+
+        /// <summary>
+        /// Gets or sets the connection string.
+        /// </summary>
+        /// <value>The connection string.</value>
+        public string ConnectionString { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether [use session].
+        /// </summary>
+        /// <value><c>true</c> if [use session]; otherwise, <c>false</c>.</value>
+        public bool UseSession { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether [automatic unit of work].
+        /// </summary>
+        /// <value><c>true</c> if [automatic unit of work]; otherwise, <c>false</c>.</value>
+        public bool AutomaticUnitOfWork { get; set; }
+        /// <summary>
+        /// Gets or sets the session tracking.
+        /// </summary>
+        /// <value>The session tracking.</value>
+        public DocumentTracking SessionTracking { get; set; }
     }
+
+    
 }

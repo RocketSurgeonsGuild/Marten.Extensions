@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-        <TargetFrameworks>netcoreapp2.1;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AspNetCore\Rocket.Surgery.Extensions.Marten.AspNetCore.csproj" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <!--<ProjectReference Include="..\..\src\AspNetCore\Rocket.Surgery.Extensions.Marten.AspNetCore.csproj" />-->
     <ProjectReference Include="..\..\src\Marten\Rocket.Surgery.Extensions.Marten.csproj" />
     <PackageReference Include="NodaTime.Testing" />
     <PackageReference Include="Rocket.Surgery.Extensions.DependencyInjection" />

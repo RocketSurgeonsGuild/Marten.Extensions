@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using Rocket.Surgery.Extensions.Marten.AspNetCore;
-using Rocket.Surgery.Extensions.Marten;
 using Rocket.Surgery.Conventions.Reflection;
+//using Rocket.Surgery.Extensions.Marten.AspNetCore;
 
-namespace Rocket.Surgery.Marten.Tests
+namespace Rocket.Surgery.Extensions.Marten.Tests
 {
     class TestAssemblyProvider : IAssemblyProvider
     {
@@ -14,7 +13,7 @@ namespace Rocket.Surgery.Marten.Tests
             {
                 typeof(TestAssemblyProvider).GetTypeInfo().Assembly,
                 typeof(DocumentSessionExtensions).GetTypeInfo().Assembly,
-                typeof(MartenMiddleware).GetTypeInfo().Assembly,
+                //typeof(MartenMiddleware).GetTypeInfo().Assembly,
             };
         }
     }

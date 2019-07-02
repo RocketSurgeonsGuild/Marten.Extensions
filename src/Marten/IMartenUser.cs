@@ -1,7 +1,7 @@
 ﻿namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Interface IMartenUser
+    /// IMartenUser
     /// </summary>
     public interface IMartenUser
     {

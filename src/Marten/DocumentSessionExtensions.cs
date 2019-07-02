@@ -10,7 +10,7 @@ using Rocket.Surgery.Domain;
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Class DocumentSessionExtensions.
+    /// DocumentSessionExtensions.
     /// </summary>
     public static class DocumentSessionExtensions
     {

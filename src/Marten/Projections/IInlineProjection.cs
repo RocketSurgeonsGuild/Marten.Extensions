@@ -1,7 +1,7 @@
 ﻿namespace Rocket.Surgery.Extensions.Marten.Projections
 {
     /// <summary>
-    /// Interface IInlineProjection
+    /// IInlineProjection
     /// </summary>
     public interface IInlineProjection { }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Docker.DotNet.Models;
 using Rocket.Surgery.Extensions.Testing.Docker;
 
-namespace Rocket.Surgery.Marten.Tests
+namespace Rocket.Surgery.Extensions.Marten.Tests
 {
     class EnsureContainerIsRunningContext : IEnsureContainerIsRunningContext
     {

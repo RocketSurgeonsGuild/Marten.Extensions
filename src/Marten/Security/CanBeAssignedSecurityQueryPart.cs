@@ -7,7 +7,7 @@ using Rocket.Surgery.Domain;
 namespace Rocket.Surgery.Extensions.Marten.Security
 {
     /// <summary>
-    /// Class CanBeAssignedSecurityQueryPart.
+    /// CanBeAssignedSecurityQueryPart.
     /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryPart" />
     /// </summary>
     /// <seealso cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryPart" />

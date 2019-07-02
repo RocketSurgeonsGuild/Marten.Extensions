@@ -1,8 +1,7 @@
 ﻿using Marten;
 using Microsoft.Extensions.Logging;
-using Rocket.Surgery.Extensions.Marten;
 
-namespace Rocket.Surgery.Marten.Tests
+namespace Rocket.Surgery.Extensions.Marten.Tests
 {
     class MyMartenRegistry : MartenRegistry
     {

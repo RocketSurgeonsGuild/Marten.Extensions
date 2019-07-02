@@ -1,27 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading;
-using FakeItEasy;
 using FluentAssertions;
-using Marten.Events;
-using Marten.Events.Projections;
-using Marten.Events.Projections.Async;
 using NodaTime;
 using NodaTime.Testing;
-using Rocket.Surgery.Extensions.Marten.AspNetCore;
-using Rocket.Surgery.Extensions.Marten;
-using Rocket.Surgery.Extensions.Marten.Listeners;
-using Rocket.Surgery.Extensions.Marten.Projections;
-using Rocket.Surgery.Extensions.Marten.Security;
-using Rocket.Surgery.Conventions.Reflection;
-using Rocket.Surgery.Conventions.Scanners;
 using Rocket.Surgery.Domain;
+using Rocket.Surgery.Extensions.Marten.Listeners;
 using Xunit;
-using ProjectionType = Rocket.Surgery.Extensions.Marten.Projections.ProjectionType;
 
-namespace Rocket.Surgery.Marten.Tests
+namespace Rocket.Surgery.Extensions.Marten.Tests
 {
 
     public class OwnerDocumentSessionListenerTests

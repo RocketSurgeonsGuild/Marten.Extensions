@@ -1,11 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;netcoreapp2.1;netcoreapp3.0</TargetFrameworks>
+        <TargetFrameworks>netcoreapp3.0</TargetFrameworks>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Condition="'$(TargetFramework)' != 'netcoreapp3.0'" Include="Microsoft.AspNetCore.Hosting" />
-        <PackageReference Condition="'$(TargetFramework)' != 'netcoreapp3.0'" Include="Microsoft.AspNetCore.Http.Abstractions" />
-        <FrameworkReference Condition="'$(TargetFramework)' == 'netcoreapp3.0'" Include="Microsoft.AspNetCore.App" />
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
         <ProjectReference Include="..\Marten\Rocket.Surgery.Extensions.Marten.csproj" />
     </ItemGroup>
 </Project>

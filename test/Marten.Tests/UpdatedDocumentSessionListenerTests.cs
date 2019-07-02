@@ -1,13 +1,11 @@
 ﻿using System;
 using FluentAssertions;
 using NodaTime;
-using NodaTime.Testing;
-using Rocket.Surgery.Extensions.Marten;
-using Rocket.Surgery.Extensions.Marten.Listeners;
 using Rocket.Surgery.Domain;
+using Rocket.Surgery.Extensions.Marten.Listeners;
 using Xunit;
 
-namespace Rocket.Surgery.Marten.Tests
+namespace Rocket.Surgery.Extensions.Marten.Tests
 {
     public class UpdatedDocumentSessionListenerTests
     {

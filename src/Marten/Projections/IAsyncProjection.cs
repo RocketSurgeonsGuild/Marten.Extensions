@@ -1,7 +1,7 @@
 ﻿namespace Rocket.Surgery.Extensions.Marten.Projections
 {
     /// <summary>
-    /// Interface IAsyncProjection
+    /// IAsyncProjection
     /// </summary>
     public interface IAsyncProjection { }
 }

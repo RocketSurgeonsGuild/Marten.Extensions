@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Class MappedPagedList.
+    /// MappedPagedList.
     /// Implements the <see cref="Marten.Pagination.IPagedList{T}" />
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -20,7 +20,7 @@ namespace Rocket.Surgery.Extensions.Marten
         private readonly Func<object, T> _mapper;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MappedPagedList{T}"/> class.
+        /// Initializes a new instance of the <see cref="MappedPagedList{T}" /> class.
         /// </summary>
         /// <param name="pagedList">The paged list.</param>
         /// <param name="mapper">The mapper.</param>
@@ -45,7 +45,7 @@ namespace Rocket.Surgery.Extensions.Marten
         }
 
         /// <summary>
-        /// Gets the <see cref="T"/> at the specified index.
+        /// Gets the <see cref="T" /> at the specified index.
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns>T.</returns>

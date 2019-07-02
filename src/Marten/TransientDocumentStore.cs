@@ -9,22 +9,26 @@ using Marten.Schema;
 using Marten.Services;
 using Marten.Storage;
 using Marten.Transforms;
-using Rocket.Surgery.Extensions.Marten.Security;
+using Microsoft.Extensions.DependencyInjection;
+using Rocket.Surgery.Conventions.Reflection;
+using Rocket.Surgery.Extensions.Logging;
 
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Class TransientDocumentStore.
+    /// TransientDocumentStore.
+    /// Implements the <see cref="IDocumentStore" />
     /// Implements the <see cref="Marten.IDocumentStore" />
     /// </summary>
     /// <seealso cref="Marten.IDocumentStore" />
+    /// <seealso cref="IDocumentStore" />
     internal class TransientDocumentStore : IDocumentStore
     {
         private readonly DocumentStore _documentStore;
         private readonly IEnumerable<IDocumentSessionListener> _documentSessionListeners;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransientDocumentStore"/> class.
+        /// Initializes a new instance of the <see cref="TransientDocumentStore" /> class.
         /// </summary>
         /// <param name="documentStore">The document store.</param>
         /// <param name="documentSessionListeners">The document session listeners.</param>
@@ -128,49 +132,5 @@ namespace Rocket.Surgery.Extensions.Marten
         EventGraph IDocumentStore.Events => _documentStore.Events;
 
         ITenancy IDocumentStore.Tenancy => _documentStore.Tenancy;
-    }
-
-    /// <summary>
-    /// Class SecureQuerySessionExtensions.
-    /// </summary>
-    public static class SecureQuerySessionExtensions
-    {
-        /// <summary>
-        /// Secures the query session.
-        /// </summary>
-        /// <param name="store">The store.</param>
-        /// <param name="securityQueryProvider">The security query provider.</param>
-        /// <param name="martenContext">The marten context.</param>
-        /// <returns>ISecureQuerySession.</returns>
-        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, ISecurityQueryProvider securityQueryProvider, IMartenContext martenContext)
-        {
-            return new SecureQuerySession(store.QuerySession(), securityQueryProvider, martenContext);
-        }
-
-        /// <summary>
-        /// Secures the query session.
-        /// </summary>
-        /// <param name="store">The store.</param>
-        /// <param name="tenantId">The tenant identifier.</param>
-        /// <param name="securityQueryProvider">The security query provider.</param>
-        /// <param name="martenContext">The marten context.</param>
-        /// <returns>ISecureQuerySession.</returns>
-        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, string tenantId, ISecurityQueryProvider securityQueryProvider, IMartenContext martenContext)
-        {
-            return new SecureQuerySession(store.QuerySession(tenantId), securityQueryProvider, martenContext);
-        }
-
-        /// <summary>
-        /// Secures the query session.
-        /// </summary>
-        /// <param name="store">The store.</param>
-        /// <param name="options">The options.</param>
-        /// <param name="securityQueryProvider">The security query provider.</param>
-        /// <param name="martenContext">The marten context.</param>
-        /// <returns>ISecureQuerySession.</returns>
-        public static ISecureQuerySession SecureQuerySession(this IDocumentStore store, SessionOptions options, ISecurityQueryProvider securityQueryProvider, IMartenContext martenContext)
-        {
-            return new SecureQuerySession(store.QuerySession(options), securityQueryProvider, martenContext);
-        }
     }
 }

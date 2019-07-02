@@ -7,7 +7,7 @@ using Microsoft.Azure.WebJobs.Host;
 namespace Rocket.Surgery.Extensions.Marten.Functions
 {
     /// <summary>
-    /// Class MartenFunctionFilter.
+    /// MartenFunctionFilter.
     /// Implements the <see cref="Microsoft.Azure.WebJobs.Host.IFunctionInvocationFilter" />
     /// Implements the <see cref="Microsoft.Azure.WebJobs.Host.IFunctionExceptionFilter" />
     /// </summary>
@@ -18,7 +18,7 @@ namespace Rocket.Surgery.Extensions.Marten.Functions
         private readonly IDocumentSession _documentSession;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MartenFunctionFilter"/> class.
+        /// Initializes a new instance of the <see cref="MartenFunctionFilter" /> class.
         /// </summary>
         /// <param name="documentSession">The document session.</param>
         public MartenFunctionFilter(IDocumentSession documentSession)

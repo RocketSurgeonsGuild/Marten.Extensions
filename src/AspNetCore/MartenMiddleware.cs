@@ -14,7 +14,7 @@ namespace Rocket.Surgery.Extensions.Marten.AspNetCore
         private readonly RequestDelegate _next;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MartenMiddleware"/> class.
+        /// Initializes a new instance of the <see cref="MartenMiddleware" /> class.
         /// </summary>
         /// <param name="next">The next.</param>
         public MartenMiddleware(RequestDelegate next)

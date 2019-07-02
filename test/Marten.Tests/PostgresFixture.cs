@@ -3,7 +3,7 @@ using Npgsql;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Rocket.Surgery.Marten.Tests
+namespace Rocket.Surgery.Extensions.Marten.Tests
 {
     public class PostgresFixture : IAsyncLifetime
     {

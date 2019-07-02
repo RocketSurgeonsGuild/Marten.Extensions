@@ -245,7 +245,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
     public class DaemonLogger<T> : DaemonLogger
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DaemonLogger{T}"/> class.
+        /// Initializes a new instance of the <see cref="DaemonLogger{T}" /> class.
         /// </summary>
         /// <param name="loggerFactory">The logger factory.</param>
         public DaemonLogger(ILoggerFactory loggerFactory) : base(loggerFactory, typeof(T)){}

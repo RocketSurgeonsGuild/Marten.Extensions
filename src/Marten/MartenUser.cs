@@ -3,7 +3,7 @@
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Class MartenUser.
+    /// MartenUser.
     /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.IMartenUser" />
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -14,7 +14,7 @@ namespace Rocket.Surgery.Extensions.Marten
         private T _id;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MartenUser{T}"/> class.
+        /// Initializes a new instance of the <see cref="MartenUser{T}" /> class.
         /// </summary>
         /// <param name="idFunc">The identifier function.</param>
         public MartenUser(Func<T> idFunc)

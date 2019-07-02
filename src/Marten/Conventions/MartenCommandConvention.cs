@@ -1,14 +1,13 @@
-using Rocket.Surgery.Extensions.Marten.AspNetCore;
 using Rocket.Surgery.Conventions;
 using Rocket.Surgery.Extensions.CommandLine;
-using Microsoft.Extensions.DependencyInjection;
+using Rocket.Surgery.Extensions.Marten.Conventions;
 
 [assembly: Convention(typeof(MartenCommandConvention))]
 
-namespace Rocket.Surgery.Extensions.Marten.AspNetCore
+namespace Rocket.Surgery.Extensions.Marten.Conventions
 {
     /// <summary>
-    /// Class MartenCommandConvention.
+    /// MartenCommandConvention.
     /// Implements the <see cref="Rocket.Surgery.Extensions.CommandLine.ICommandLineConvention" />
     /// </summary>
     /// <seealso cref="Rocket.Surgery.Extensions.CommandLine.ICommandLineConvention" />
@@ -20,7 +19,7 @@ namespace Rocket.Surgery.Extensions.Marten.AspNetCore
         /// <param name="context">The context.</param>
         public void Register(ICommandLineConventionContext context)
         {
-            context.AddCommand<MartenCommand>("marten");
+            context.AddCommand<MartenCommand>();
         }
     }
 }

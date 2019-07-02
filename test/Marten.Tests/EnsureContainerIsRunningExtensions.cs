@@ -6,7 +6,7 @@ using Docker.DotNet;
 using Docker.DotNet.Models;
 using Rocket.Surgery.Extensions.Testing.Docker;
 
-namespace Rocket.Surgery.Marten.Tests
+namespace Rocket.Surgery.Extensions.Marten.Tests
 {
     public static class EnsureContainerIsRunningExtensions
     {

@@ -10,15 +10,14 @@ using Microsoft.Extensions.Options;
 using NodaTime;
 using NodaTime.Testing;
 using Npgsql;
-using Rocket.Surgery.Extensions.Marten;
-using Rocket.Surgery.Extensions.Marten.Builders;
+using Rocket.Surgery.Conventions;
 using Rocket.Surgery.Domain;
 using Rocket.Surgery.Extensions.DependencyInjection;
 using Rocket.Surgery.Extensions.Testing;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Rocket.Surgery.Marten.Tests
+namespace Rocket.Surgery.Extensions.Marten.Tests
 {
     public class SecurityQueryProviderTests : AutoTestBase, IAsyncLifetime
     {
@@ -70,6 +69,15 @@ namespace Rocket.Surgery.Marten.Tests
         public void Should_Work_With_Owner_Document()
         {
             AutoFake.Provide<IServiceCollection>(new ServiceCollection());
+            var serviceProviderDictionary = new ServiceProviderDictionary();
+            AutoFake.Provide<IServiceProviderDictionary>(serviceProviderDictionary);
+            AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
+            AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
+            serviceProviderDictionary.Set(new MartenOptions()
+            {
+                SessionTracking = DocumentTracking.DirtyTracking,
+                UseSession = true
+            });
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
@@ -79,8 +87,6 @@ namespace Rocket.Surgery.Marten.Tests
             );
             var martenBuilder = servicesBuilder.WithMarten();
             servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<string>(() => Guid.NewGuid().ToString()) });
-
-            martenBuilder.UseDirtyTrackedSession();
 
             var serviceProvider = servicesBuilder.Build();
             var options = serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;
@@ -101,6 +107,15 @@ namespace Rocket.Surgery.Marten.Tests
         public void Should_Work_With_OwnerAndCanBeAssigned_Document()
         {
             AutoFake.Provide<IServiceCollection>(new ServiceCollection());
+            var serviceProviderDictionary = new ServiceProviderDictionary();
+            AutoFake.Provide<IServiceProviderDictionary>(serviceProviderDictionary);
+            AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
+            AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
+            serviceProviderDictionary.Set(new MartenOptions()
+            {
+                SessionTracking = DocumentTracking.DirtyTracking,
+                UseSession = true
+            });
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
@@ -110,8 +125,6 @@ namespace Rocket.Surgery.Marten.Tests
             );
             var martenBuilder = servicesBuilder.WithMarten();
             servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<Guid>(() => Guid.NewGuid()) });
-
-            martenBuilder.UseDirtyTrackedSession();
 
             var serviceProvider = servicesBuilder.Build();
             var options = serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;
@@ -133,6 +146,15 @@ namespace Rocket.Surgery.Marten.Tests
         public void Should_Work_With_CanBeAssigned_Document()
         {
             AutoFake.Provide<IServiceCollection>(new ServiceCollection());
+            var serviceProviderDictionary = new ServiceProviderDictionary();
+            AutoFake.Provide<IServiceProviderDictionary>(serviceProviderDictionary);
+            AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
+            AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
+            serviceProviderDictionary.Set(new MartenOptions()
+            {
+                SessionTracking = DocumentTracking.DirtyTracking,
+                UseSession = true
+            });
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
@@ -142,8 +164,6 @@ namespace Rocket.Surgery.Marten.Tests
             );
             var martenBuilder = servicesBuilder.WithMarten();
             servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<long>(() => 123456) });
-
-            martenBuilder.UseDirtyTrackedSession();
 
             var serviceProvider = servicesBuilder.Build();
             var options = serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;
@@ -165,6 +185,15 @@ namespace Rocket.Surgery.Marten.Tests
         public void Should_Work_With_FirstOrDefaultAsync()
         {
             AutoFake.Provide<IServiceCollection>(new ServiceCollection());
+            var serviceProviderDictionary = new ServiceProviderDictionary();
+            AutoFake.Provide<IServiceProviderDictionary>(serviceProviderDictionary);
+            AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
+            AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
+            serviceProviderDictionary.Set(new MartenOptions()
+            {
+                SessionTracking = DocumentTracking.DirtyTracking,
+                UseSession = true
+            });
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
@@ -174,7 +203,6 @@ namespace Rocket.Surgery.Marten.Tests
             );
             var martenBuilder = servicesBuilder.WithMarten();
             servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<long>(() => 123456) });
-            martenBuilder.UseDirtyTrackedSession();
 
             var serviceProvider = servicesBuilder.Build();
             var options = serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;

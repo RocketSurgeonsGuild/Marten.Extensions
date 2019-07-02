@@ -3,12 +3,12 @@
 namespace Rocket.Surgery.Extensions.Marten.Projections
 {
     /// <summary>
-    /// Class ProjectionDescriptor.
+    /// ProjectionDescriptor.
     /// </summary>
     class ProjectionDescriptor
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProjectionDescriptor"/> class.
+        /// Initializes a new instance of the <see cref="ProjectionDescriptor" /> class.
         /// </summary>
         /// <param name="projectionType">Type of the projection.</param>
         /// <param name="type">The type.</param>

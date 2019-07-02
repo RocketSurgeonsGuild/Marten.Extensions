@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using FakeItEasy;
 using FluentAssertions;
 using Marten;
 using Marten.Events;
@@ -10,17 +9,17 @@ using Marten.Events.Projections.Async;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Rocket.Surgery.Extensions.Marten.Builders;
-using Rocket.Surgery.Extensions.Marten.Projections;
+using Rocket.Surgery.Conventions;
 using Rocket.Surgery.Conventions.Reflection;
 using Rocket.Surgery.Conventions.Scanners;
 using Rocket.Surgery.Extensions.DependencyInjection;
+using Rocket.Surgery.Extensions.Marten.Projections;
 using Rocket.Surgery.Extensions.Testing;
 using Xunit;
 using Xunit.Abstractions;
 using ProjectionType = Rocket.Surgery.Extensions.Marten.Projections.ProjectionType;
 
-namespace Rocket.Surgery.Marten.Tests
+namespace Rocket.Surgery.Extensions.Marten.Tests
 {
     public class InlineProjectionTests : AutoTestBase
     {
@@ -28,13 +27,10 @@ namespace Rocket.Surgery.Marten.Tests
 
         public InlineProjectionTests(ITestOutputHelper outputHelper) : base(outputHelper)
         {
-            var configurationDelegate = A.Fake<MartenConfigurationDelegate>();
-            var componentConfigurationDelegate = A.Fake<MartenComponentConfigurationDelegate>();
-
             AutoFake.Provide<IServiceCollection>(new ServiceCollection());
             AutoFake.Provide<IAssemblyProvider>(new TestAssemblyProvider());
             AutoFake.Provide<IAssemblyCandidateFinder>(new TestAssemblyCandidateFinder());
-            AutoFake.Provide<IConventionScanner>(new AggregateConventionScanner(new TestAssemblyCandidateFinder()));
+            AutoFake.Provide<IConventionScanner>(new AggregateConventionScanner(new TestAssemblyCandidateFinder(), new ServiceProviderDictionary(), Logger));
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddTransient<IInlineProjection, InlineProjection>();

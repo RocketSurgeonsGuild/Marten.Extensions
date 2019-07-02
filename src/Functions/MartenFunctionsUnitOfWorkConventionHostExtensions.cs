@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Rocket.Surgery.Extensions.Marten.AspNetCore;
 using Rocket.Surgery.Extensions.Marten;
 using Rocket.Surgery.Extensions.Marten.Builders;
 using Rocket.Surgery.Conventions;
@@ -14,18 +13,21 @@ using Rocket.Surgery.Extensions.Marten.Functions;
 namespace Rocket.Surgery.Conventions
 {
     /// <summary>
-    /// Class MartenFunctionsUnitOfWorkConventionExtensions.
+    /// MartenFunctionsUnitOfWorkConventionHostExtensions.
     /// </summary>
-    public static class MartenFunctionsUnitOfWorkConventionExtensions
+    public static class MartenFunctionsUnitOfWorkConventionHostExtensions
     {
         /// <summary>
         /// Adds the marten functions unit of work.
         /// </summary>
         /// <param name="builder">The builder.</param>
         /// <returns>IConventionHostBuilder.</returns>
-        public static IConventionHostBuilder AddMartenFunctionsUnitOfWork(this IConventionHostBuilder builder)
+        public static IConventionHostBuilder AddMartenUnitOfWorkFunctionFilter(this IConventionHostBuilder builder)
         {
-            builder.Scanner.AppendConvention(new MartenFunctionsUnitOfWorkConvention());
+            var options = builder.Get<MartenOptions>() ?? new MartenOptions();
+            options.AutomaticUnitOfWork = true;
+            builder.Set(options);
+            builder.Scanner.AppendConvention<MartenFunctionsUnitOfWorkConvention>();
             return builder;
         }
     }

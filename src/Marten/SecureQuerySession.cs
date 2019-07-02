@@ -13,13 +13,7 @@ using Rocket.Surgery.Extensions.Marten.Security;
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Interface ISecureQuerySession
-    /// Implements the <see cref="Marten.IQuerySession" />
-    /// </summary>
-    /// <seealso cref="Marten.IQuerySession" />
-    public interface ISecureQuerySession : IQuerySession {}
-    /// <summary>
-    /// Class SecureQuerySession.
+    /// SecureQuerySession.
     /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.ISecureQuerySession" />
     /// </summary>
     /// <seealso cref="Rocket.Surgery.Extensions.Marten.ISecureQuerySession" />
@@ -30,7 +24,7 @@ namespace Rocket.Surgery.Extensions.Marten
         private readonly IMartenContext _martenContext;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SecureQuerySession"/> class.
+        /// Initializes a new instance of the <see cref="SecureQuerySession" /> class.
         /// </summary>
         /// <param name="querySession">The query session.</param>
         /// <param name="securityQueryProvider">The security query provider.</param>

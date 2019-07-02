@@ -8,7 +8,7 @@ using Npgsql;
 namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
-    /// Class MartenLogger.
+    /// MartenLogger.
     /// Implements the <see cref="Marten.IMartenLogger" />
     /// Implements the <see cref="Marten.IMartenSessionLogger" />
     /// </summary>
@@ -19,7 +19,7 @@ namespace Rocket.Surgery.Extensions.Marten
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MartenLogger"/> class.
+        /// Initializes a new instance of the <see cref="MartenLogger" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         public MartenLogger(ILogger logger)

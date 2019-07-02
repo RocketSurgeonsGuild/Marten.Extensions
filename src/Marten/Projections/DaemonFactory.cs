@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 namespace Rocket.Surgery.Extensions.Marten.Projections
 {
     /// <summary>
-    /// Class DaemonFactory.
+    /// DaemonFactory.
     /// Implements the <see cref="Rocket.Surgery.Extensions.Marten.Projections.IDaemonFactory" />
     /// </summary>
     /// <seealso cref="Rocket.Surgery.Extensions.Marten.Projections.IDaemonFactory" />
@@ -17,7 +17,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         private readonly ILoggerFactory _factory;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DaemonFactory"/> class.
+        /// Initializes a new instance of the <see cref="DaemonFactory" /> class.
         /// </summary>
         /// <param name="store">The store.</param>
         /// <param name="factory">The factory.</param>
