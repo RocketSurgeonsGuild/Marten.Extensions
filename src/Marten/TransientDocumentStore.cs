@@ -43,12 +43,12 @@ namespace Rocket.Surgery.Extensions.Marten
             _documentStore.Dispose();
         }
 
-        void IDocumentStore.BulkInsert<T>(IReadOnlyCollection<T> documents, BulkInsertMode mode = BulkInsertMode.InsertsOnly, int batchSize = 1000)
+        void IDocumentStore.BulkInsert<T>(IReadOnlyCollection<T> documents, BulkInsertMode mode, int batchSize)
         {
             _documentStore.BulkInsert(documents, mode, batchSize);
         }
 
-        void IDocumentStore.BulkInsert<T>(string tenantId, IReadOnlyCollection<T> documents, BulkInsertMode mode = BulkInsertMode.InsertsOnly, int batchSize = 1000)
+        void IDocumentStore.BulkInsert<T>(string tenantId, IReadOnlyCollection<T> documents, BulkInsertMode mode, int batchSize)
         {
             _documentStore.BulkInsert(tenantId, documents, mode, batchSize);
         }
