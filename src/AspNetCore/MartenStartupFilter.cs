@@ -15,7 +15,7 @@ namespace Rocket.Surgery.Extensions.Marten.AspNetCore
         /// Configures the specified next.
         /// </summary>
         /// <param name="next">The next.</param>
-        /// <returns>Action&lt;IApplicationBuilder&gt;.</returns>
+        /// <returns>Action{IApplicationBuilder}.</returns>
         public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next)
         {
             return builder =>

@@ -24,7 +24,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         /// <summary>
         /// Gets the projection descriptors.
         /// </summary>
-        /// <returns>IEnumerable&lt;ProjectionDescriptor&gt;.</returns>
+        /// <returns>IEnumerable{ProjectionDescriptor}.</returns>
         public IEnumerable<ProjectionDescriptor> GetProjectionDescriptors()
         {
             return assemblyCandidateFinder

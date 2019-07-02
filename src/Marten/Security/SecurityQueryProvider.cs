@@ -33,7 +33,7 @@ namespace Rocket.Surgery.Extensions.Marten.Security
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="userId">The user identifier.</param>
-        /// <returns>Expression&lt;Func&lt;T, System.Boolean&gt;&gt;.</returns>
+        /// <returns>Expression{Func{T, System.Boolean}}.</returns>
         public Expression<Func<T, bool>> GetExpression<T>(object userId)
         {
             var param = Expression.Parameter(typeof(T), "p");

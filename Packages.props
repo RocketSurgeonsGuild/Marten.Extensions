@@ -12,6 +12,7 @@
     <PackageReference Update="Marten.CommandLine" Version="3.6.0" />
     <PackageReference Update="Microsoft.AspNetCore.Hosting" Version="2.1.1" />
     <PackageReference Update="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
+    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="2.1.1" />
     <PackageReference Update="Microsoft.Azure.WebJobs" Version="3.0.10" />
     <PackageReference Update="Microsoft.Azure.WebJobs.Extensions" Version="3.0.2" />
     <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="3.0.0-preview6.19304.6" />
@@ -38,6 +39,9 @@
     <PackageReference Update="System.Security.Claims" Version="4.3.0" />
     <PackageReference Update="Rocket.Surgery.Extensions.Testing.Docker" Version="1.1.8" />
     <PackageReference Update="Docker.DotNet" Version="3.125.2" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0' and '$(TargetFramework)'!='netcoreapp2.1'">
+    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="3.0.0-preview6.19307.2" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Rocket.Surgery.Extensions.Testing" Version="1.1.8" />

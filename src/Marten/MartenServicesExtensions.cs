@@ -39,7 +39,7 @@ namespace Rocket.Surgery.Extensions.Marten
             services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<StoreOptions>, MartenProjectionsConfigureOptions>());
 
             services.TryAddScoped(c => c.GetRequiredService<IDocumentStore>().QuerySession());
-            services.AddTransient<IDocumentSessionListener>(_ => ActivatorUtilities.CreateInstance<MartenDocumentSessionListener>(_));
+            services.AddTransient<IDocumentSessionListener, MartenDocumentSessionListener>();
 
             services.TryAddSingleton(_ => new DocumentStore(_.GetRequiredService<IOptions<StoreOptions>>().Value));
             services.TryAddTransient<IDocumentStore, TransientDocumentStore>();

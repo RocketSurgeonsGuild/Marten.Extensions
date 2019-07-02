@@ -14,17 +14,17 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
 {
     /// <summary>
     /// MartenDocumentSessionListener.
-    /// Implements the <see cref="Marten.DocumentSessionListenerBase" />
+    /// Implements the <see cref="DocumentSessionListenerBase" />
     /// </summary>
-    /// <seealso cref="Marten.DocumentSessionListenerBase" />
+    /// <seealso cref="DocumentSessionListenerBase" />
     public class MartenDocumentSessionListener : DocumentSessionListenerBase
     {
         private readonly IMartenContext _context;
         private readonly IClock _clock;
         private static readonly BackingFieldHelper BackingFieldHelper = new BackingFieldHelper();
-        private static MethodInfo HandleUnitOfWorkMethod = typeof(MartenDocumentSessionListener)
+        private static readonly MethodInfo HandleUnitOfWorkMethod = typeof(MartenDocumentSessionListener)
             .GetMethod(nameof(HandleUnitOfWork), BindingFlags.Instance | BindingFlags.NonPublic);
-        private static ConcurrentDictionary<Type, MethodInfo> _methods = new ConcurrentDictionary<Type, MethodInfo>();
+        private static readonly ConcurrentDictionary<Type, MethodInfo> _methods = new ConcurrentDictionary<Type, MethodInfo>();
         private static MethodInfo GetMethod(Type keyType)
         {
             if (!_methods.TryGetValue(keyType, out var method))

@@ -47,7 +47,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <param name="query">The query.</param>
         /// <param name="securityQueryProvider">The security query provider.</param>
         /// <param name="context">The context.</param>
-        /// <returns>IQueryable&lt;T&gt;.</returns>
+        /// <returns>IQueryable{T}.</returns>
         public static IQueryable<T> OnlyItemsTheUserCanSee<T>(this IQueryable<T> query, ISecurityQueryProvider securityQueryProvider, IMartenContext context)
         {
             if (context.User?.Id != null)
@@ -66,7 +66,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <param name="results">The results.</param>
         /// <param name="securityQueryProvider">The security query provider.</param>
         /// <param name="context">The context.</param>
-        /// <returns>IEnumerable&lt;T&gt;.</returns>
+        /// <returns>IEnumerable{T}.</returns>
         public static IEnumerable<T> OnlyItemsTheUserCanSee<T>(this IEnumerable<T> results, ISecurityQueryProvider securityQueryProvider, IMartenContext  context)
         {
             if (context.User?.Id != null)

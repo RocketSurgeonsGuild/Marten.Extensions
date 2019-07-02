@@ -9,7 +9,9 @@ using NodaTime;
 using NodaTime.Testing;
 using Npgsql;
 using Rocket.Surgery.Conventions;
+using Rocket.Surgery.Conventions.Scanners;
 using Rocket.Surgery.Extensions.DependencyInjection;
+using Rocket.Surgery.Extensions.Marten.Conventions;
 using Rocket.Surgery.Extensions.Testing;
 using Xunit;
 using Xunit.Abstractions;
@@ -28,19 +30,21 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             AutoFake.Provide<IServiceProviderDictionary>(serviceProviderDictionary);
             AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
             AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
+            var scanner = AutoFake.Resolve<SimpleConventionScanner>();
+            AutoFake.Provide<IConventionScanner>(scanner);
             serviceProviderDictionary.Set(new MartenOptions()
             {
                 SessionTracking = DocumentTracking.DirtyTracking,
                 UseSession = true
             });
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
+            servicesBuilder.Scanner.AppendConvention<MartenConvention>();
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddSingleton<ILoggerFactory>(LoggerFactory);
             servicesBuilder.Services.AddSingleton<IClock>(
                 new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now),
                 Duration.FromSeconds(1))
             );
-            var martenBuilder = servicesBuilder.WithMarten();
             servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<string>(() => "abc123") });
 
             var serviceProvider = servicesBuilder.Build();

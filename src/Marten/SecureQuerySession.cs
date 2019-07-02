@@ -61,7 +61,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="T"></typeparam>
         /// <param name="id">The identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
+        /// <returns>Task{T}.</returns>
         public Task<T> LoadAsync<T>(string id, CancellationToken token = new CancellationToken())
         {
             return _querySession.LoadAsync<T>(id, token);
@@ -106,7 +106,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="T"></typeparam>
         /// <param name="id">The identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
+        /// <returns>Task{T}urns>
         public Task<T> LoadAsync<T>(int id, CancellationToken token = new CancellationToken())
         {
             return _querySession.LoadAsync<T>(id, token);
@@ -118,7 +118,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="T"></typeparam>
         /// <param name="id">The identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
+        /// <returns>Task{T}.</returns>
         public Task<T> LoadAsync<T>(long id, CancellationToken token = new CancellationToken())
         {
             return _querySession.LoadAsync<T>(id, token);
@@ -130,7 +130,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="T"></typeparam>
         /// <param name="id">The identifier.</param>
         /// <param name="token">The token.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
+        /// <returns>Task{T}.</returns>
         public Task<T> LoadAsync<T>(Guid id, CancellationToken token = new CancellationToken())
         {
             return _querySession.LoadAsync<T>(id, token);
@@ -140,7 +140,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// Queries this instance.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <returns>IMartenQueryable&lt;T&gt;.</returns>
+        /// <returns>IMartenQueryable{T}.</returns>
         public IMartenQueryable<T> Query<T>()
         {
             return (IMartenQueryable<T>) _querySession.Query<T>()
@@ -153,7 +153,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="T"></typeparam>
         /// <param name="sql">The SQL.</param>
         /// <param name="parameters">The parameters.</param>
-        /// <returns>IReadOnlyList&lt;T&gt;.</returns>
+        /// <returns>IReadOnlyList{T}.</returns>
         public IReadOnlyList<T> Query<T>(string sql, params object[] parameters)
         {
             return _querySession.Query<T>(sql, parameters)
@@ -168,7 +168,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <param name="sql">The SQL.</param>
         /// <param name="token">The token.</param>
         /// <param name="parameters">The parameters.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;T&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{T}}.</returns>
         public async Task<IReadOnlyList<T>> QueryAsync<T>(string sql, CancellationToken token = new CancellationToken(), params object[] parameters)
         {
             return (await _querySession.QueryAsync<T>(sql, token, parameters).ConfigureAwait(false))
@@ -204,7 +204,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="TOut">The type of the t out.</typeparam>
         /// <param name="query">The query.</param>
         /// <param name="token">The token.</param>
-        /// <returns>Task&lt;TOut&gt;.</returns>
+        /// <returns>Task{TOut}.</returns>
         public Task<TOut> QueryAsync<TDoc, TOut>(ICompiledQuery<TDoc, TOut> query, CancellationToken token = new CancellationToken())
         {
             return _querySession.QueryAsync(query, token);
@@ -215,7 +215,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="ids">The ids.</param>
-        /// <returns>IReadOnlyList&lt;T&gt;.</returns>
+        /// <returns>IReadOnlyList{T}.</returns>
         public IReadOnlyList<T> LoadMany<T>(params string[] ids)
         {
             return _querySession.LoadMany<T>(ids)
@@ -228,7 +228,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="ids">The ids.</param>
-        /// <returns>IReadOnlyList&lt;T&gt;.</returns>
+        /// <returns>IReadOnlyList{T}.</returns>
         public IReadOnlyList<T> LoadMany<T>(params Guid[] ids)
         {
             return _querySession.LoadMany<T>(ids)
@@ -241,7 +241,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="ids">The ids.</param>
-        /// <returns>IReadOnlyList&lt;T&gt;.</returns>
+        /// <returns>IReadOnlyList{T}.</returns>
         public IReadOnlyList<T> LoadMany<T>(params int[] ids)
         {
             return _querySession.LoadMany<T>(ids)
@@ -254,7 +254,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="ids">The ids.</param>
-        /// <returns>IReadOnlyList&lt;T&gt;.</returns>
+        /// <returns>IReadOnlyList{T}.</returns>
         public IReadOnlyList<T> LoadMany<T>(params long[] ids)
         {
             return _querySession.LoadMany<T>(ids)
@@ -267,7 +267,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="ids">The ids.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;T&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{T}}.</returns>
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(params string[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(ids).ConfigureAwait(false))
@@ -280,7 +280,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="ids">The ids.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;T&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{T}}.</returns>
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(params Guid[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(ids).ConfigureAwait(false))
@@ -293,7 +293,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="ids">The ids.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;T&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{T}}.</returns>
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(params int[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(ids).ConfigureAwait(false))
@@ -306,7 +306,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="ids">The ids.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;T&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{T}}urns>
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(params long[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(ids).ConfigureAwait(false))
@@ -320,7 +320,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="T"></typeparam>
         /// <param name="token">The token.</param>
         /// <param name="ids">The ids.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;T&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{T}}.</returns>
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(CancellationToken token, params string[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(token, ids).ConfigureAwait(false))
@@ -334,7 +334,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="T"></typeparam>
         /// <param name="token">The token.</param>
         /// <param name="ids">The ids.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;T&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{T}}.</returns>
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(CancellationToken token, params Guid[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(token, ids).ConfigureAwait(false))
@@ -348,7 +348,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="T"></typeparam>
         /// <param name="token">The token.</param>
         /// <param name="ids">The ids.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;T&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{T}}.</returns>
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(CancellationToken token, params int[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(token, ids).ConfigureAwait(false))
@@ -362,7 +362,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="T"></typeparam>
         /// <param name="token">The token.</param>
         /// <param name="ids">The ids.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;T&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{T}}.</returns>
         public async Task<IReadOnlyList<T>> LoadManyAsync<T>(CancellationToken token, params long[] ids)
         {
             return (await _querySession.LoadManyAsync<T>(token, ids).ConfigureAwait(false))
@@ -375,7 +375,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// </summary>
         /// <typeparam name="TDoc">The type of the t document.</typeparam>
         /// <param name="entity">The entity.</param>
-        /// <returns>System.Nullable&lt;Guid&gt;.</returns>
+        /// <returns>System.Nullable{Guid}.</returns>
         public Guid? VersionFor<TDoc>(TDoc entity)
         {
             return _querySession.VersionFor(entity);
@@ -387,7 +387,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="TDoc">The type of the t document.</typeparam>
         /// <param name="queryText">The query text.</param>
         /// <param name="config">The configuration.</param>
-        /// <returns>IReadOnlyList&lt;TDoc&gt;.</returns>
+        /// <returns>IReadOnlyList{TDoc}.</returns>
         public IReadOnlyList<TDoc> Search<TDoc>(string queryText, string config = "english")
         {
             return _querySession.Search<TDoc>(queryText, config);
@@ -400,7 +400,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <param name="queryText">The query text.</param>
         /// <param name="config">The configuration.</param>
         /// <param name="token">The token.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;TDoc&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{TDoc}}.</returns>
         public Task<IReadOnlyList<TDoc>> SearchAsync<TDoc>(string queryText, string config = "english", CancellationToken token = default)
         {
             return _querySession.SearchAsync<TDoc>(queryText, config);
@@ -412,7 +412,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="TDoc">The type of the t document.</typeparam>
         /// <param name="searchTerm">The search term.</param>
         /// <param name="config">The configuration.</param>
-        /// <returns>IReadOnlyList&lt;TDoc&gt;.</returns>
+        /// <returns>IReadOnlyList{TDoc}.</returns>
         public IReadOnlyList<TDoc> PlainTextSearch<TDoc>(string searchTerm, string config = "english")
         {
             return _querySession.PlainTextSearch<TDoc>(searchTerm, config);
@@ -425,7 +425,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <param name="searchTerm">The search term.</param>
         /// <param name="config">The configuration.</param>
         /// <param name="token">The token.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;TDoc&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{TDoc}}.</returns>
         public Task<IReadOnlyList<TDoc>> PlainTextSearchAsync<TDoc>(string searchTerm, string config = "english", CancellationToken token = default)
         {
             return _querySession.PlainTextSearchAsync<TDoc>(searchTerm, config);
@@ -437,7 +437,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="TDoc">The type of the t document.</typeparam>
         /// <param name="searchTerm">The search term.</param>
         /// <param name="config">The configuration.</param>
-        /// <returns>IReadOnlyList&lt;TDoc&gt;.</returns>
+        /// <returns>IReadOnlyList{TDoc}.</returns>
         public IReadOnlyList<TDoc> PhraseSearch<TDoc>(string searchTerm, string config = "english")
         {
             return _querySession.PhraseSearch<TDoc>(searchTerm, config);
@@ -450,7 +450,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <param name="searchTerm">The search term.</param>
         /// <param name="config">The configuration.</param>
         /// <param name="token">The token.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;TDoc&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{TDoc}}.</returns>
         public Task<IReadOnlyList<TDoc>> PhraseSearchAsync<TDoc>(string searchTerm, string config = "english", CancellationToken token = default)
         {
             return _querySession.PhraseSearchAsync<TDoc>(searchTerm, config);
@@ -462,7 +462,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <typeparam name="TDoc">The type of the t document.</typeparam>
         /// <param name="searchTerm">The search term.</param>
         /// <param name="regConfig">The reg configuration.</param>
-        /// <returns>IReadOnlyList&lt;TDoc&gt;.</returns>
+        /// <returns>IReadOnlyList{TDoc}.</returns>
         public IReadOnlyList<TDoc> WebStyleSearch<TDoc>(string searchTerm, string regConfig = "english")
         {
             return _querySession.WebStyleSearch<TDoc>(searchTerm, regConfig);
@@ -475,7 +475,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <param name="searchTerm">The search term.</param>
         /// <param name="regConfig">The reg configuration.</param>
         /// <param name="token">The token.</param>
-        /// <returns>Task&lt;IReadOnlyList&lt;TDoc&gt;&gt;.</returns>
+        /// <returns>Task{IReadOnlyList{TDoc}turns>
         public Task<IReadOnlyList<TDoc>> WebStyleSearchAsync<TDoc>(string searchTerm, string regConfig = "english",
             CancellationToken token = new CancellationToken())
         {
