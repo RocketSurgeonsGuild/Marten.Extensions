@@ -13,6 +13,12 @@ namespace Rocket.Surgery.Extensions.Marten.Security
     /// <seealso cref="Rocket.Surgery.Extensions.Marten.Security.ISecurityQueryPart" />
     public class HaveOwnerSecurityQueryPart : ISecurityQueryPart
     {
+        /// <summary>
+        /// Gets the expression.
+        /// </summary>
+        /// <param name="parameter">The parameter.</param>
+        /// <param name="constant">The constant.</param>
+        /// <returns>Expression.</returns>
         public Expression GetExpression(ParameterExpression parameter, ConstantExpression constant)
         {
             var idType = constant.Type;
@@ -25,7 +31,7 @@ namespace Rocket.Surgery.Extensions.Marten.Security
                 .Where(x => x.GetParameters().Length == 1)
                 .Where(x => x.Name == nameof(object.Equals))
                 .OrderByDescending(x => x.GetParameters()[0].ParameterType == idType)
-                .ToArray() ;
+                .ToArray();
 
             return Expression.Call(
                 prop,
@@ -34,9 +40,15 @@ namespace Rocket.Surgery.Extensions.Marten.Security
             );
         }
 
+        /// <summary>
+        /// Should this apply.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>
+        ///   <c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool ShouldApply(Type type)
         {
-            return type.GetInterface(nameof(IHaveOwner<object>)+"`1") != null;
+            return type.GetInterface(nameof(IHaveOwner<object>) + "`1") != null;
         }
     }
 }

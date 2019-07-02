@@ -8,11 +8,11 @@ namespace Rocket.Surgery.Extensions.Marten.Conventions
 {
     /// <summary>
     ///  MartenStringConnectionStringConvention.
-    /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
-    /// Implements the <see cref="Rocket.Surgery.Extensions.DependencyInjection.IServiceConvention" />
+    /// Implements the <see cref="IConfigureOptions{StoreOptions}" />
+    /// Implements the <see cref="IServiceConvention" />
     /// </summary>
-    /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
-    /// <seealso cref="Rocket.Surgery.Extensions.DependencyInjection.IServiceConvention" />
+    /// <seealso cref="IConfigureOptions{StoreOptions}" />
+    /// <seealso cref="IServiceConvention" />
     class MartenStringConnectionStringConvention : IConfigureOptions<StoreOptions>, IServiceConvention
     {
         private readonly Func<string> _connectionString;

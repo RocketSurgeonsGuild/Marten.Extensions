@@ -24,13 +24,13 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
         private static readonly BackingFieldHelper BackingFieldHelper = new BackingFieldHelper();
         private static readonly MethodInfo HandleUnitOfWorkMethod = typeof(MartenDocumentSessionListener)
             .GetMethod(nameof(HandleUnitOfWork), BindingFlags.Instance | BindingFlags.NonPublic);
-        private static readonly ConcurrentDictionary<Type, MethodInfo> _methods = new ConcurrentDictionary<Type, MethodInfo>();
+        private static readonly ConcurrentDictionary<Type, MethodInfo> Methods = new ConcurrentDictionary<Type, MethodInfo>();
         private static MethodInfo GetMethod(Type keyType)
         {
-            if (!_methods.TryGetValue(keyType, out var method))
+            if (!Methods.TryGetValue(keyType, out var method))
             {
                 method = HandleUnitOfWorkMethod.MakeGenericMethod(keyType);
-                _methods.TryAdd(keyType, method);
+                Methods.TryAdd(keyType, method);
             }
             return method;
         }

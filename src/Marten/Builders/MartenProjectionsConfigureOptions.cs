@@ -12,16 +12,14 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
     /// <summary>
     /// MartenProjectionsConfigureOptions.
     /// Implements the <see cref="IConfigureOptions{StoreOptions}" />
-    /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
     /// <seealso cref="IConfigureOptions{StoreOptions}" />
     class MartenProjectionsConfigureOptions : IConfigureOptions<StoreOptions>
     {
-        private static readonly MethodInfo _AddTransform = typeof(MartenProjectionsConfigureOptions)
+        private static readonly MethodInfo AddTransformMethod = typeof(MartenProjectionsConfigureOptions)
             .GetTypeInfo()
             .GetDeclaredMethod(nameof(AddTransform));
-        private static readonly MethodInfo _AddAggregate = typeof(MartenProjectionsConfigureOptions)
+        private static readonly MethodInfo AddAggregateMethod = typeof(MartenProjectionsConfigureOptions)
             .GetTypeInfo()
             .GetDeclaredMethod(nameof(AddAggregate));
         private readonly ProjectionDescriptorCollection _projectionDescriptorCollection;
@@ -39,7 +37,7 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
             IEnumerable<IInlineProjection> inlineProjections,
             IEnumerable<IAsyncProjection> asyncProjections)
         {
-            this._projectionDescriptorCollection = projectionDescriptorCollection;
+            _projectionDescriptorCollection = projectionDescriptorCollection;
             _inlineProjections = inlineProjections;
             _asyncProjections = asyncProjections;
         }
@@ -82,7 +80,7 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
                 {
                     var tEvent = @interface.GetGenericArguments()[0];
                     var tView = @interface.GetGenericArguments()[1];
-                    _AddTransform.MakeGenericMethod(tEvent, tView).Invoke(null, new[] { projections, instance });
+                    AddTransformMethod.MakeGenericMethod(tEvent, tView).Invoke(null, new[] { projections, instance });
                 }
             }
             else
@@ -122,12 +120,12 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
                 {
                     var tEvent = @interface.GetGenericArguments()[0];
                     var tView = @interface.GetGenericArguments()[1];
-                    _AddTransform.MakeGenericMethod(tEvent, tView).Invoke(null, new[] { projections, instance });
+                    AddTransformMethod.MakeGenericMethod(tEvent, tView).Invoke(null, new[] { projections, instance });
                 }
             }
             else
             {
-                _AddAggregate.MakeGenericMethod(type).Invoke(null, new object[] { projections });
+                AddAggregateMethod.MakeGenericMethod(type).Invoke(null, new object[] { projections });
             }
         }
 

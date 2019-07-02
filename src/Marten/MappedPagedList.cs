@@ -9,10 +9,10 @@ namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
     /// MappedPagedList.
-    /// Implements the <see cref="Marten.Pagination.IPagedList{T}" />
+    /// Implements the <see cref="IPagedList{T}" />
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <seealso cref="Marten.Pagination.IPagedList{T}" />
+    /// <seealso cref="IPagedList{T}" />
     [JsonObject]
     public class MappedPagedList<T> : IPagedList<T>
     {

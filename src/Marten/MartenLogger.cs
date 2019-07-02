@@ -9,11 +9,11 @@ namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
     /// MartenLogger.
-    /// Implements the <see cref="Marten.IMartenLogger" />
-    /// Implements the <see cref="Marten.IMartenSessionLogger" />
+    /// Implements the <see cref="IMartenLogger" />
+    /// Implements the <see cref="IMartenSessionLogger" />
     /// </summary>
-    /// <seealso cref="Marten.IMartenLogger" />
-    /// <seealso cref="Marten.IMartenSessionLogger" />
+    /// <seealso cref="IMartenLogger" />
+    /// <seealso cref="IMartenSessionLogger" />
     public class MartenLogger : IMartenLogger, IMartenSessionLogger
     {
         private readonly ILogger _logger;

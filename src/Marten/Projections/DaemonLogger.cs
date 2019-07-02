@@ -8,9 +8,9 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
 {
     /// <summary>
     /// A default logger for any Daemons
-    /// Implements the <see cref="Marten.Events.Projections.Async.IDaemonLogger" />
+    /// Implements the <see cref="IDaemonLogger" />
     /// </summary>
-    /// <seealso cref="Marten.Events.Projections.Async.IDaemonLogger" />
+    /// <seealso cref="IDaemonLogger" />
     public class DaemonLogger : IDaemonLogger
     {
         private readonly ILogger _logger;

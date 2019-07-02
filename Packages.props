@@ -5,6 +5,7 @@
     <!-- <GlobalPackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" /> -->
     <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19270-01" />
     <GlobalPackageReference Include="Roslynator.Analyzers" Version="2.1.0-rc" />
+    <!--<GlobalPackageReference Include="JetBrains.Annotations" Version="2019.1.1" />-->
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Marten" Version="3.6.0" />

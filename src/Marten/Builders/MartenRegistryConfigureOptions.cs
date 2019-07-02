@@ -8,9 +8,7 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
     /// <summary>
     /// MartenRegistryConfigureOptions.
     /// Implements the <see cref="IConfigureOptions{StoreOptions}" />
-    /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{Marten.StoreOptions}" />
     /// <seealso cref="IConfigureOptions{StoreOptions}" />
     class MartenRegistryConfigureOptions : IConfigureOptions<StoreOptions>
     {
