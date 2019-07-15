@@ -14,7 +14,7 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.7.8
+      ref: refs/tags/v0.7.9
       endpoint: github
 
 variables:
@@ -54,6 +54,8 @@ jobs:
 
   - ${{ if ne(variables['System.PullRequest.IsFork'], 'true') }}:
     - job: Publish
+      pool:
+        vmImage: "windows-2019"
       dependsOn:
         - Linux
       steps:
@@ -71,6 +73,8 @@ jobs:
             GitHubPackages: false
 
     - job: Release
+      pool:
+        vmImage: "windows-2019"
       dependsOn:
         - Linux
       steps:
