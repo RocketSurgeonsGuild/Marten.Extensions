@@ -39,7 +39,7 @@ jobs:
     steps:
       - template: gitversion/store.yml@rsg
         parameters:
-          NuGetVersion: $(NuGetVersion)
+          NuGetVersion: "5.1.0"
 
   - template: pipeline/nuke-job.yml@rsg
     parameters:
