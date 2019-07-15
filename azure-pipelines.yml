@@ -14,19 +14,23 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.6.0
+      ref: refs/tags/v0.7.8
       endpoint: github
 
 variables:
-  CONFIGURATION: Release
-  VERBOSITY: Normal
-  DOTNETVERSION: "2.2.300"
-  DOTNET3VERSION: "3.0.100-preview6-012264"
-  NUGETVERSION: "5.1.0"
-  COVERAGE: "$(Agent.BuildDirectory)/c"
-  ARTIFACTS: $(Build.ArtifactStagingDirectory)
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
-  CodeCovToken: 'ed1436a4-a776-4296-87e9-fe419e291c15'
+  - group: rsg-bot
+  - name: CONFIGURATION
+    value: Release
+  - name: VERBOSITY
+    value: Normal
+  - name: COVERAGE
+    value: "$(Agent.BuildDirectory)/c"
+  - name: ARTIFACTS
+    value: $(Build.ArtifactStagingDirectory)
+  - name: DOTNET_SKIP_FIRST_TIME_EXPERIENCE
+    value: "true"
+  - name: CodeCovToken
+    value: 'ed1436a4-a776-4296-87e9-fe419e291c15'
 
 jobs:
   - job: GitVersion
@@ -42,9 +46,36 @@ jobs:
       name: 'Linux'
       dependsOn: GitVersion
       vmImage: "Ubuntu-16.04"
-      pushNuget: true
       Configuration: $(Configuration)
       Verbosity: $(Verbosity)
-      DotNetVersion: $(DotNetVersion)
-      DotNet3Version: $(DotNet3Version)
-      NuGetVersion: $(NuGetVersion)
+      DotNetVersion: "2.2.300"
+      DotNet3Version: "3.0.100-preview6-012264"
+      NuGetVersion: "5.1.0"
+
+  - ${{ if ne(variables['System.PullRequest.IsFork'], 'true') }}:
+    - job: Publish
+      dependsOn:
+        - Linux
+      steps:
+        - task: DownloadBuildArtifacts@0
+          displayName: "Download NuGet Packages"
+          inputs:
+            specificBuildWithTriggering: true
+            downloadType: single
+            artifactName: 'Nupkg - Linux'
+            downloadPath: $(Build.ArtifactStagingDirectory)/nuget/
+        - template: standard/nuget-push.yml@rsg
+          parameters:
+            NuGetVersion: "5.1.0"
+            Verbosity: $(Verbosity)
+            GitHubPackages: false
+
+    - job: Release
+      dependsOn:
+        - Linux
+      steps:
+        - template: gitversion/restore.yml@rsg
+        - template: standard/github-release.yml@rsg
+          parameters:
+            DotNetVersion: "2.2.300"
+            DotNet3Version: "3.0.100-preview6-012264"
