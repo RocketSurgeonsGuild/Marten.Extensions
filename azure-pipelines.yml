@@ -14,7 +14,7 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.7.9
+      ref: refs/tags/v0.7.12
       endpoint: github
 
 variables:
@@ -53,11 +53,26 @@ jobs:
       NuGetVersion: "5.1.0"
 
   - ${{ if ne(variables['System.PullRequest.IsFork'], 'true') }}:
+    - job: GitHub_Draft_Release
+      pool:
+        vmImage: "windows-2019"
+      dependsOn:
+        - GitVersion
+      steps:
+        # - checkout: none
+        - template: ../gitversion/restore.yml
+        - ${{ if eq(parameters.GitHub, 'true') }}:
+          - template: standard/github-draft-release.yml@rsg
+            parameters:
+              DotNetVersion: ${{ parameters.DotNetVersion }}
+              DotNet3Version: ${{ parameters.DotNet3Version }}
+
     - job: Publish
       pool:
         vmImage: "windows-2019"
       dependsOn:
         - Linux
+        - GitHub_Draft_Release
       steps:
         - task: DownloadBuildArtifacts@0
           displayName: "Download NuGet Packages"
@@ -72,11 +87,12 @@ jobs:
             Verbosity: $(Verbosity)
             GitHubPackages: false
 
-    - job: Release
+    - job: GitHub_Release
       pool:
         vmImage: "windows-2019"
       dependsOn:
         - Linux
+        - GitHub_Draft_Release
       steps:
         - template: gitversion/restore.yml@rsg
         - template: standard/github-release.yml@rsg
