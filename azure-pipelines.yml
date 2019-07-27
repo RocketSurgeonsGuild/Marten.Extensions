@@ -14,7 +14,7 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.8.4
+      ref: refs/tags/v0.8.5
       endpoint: github
 
 variables:
@@ -77,6 +77,7 @@ jobs:
           artifact: 'Nupkg - Linux'
         - template: standard/nuget-push.yml@rsg
           parameters:
+            Artifacts: "$(Pipeline.Workspace)/Nupkg - Linux/"
             NuGetVersion: "5.2.0"
             Verbosity: $(Verbosity)
             GitHubPackages: false
