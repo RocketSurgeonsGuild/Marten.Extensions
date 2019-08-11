@@ -1,5 +1,6 @@
 using Rocket.Surgery.Conventions;
 using Rocket.Surgery.Extensions.CommandLine;
+using Rocket.Surgery.Extensions.Marten.Commands;
 using Rocket.Surgery.Extensions.Marten.Conventions;
 
 [assembly: Convention(typeof(MartenCommandConvention))]
