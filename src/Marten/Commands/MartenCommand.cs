@@ -9,7 +9,7 @@ namespace Rocket.Surgery.Extensions.Marten.Commands
     /// MartenCommand.
     /// </summary>
     [UsedImplicitly]
-    [Command("marten", ThrowOnUnexpectedArgument = false)]
+    [Command("marten")]
     [Subcommand(typeof(PatchCommand))]
     [Subcommand(typeof(AssertCommand))]
     [Subcommand(typeof(ApplyCommand))]
