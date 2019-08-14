@@ -10,8 +10,8 @@
   <ItemGroup>
     <PackageReference Update="Nuke.Common" Version="0.21.2" />
     <PackageReference Update="Rocket.Surgery.Nuke.DotNetCore" Version="0.3.5" />
-    <PackageReference Update="GitVersion.CommandLine.DotNetCore" Version="5.0.1-beta1.14" />
-    <PackageReference Update="ReportGenerator" Version="4.2.12" />
+    <PackageReference Update="GitVersion.CommandLine.DotNetCore" Version="5.0.1" />
+    <PackageReference Update="ReportGenerator" Version="4.2.15" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />
@@ -20,10 +20,10 @@
     <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0' and '$(TargetFramework)'!='netcoreapp2.1'">
-    <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="3.0.0-preview7.19362.4" />
-    <PackageReference Update="Microsoft.Extensions.Configuration" Version="3.0.0-preview7.19362.4" />
-    <PackageReference Update="Microsoft.Extensions.Options" Version="3.0.0-preview7.19362.4" />
-    <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.0.0-preview7.19362.4" />
+    <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="3.0.0-preview8.19405.4" />
+    <PackageReference Update="Microsoft.Extensions.Configuration" Version="3.0.0-preview8.19405.4" />
+    <PackageReference Update="Microsoft.Extensions.Options" Version="3.0.0-preview8.19405.4" />
+    <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.0.0-preview8.19405.4" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Marten" Version="3.6.2" />
@@ -39,15 +39,15 @@
     <PackageReference Update="NodaTime.Serialization.JsonNet" Version="2.2.0" />
     <PackageReference Update="Npgsql" Version="4.0.8" />
     <PackageReference Update="Npgsql.NodaTime" Version="4.0.8" />
-    <PackageReference Update="Rocket.Surgery.Conventions" Version="6.3.1" />
-    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="6.3.1" />
+    <PackageReference Update="Rocket.Surgery.Conventions" Version="7.0.1" />
+    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="7.0.1" />
     <PackageReference Update="Rocket.Surgery.Domain" Version="0.7.3" />
     <PackageReference Update="Rocket.Surgery.Extensions" Version="1.0.3" />
-    <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="5.0.6" />
-    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="6.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="6.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="6.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="6.0.5" />
+    <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="7.0.1" />
+    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="7.0.1" />
+    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="7.0.1" />
+    <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="7.0.1" />
+    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="7.0.1" />
     <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="1.0.3" />
     <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="1.0.3" />
     <PackageReference Update="Scrutor" Version="3.1.0" />
@@ -56,7 +56,7 @@
     <PackageReference Update="Docker.DotNet" Version="3.125.2" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0' and '$(TargetFramework)'!='netcoreapp2.1'">
-    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="3.0.0-preview7.19365.7" />
+    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="3.0.0-preview8.19405.7" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Rocket.Surgery.Extensions.Testing" Version="1.1.13" />
