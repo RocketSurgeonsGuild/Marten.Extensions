@@ -1,6 +1,5 @@
 using JetBrains.Annotations;
 using Marten;
-using Marten.CommandLine;
 using Marten.Schema;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Logging;
