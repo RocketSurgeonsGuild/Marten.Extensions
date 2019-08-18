@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Reflection;
@@ -23,7 +23,7 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
         private readonly IClock _clock;
         private static readonly BackingFieldHelper BackingFieldHelper = new BackingFieldHelper();
         private static readonly MethodInfo HandleUnitOfWorkMethod = typeof(MartenDocumentSessionListener)
-            .GetMethod(nameof(HandleUnitOfWork), BindingFlags.Instance | BindingFlags.NonPublic);
+            .GetMethod(nameof(HandleUnitOfWork), BindingFlags.Instance | BindingFlags.NonPublic)!;
         private static readonly ConcurrentDictionary<Type, MethodInfo> Methods = new ConcurrentDictionary<Type, MethodInfo>();
         private static MethodInfo GetMethod(Type keyType)
         {
@@ -84,10 +84,10 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
 
         private void HandleUnitOfWork<TKey>(IUnitOfWork unitOfWork, Instant offset)
         {
-            var userId = default(TKey);
+            var userId = default(TKey)!;
             if (_context.User?.Id != null)
             {
-                userId = (TKey)_context.User?.Id;
+                userId = (TKey)_context.User?.Id!;
             }
             foreach (var item in unitOfWork.Inserts().Concat(unitOfWork.Updates()))
             {
@@ -95,7 +95,7 @@ namespace Rocket.Surgery.Extensions.Marten.Listeners
                 {
                     Apply(hasOwner, userId);
                 }
-                if (item is IHaveCreatedBy<TKey> hasCreated && hasCreated.Created != null && hasCreated.Created.By.Equals(default(TKey)))
+                if (item is IHaveCreatedBy<TKey> hasCreated && hasCreated.Created != null && hasCreated.Created.By!.Equals(default(TKey)!))
                 {
                     Apply(hasCreated, userId, offset);
                 }

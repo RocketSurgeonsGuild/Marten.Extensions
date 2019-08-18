@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -42,13 +42,19 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
         class HaveOwner : IHaveOwner<string>
         {
             public string Id { get; set; }
+
+#nullable disable
             public OwnerData<string> Owner { get; set; }
+#nullable restore
         }
 
         class CanBeAssigned : ICanBeAssigned<long>
         {
             public string Id { get; set; }
+
+#nullable disable
             public AssignedUsersData<long> AssignedUsers { get; set; }
+#nullable restore
         }
 
         class UserLike
@@ -60,9 +66,11 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
         class OwnerAndCanBeAssigned : IHaveOwner<Guid>, ICanBeAssigned<Guid>
         {
             public string Id { get; set; }
+#nullable disable
             public OwnerData<Guid> Owner { get; set; }
 
             public AssignedUsersData<Guid> AssignedUsers { get; set; }
+#nullable restore
         }
 
         [Fact]
@@ -72,7 +80,7 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             var serviceProviderDictionary = new ServiceProviderDictionary();
             AutoFake.Provide<IServiceProviderDictionary>(serviceProviderDictionary);
             AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
-            AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
+            AutoFake.Provide<IDictionary<object, object?>>(serviceProviderDictionary);
             serviceProviderDictionary.Set(new MartenOptions()
             {
                 SessionTracking = DocumentTracking.DirtyTracking,
@@ -110,7 +118,7 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             var serviceProviderDictionary = new ServiceProviderDictionary();
             AutoFake.Provide<IServiceProviderDictionary>(serviceProviderDictionary);
             AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
-            AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
+            AutoFake.Provide<IDictionary<object, object?>>(serviceProviderDictionary);
             serviceProviderDictionary.Set(new MartenOptions()
             {
                 SessionTracking = DocumentTracking.DirtyTracking,
@@ -149,7 +157,7 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             var serviceProviderDictionary = new ServiceProviderDictionary();
             AutoFake.Provide<IServiceProviderDictionary>(serviceProviderDictionary);
             AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
-            AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
+            AutoFake.Provide<IDictionary<object, object?>>(serviceProviderDictionary);
             serviceProviderDictionary.Set(new MartenOptions()
             {
                 SessionTracking = DocumentTracking.DirtyTracking,
@@ -188,7 +196,7 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             var serviceProviderDictionary = new ServiceProviderDictionary();
             AutoFake.Provide<IServiceProviderDictionary>(serviceProviderDictionary);
             AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
-            AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
+            AutoFake.Provide<IDictionary<object, object?>>(serviceProviderDictionary);
             serviceProviderDictionary.Set(new MartenOptions()
             {
                 SessionTracking = DocumentTracking.DirtyTracking,

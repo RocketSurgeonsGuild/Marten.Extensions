@@ -23,7 +23,7 @@ namespace Rocket.Surgery.Extensions.Marten.AspNetCore
         /// Initializes a new instance of the <see cref="MartenMiddlewareUnitOfWorkConvention"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
-        public MartenMiddlewareUnitOfWorkConvention(MartenOptions options = null)
+        public MartenMiddlewareUnitOfWorkConvention(MartenOptions? options = null)
         {
             _options = options ?? new MartenOptions();
         }

@@ -35,7 +35,7 @@ variables:
 jobs:
   - job: GitVersion
     pool:
-      vmImage: "VS2017-Win2016"
+      vmImage: "windows-2019"
     steps:
       - template: gitversion/store.yml@rsg
         parameters:

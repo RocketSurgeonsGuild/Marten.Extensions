@@ -51,7 +51,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// Gets or sets the connection string.
         /// </summary>
         /// <value>The connection string.</value>
-        public string ConnectionString { get; set; }
+        public string? ConnectionString { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether [use session].
         /// </summary>

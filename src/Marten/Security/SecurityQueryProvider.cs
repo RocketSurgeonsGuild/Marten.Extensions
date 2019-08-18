@@ -30,7 +30,7 @@ namespace Rocket.Surgery.Extensions.Marten.Security
         /// <typeparam name="T"></typeparam>
         /// <param name="userId">The user identifier.</param>
         /// <returns>Expression{Func{T, System.Boolean}}.</returns>
-        public Expression<Func<T, bool>> GetExpression<T>(object userId)
+        public Expression<Func<T, bool>>? GetExpression<T>(object userId)
         {
             var param = Expression.Parameter(typeof(T), "p");
             var constantUserId = Expression.Constant(userId, userId.GetType());
@@ -44,7 +44,7 @@ namespace Rocket.Surgery.Extensions.Marten.Security
                 return null;
             }
 
-            Expression e = null;
+            Expression? e = null;
             foreach (var exp in expressions)
             {
                 if (e == null)

@@ -26,7 +26,7 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
         }
 
         /// <summary>
-        /// Invoked to configure a <typeparamref name="TOptions" /> instance.
+        /// Invoked to configure a <cref name="StoreOptions" /> instance.
         /// </summary>
         /// <param name="options">The options instance to configure.</param>
         public void Configure(StoreOptions options)

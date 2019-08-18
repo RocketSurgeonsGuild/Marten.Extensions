@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using Marten;
@@ -29,7 +29,7 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             var serviceProviderDictionary = new ServiceProviderDictionary();
             AutoFake.Provide<IServiceProviderDictionary>(serviceProviderDictionary);
             AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
-            AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
+            AutoFake.Provide<IDictionary<object, object?>>(serviceProviderDictionary);
             var scanner = AutoFake.Resolve<SimpleConventionScanner>();
             AutoFake.Provide<IConventionScanner>(scanner);
             serviceProviderDictionary.Set(new MartenOptions()
@@ -63,7 +63,7 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             var serviceProviderDictionary = new ServiceProviderDictionary();
             AutoFake.Provide<IServiceProviderDictionary>(serviceProviderDictionary);
             AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
-            AutoFake.Provide<IDictionary<object, object>>(serviceProviderDictionary);
+            AutoFake.Provide<IDictionary<object, object?>>(serviceProviderDictionary);
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddSingleton(LoggerFactory);

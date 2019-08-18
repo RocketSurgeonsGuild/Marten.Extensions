@@ -23,7 +23,7 @@ namespace Rocket.Surgery.Extensions.Marten.Functions
         /// Initializes a new instance of the <see cref="MartenFunctionsUnitOfWorkConvention"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
-        public MartenFunctionsUnitOfWorkConvention(MartenOptions options = null)
+        public MartenFunctionsUnitOfWorkConvention(MartenOptions? options = null)
         {
             _options = options ?? new MartenOptions();
         }

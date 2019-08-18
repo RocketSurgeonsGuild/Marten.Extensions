@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Marten;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -27,7 +27,7 @@ namespace Rocket.Surgery.Extensions.Marten.Conventions
         }
 
         /// <summary>
-        /// Invoked to configure a <typeparamref name="TOptions" /> instance.
+        /// Invoked to configure a <cref name="StoreOptions" /> instance.
         /// </summary>
         /// <param name="options">The options instance to configure.</param>
         public void Configure(StoreOptions options)

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Rocket.Surgery.Conventions.Reflection;
@@ -18,7 +18,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         /// <param name="assemblyCandidateFinder">The assembly candidate finder.</param>
         public ProjectionDescriptorCollection(IAssemblyCandidateFinder assemblyCandidateFinder)
         {
-            this._assemblyCandidateFinder = assemblyCandidateFinder;
+            _assemblyCandidateFinder = assemblyCandidateFinder;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
                 .SelectMany(x => x.DefinedTypes)
                 .Where(x => x.IsClass)
                 .Where(x => x.GetCustomAttribute<ProjectionAttribute>() != null)
-                .Select(x => new ProjectionDescriptor (x.GetCustomAttribute<ProjectionAttribute>().ProjectionType, x.AsType()));
+                .Select(x => new ProjectionDescriptor (x.GetCustomAttribute<ProjectionAttribute>()!.ProjectionType, x.AsType()));
         }
     }
 }

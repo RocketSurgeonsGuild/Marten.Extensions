@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +45,7 @@ namespace Rocket.Surgery.Extensions.Marten
         }
 
         /// <summary>
-        /// Gets the <see cref="T" /> at the specified index.
+        /// Gets the at the specified index.
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns>T.</returns>
@@ -117,7 +117,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <value>The last item on page.</value>
         public long LastItemOnPage => _pagedList.LastItemOnPage;
 
-        private T[] _values;
+        private T[]? _values;
         /// <summary>
         /// Gets the values.
         /// </summary>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Marten;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -22,7 +22,7 @@ namespace Rocket.Surgery.Conventions
         /// <param name="container">The container.</param>
         /// <param name="options">The options.</param>
         /// <returns>IConventionHostBuilder.</returns>
-        public static IConventionHostBuilder UseMarten(this IConventionHostBuilder container, MartenOptions options = null)
+        public static IConventionHostBuilder UseMarten(this IConventionHostBuilder container, MartenOptions? options = null)
         {
             container.Set(options  ?? new MartenOptions());
             container.Scanner.PrependConvention<MartenCommandConvention>();

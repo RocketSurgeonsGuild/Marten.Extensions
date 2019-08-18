@@ -9,6 +9,6 @@ namespace Rocket.Surgery.Extensions.Marten
         /// Gets or sets the user.
         /// </summary>
         /// <value>The user.</value>
-        IMartenUser User { get; set; }
+        IMartenUser? User { get; set; }
     }
 }

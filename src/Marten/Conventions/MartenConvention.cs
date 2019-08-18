@@ -1,4 +1,4 @@
-﻿using Marten;
+using Marten;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -23,7 +23,7 @@ namespace Rocket.Surgery.Extensions.Marten.Conventions
         /// Initializes a new instance of the <see cref="MartenConvention"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
-        public MartenConvention(MartenOptions options = null)
+        public MartenConvention(MartenOptions? options = null)
         {
             _options = options ?? new MartenOptions();
         }
@@ -38,9 +38,9 @@ namespace Rocket.Surgery.Extensions.Marten.Conventions
 
             var connectionString =
                 !string.IsNullOrEmpty(_options.ConnectionString) ? _options.ConnectionString :
-                context.Configuration.GetValue<string>("PostgresSql:ConnectionString", null)
-                ?? context.Configuration.GetValue<string>("Postgres:ConnectionString", null)
-                ?? context.Configuration.GetValue<string>("Marten:ConnectionString", null);
+                context.Configuration.GetValue<string?>("PostgresSql:ConnectionString", null)
+                ?? context.Configuration.GetValue<string?>("Postgres:ConnectionString", null)
+                ?? context.Configuration.GetValue<string?>("Marten:ConnectionString", null);
 
             if (_options.UseSession)
             {

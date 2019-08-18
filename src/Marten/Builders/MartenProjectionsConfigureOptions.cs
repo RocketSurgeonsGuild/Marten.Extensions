@@ -20,10 +20,10 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
     {
         private static readonly MethodInfo AddTransformMethod = typeof(MartenProjectionsConfigureOptions)
             .GetTypeInfo()
-            .GetDeclaredMethod(nameof(AddTransform));
+            .GetDeclaredMethod(nameof(AddTransform))!;
         private static readonly MethodInfo AddAggregateMethod = typeof(MartenProjectionsConfigureOptions)
             .GetTypeInfo()
-            .GetDeclaredMethod(nameof(AddAggregate));
+            .GetDeclaredMethod(nameof(AddAggregate))!;
         private readonly ProjectionDescriptorCollection _projectionDescriptorCollection;
         private readonly IEnumerable<IInlineProjection> _inlineProjections;
         private readonly IEnumerable<IAsyncProjection> _asyncProjections;
@@ -97,11 +97,11 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
             {
                 try
                 {
-                    projections.Add((IProjection)Activator.CreateInstance(type));
+                    projections.Add((IProjection)Activator.CreateInstance(type)!);
                 }
                 catch (Exception e)
                 {
-                    throw new InvalidOperationException($"Could not create an instance of '{type.FullName}'. If you need to register it through Dependency Injection use the IInlineProjection or IAsyncProjection interfaces.");
+                    throw new InvalidOperationException($"Could not create an instance of '{type.FullName}'. If you need to register it through Dependency Injection use the IInlineProjection or IAsyncProjection interfaces.", e);
                 }
             }
             else if (type.GetInterfaces()
@@ -110,11 +110,11 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
                 object instance;
                 try
                 {
-                    instance = Activator.CreateInstance(type);
+                    instance = Activator.CreateInstance(type)!;
                 }
                 catch (Exception e)
                 {
-                    throw new InvalidOperationException($"Could not create an instance of '{type.FullName}'. If you need to register it through Dependency Injection use the IInlineProjection or IAsyncProjection interfaces.");
+                    throw new InvalidOperationException($"Could not create an instance of '{type.FullName}'. If you need to register it through Dependency Injection use the IInlineProjection or IAsyncProjection interfaces.", e);
                 }
 
                 foreach (var @interface in type.GetInterfaces()

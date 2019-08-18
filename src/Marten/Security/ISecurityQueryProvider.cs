@@ -14,6 +14,6 @@ namespace Rocket.Surgery.Extensions.Marten.Security
         /// <typeparam name="T"></typeparam>
         /// <param name="userId">The user identifier.</param>
         /// <returns>Expression{Func{T, System.Boolean}}.</returns>
-        Expression<Func<T, bool>> GetExpression<T>(object userId);
+        Expression<Func<T, bool>>? GetExpression<T>(object userId);
     }
 }

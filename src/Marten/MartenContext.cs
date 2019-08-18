@@ -14,6 +14,6 @@ namespace Rocket.Surgery.Extensions.Marten
         /// Gets or sets the user.
         /// </summary>
         /// <value>The user.</value>
-        public IMartenUser User { get; set; }
+        public IMartenUser? User { get; set; }
     }
 }

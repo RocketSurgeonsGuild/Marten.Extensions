@@ -37,7 +37,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         /// <param name="settings">The settings.</param>
         /// <param name="projections">The projections.</param>
         /// <returns>IDaemon.</returns>
-        public IDaemon CreateDaemon(Type loggerType, Type[] viewTypes = null, DaemonSettings settings = null, IProjection[] projections = null)
+        public IDaemon CreateDaemon(Type loggerType, Type[]? viewTypes = null, DaemonSettings? settings = null, IProjection[]? projections = null)
         {
             return _store.BuildProjectionDaemon(
                 logger: new DaemonLogger(_factory, loggerType),
@@ -55,7 +55,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         /// <param name="settings">The settings.</param>
         /// <param name="projections">The projections.</param>
         /// <returns>IDaemon.</returns>
-        public IDaemon CreateDaemon(ILogger logger, Type[] viewTypes = null, DaemonSettings settings = null, IProjection[] projections = null)
+        public IDaemon CreateDaemon(ILogger logger, Type[]? viewTypes = null, DaemonSettings? settings = null, IProjection[]? projections = null)
         {
             return _store.BuildProjectionDaemon(
                 logger: new DaemonLogger(logger),

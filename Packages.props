@@ -9,7 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Nuke.Common" Version="0.21.2" />
-    <PackageReference Update="Rocket.Surgery.Nuke.DotNetCore" Version="0.3.5" />
+    <PackageReference Update="Rocket.Surgery.Nuke.DotNetCore" Version="0.3.7" />
     <PackageReference Update="GitVersion.CommandLine.DotNetCore" Version="5.0.1" />
     <PackageReference Update="ReportGenerator" Version="4.2.15" />
   </ItemGroup>
@@ -39,15 +39,15 @@
     <PackageReference Update="NodaTime.Serialization.JsonNet" Version="2.2.0" />
     <PackageReference Update="Npgsql" Version="4.0.9" />
     <PackageReference Update="Npgsql.NodaTime" Version="4.0.9" />
-    <PackageReference Update="Rocket.Surgery.Conventions" Version="7.0.2" />
-    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="7.0.2" />
+    <PackageReference Update="Rocket.Surgery.Conventions" Version="7.0.3" />
+    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="7.0.3" />
     <PackageReference Update="Rocket.Surgery.Domain" Version="0.7.3" />
     <PackageReference Update="Rocket.Surgery.Extensions" Version="1.0.3" />
-    <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="7.0.2" />
-    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="7.0.2" />
-    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="7.0.2" />
-    <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="7.0.2" />
-    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="7.0.2" />
+    <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="7.0.3" />
+    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="7.0.3" />
+    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="7.0.3" />
+    <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="7.0.3" />
+    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="7.0.3" />
     <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="1.0.3" />
     <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="1.0.3" />
     <PackageReference Update="Scrutor" Version="3.1.0" />

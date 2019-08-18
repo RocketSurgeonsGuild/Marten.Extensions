@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using FluentAssertions;
 using NodaTime;
 using Rocket.Surgery.Domain;
@@ -11,20 +11,26 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
     {
         class CreatedDocument : IHaveCreatedBy<string>
         {
+#nullable disable
             public ChangeData<string> Created { get; }
-            public ChangeData<string> Updated { get; }
+#nullable restore
+            public ChangeData<string>? Updated { get; }
         }
 
         class UpdatedDocument : IHaveUpdatedBy<Guid>
         {
+#nullable disable
             public ChangeData<Guid> Created { get; }
-            public ChangeData<Guid> Updated { get; }
+#nullable restore
+            public ChangeData<Guid>? Updated { get; }
         }
 
         class CreatedUpdatedDocument : IHaveCreatedBy<long>, IHaveUpdatedBy<long>
         {
+#nullable disable
             public ChangeData<long> Created { get; }
-            public ChangeData<long> Updated { get; }
+#nullable restore
+            public ChangeData<long>? Updated { get; }
         }
 
         [Fact]
@@ -37,8 +43,6 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
 
             document.Created.By.Should().Be("abc123");
             document.Created.At.Should().Be(instant);
-            document.Updated?.By.Should().BeNull();
-            document.Updated?.At.Should().BeNull();
         }
 
         [Fact]
@@ -50,8 +54,6 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
 
             MartenDocumentSessionListener.Apply(document, guid, instant);
 
-            document.Created?.By.Should().BeEmpty();
-            document.Created?.At.Should().BeNull();
             document.Updated.By.Should().Be(guid);
             document.Updated.At.Should().Be(instant);
         }

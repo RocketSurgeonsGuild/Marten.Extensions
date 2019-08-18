@@ -28,18 +28,33 @@ namespace Rocket.Surgery.Extensions.Marten.Commands
             _logger = logger;
         }
 
+        /// <summary>
+        /// Gets or sets the name of the file.
+        /// </summary>
         [Argument(0, Description = "File (or folder) location to write the DDL file")]
-        public string FileName { get; set; }
+        public string? FileName { get; set; }
 
+        /// <summary>
+        /// Opt-into schema creation
+        /// </summary>
         [Option(Description = "Opt into also writing out any missing schema creation scripts")]
         public bool Schema { get; set; }
 
+        /// <summary>
+        /// Gets or sets the drop location for the files.
+        /// </summary>
         [Option(Description = "Override the location of the drop file")]
-        public string Drop { get; set; }
+        public string? Drop { get; set; }
 
+        /// <summary>
+        /// Use transactions
+        /// </summary>
         [Option(Description = "Option to create scripts as transactional script")]
         public bool TransactionalScript { get; set; }
 
+        /// <summary>
+        /// Enable auto create all objects
+        /// </summary>
         [Option(Description = "Drop and re-create things if required")]
         public bool AutoCreateAll { get; set; }
 

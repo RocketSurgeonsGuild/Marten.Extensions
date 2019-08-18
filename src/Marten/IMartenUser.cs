@@ -1,4 +1,4 @@
-﻿namespace Rocket.Surgery.Extensions.Marten
+namespace Rocket.Surgery.Extensions.Marten
 {
     /// <summary>
     /// IMartenUser
@@ -9,6 +9,6 @@
         /// Gets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-        object Id { get; }
+        object? Id { get; }
     }
 }

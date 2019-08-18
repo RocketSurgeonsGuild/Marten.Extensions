@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Linq;
 using System;
@@ -17,7 +17,7 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <param name="claims">The claims.</param>
         /// <param name="options">The options.</param>
         /// <returns>System.String.</returns>
-        public static string GetIdFromClaims(this IEnumerable<Claim> claims, MartenOptions options)
+        public static string? GetIdFromClaims(this IEnumerable<Claim> claims, MartenOptions options)
         {
             return claims
                 .Where(options.IsIdLikeClaim)

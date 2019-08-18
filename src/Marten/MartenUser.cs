@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Rocket.Surgery.Extensions.Marten
 {
@@ -11,7 +11,7 @@ namespace Rocket.Surgery.Extensions.Marten
     public class MartenUser<T> : IMartenUser
     {
         private readonly Func<T> _idFunc;
-        private T _id;
+        private T _id = default!;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MartenUser{T}" /> class.
@@ -26,6 +26,6 @@ namespace Rocket.Surgery.Extensions.Marten
         /// Gets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-        public object Id => _id?.Equals(default(T)) == null || _id?.Equals(default(T)) == true ? _id = _idFunc() : _id;
+        public object? Id => _id?.Equals(default(T)!) == null || _id?.Equals(default(T)!) == true ? _id = _idFunc()! : _id!;
     }
 }

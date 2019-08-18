@@ -25,9 +25,9 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         /// <returns>IDaemon.</returns>
         IDaemon CreateDaemon(
             Type loggerType,
-            Type[] viewTypes = null,
-            DaemonSettings settings = null,
-            IProjection[] projections = null);
+            Type[]? viewTypes = null,
+            DaemonSettings? settings = null,
+            IProjection[]? projections = null);
 
         /// <summary>
         /// Creates the daemon.
@@ -39,8 +39,8 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         /// <returns>IDaemon.</returns>
         IDaemon CreateDaemon(
             ILogger logger,
-            Type[] viewTypes = null,
-            DaemonSettings settings = null,
-            IProjection[] projections = null);
+            Type[]? viewTypes = null,
+            DaemonSettings? settings = null,
+            IProjection[]? projections = null);
     }
 }

@@ -28,12 +28,21 @@ namespace Rocket.Surgery.Extensions.Marten.Commands
             _logger = logger;
         }
 
+        /// <summary>
+        /// Gets or sets the name of the file.
+        /// </summary>
         [Argument(0, Description = "File (or folder) location to write the DDL file")]
-        public string FileName { get; set; }
+        public string? FileName { get; set; }
 
+        /// <summary>
+        /// Write out DDL by type
+        /// </summary>
         [Option(Description = "Opt into writing the DDL split out by file")]
         public bool ByType { get; set; }
 
+        /// <summary>
+        /// Use transactions
+        /// </summary>
         [Option(Description = "Option to create scripts as transactional script")]
         public bool TransactionalScript { get; set; }
 
