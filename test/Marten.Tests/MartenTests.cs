@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FakeItEasy;
 using FluentAssertions;
 using Marten;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +40,7 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             });
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
             servicesBuilder.Scanner.AppendConvention<MartenConvention>();
+            servicesBuilder.Services.AddSingleton(A.Fake<IDocumentSessionListener>());
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddSingleton(LoggerFactory);
             servicesBuilder.Services.AddSingleton<IClock>(
@@ -65,6 +67,8 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             AutoFake.Provide<IServiceProvider>(serviceProviderDictionary);
             AutoFake.Provide<IDictionary<object, object?>>(serviceProviderDictionary);
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
+            AutoFake.Provide(A.Fake<IDocumentSessionListener>());
+            servicesBuilder.Services.AddSingleton(A.Fake<IDocumentSessionListener>());
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddSingleton(LoggerFactory);
             servicesBuilder.Services.AddSingleton<IClock>(

@@ -49,7 +49,7 @@ namespace Rocket.Surgery.Extensions.Marten.Conventions
 
             if (!string.IsNullOrEmpty(connectionString))
             {
-                context.Services.Configure<StoreOptions>(options => { options.Connection(connectionString); });
+                context.Services.Configure<StoreOptions>(options => options.Connection(connectionString));
             }
         }
     }

@@ -32,8 +32,8 @@ namespace Rocket.Surgery.Extensions.Marten.AspNetCore
         /// <returns>Task.</returns>
         public async Task Invoke(HttpContext httpContext, IDocumentSession session)
         {
-            await _next(httpContext);
-            await session.SaveChangesAsync(httpContext.RequestAborted);
+            await _next(httpContext).ConfigureAwait(false);
+            await session.SaveChangesAsync(httpContext.RequestAborted).ConfigureAwait(false);
         }
     }
 }

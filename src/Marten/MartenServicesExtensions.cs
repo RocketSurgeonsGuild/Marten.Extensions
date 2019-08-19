@@ -4,9 +4,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Rocket.Surgery.Extensions.DependencyInjection;
 using Rocket.Surgery.Extensions.Marten.Builders;
-using Rocket.Surgery.Extensions.Marten.Listeners;
 using Rocket.Surgery.Extensions.Marten.Projections;
-using Rocket.Surgery.Extensions.Marten.Security;
 
 namespace Rocket.Surgery.Extensions.Marten
 {
@@ -39,16 +37,11 @@ namespace Rocket.Surgery.Extensions.Marten
             services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<StoreOptions>, MartenProjectionsConfigureOptions>());
 
             services.TryAddScoped(c => c.GetRequiredService<IDocumentStore>().QuerySession());
-            services.AddTransient<IDocumentSessionListener, MartenDocumentSessionListener>();
 
             services.TryAddSingleton(_ => new DocumentStore(_.GetRequiredService<IOptions<StoreOptions>>().Value));
             services.TryAddTransient<IDocumentStore, TransientDocumentStore>();
-            services.TryAddTransient(_ => _.GetRequiredService<IDocumentStore>().SecureQuerySession(_.GetRequiredService<ISecurityQueryProvider>(), _.GetRequiredService<IMartenContext>()));
             services.TryAddSingleton<IDaemonFactory, DaemonFactory>();
             services.TryAddTransient(typeof(DaemonLogger<>));
-            services.TryAddTransient<ISecurityQueryProvider, SecurityQueryProvider>();
-            services.TryAddEnumerable(ServiceDescriptor.Transient<ISecurityQueryPart, HaveOwnerSecurityQueryPart>());
-            services.TryAddEnumerable(ServiceDescriptor.Transient<ISecurityQueryPart, CanBeAssignedSecurityQueryPart>());
             services.TryAddScoped<IMartenContext, MartenContext>();
         }
     }
