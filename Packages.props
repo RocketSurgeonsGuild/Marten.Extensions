@@ -26,9 +26,9 @@
     <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.0.0-preview8.19405.4" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="Marten" Version="3.6.2" />
-    <PackageReference Update="Marten.NodaTime" Version="1.1.2" />
-    <PackageReference Update="Marten.CommandLine" Version="3.6.2" />
+    <PackageReference Update="Marten" Version="3.7.0" />
+    <PackageReference Update="Marten.NodaTime" Version="1.2.0" />
+    <PackageReference Update="Marten.CommandLine" Version="3.7.0" />
     <PackageReference Update="Microsoft.AspNetCore.Hosting" Version="2.1.1" />
     <PackageReference Update="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
     <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="2.1.1" />
