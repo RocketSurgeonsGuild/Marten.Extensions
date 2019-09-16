@@ -30,7 +30,7 @@
     <PackageReference Update="Marten.NodaTime" Version="1.2.1" />
     <PackageReference Update="Marten.CommandLine" Version="3.7.1" />
     <PackageReference Update="Microsoft.AspNetCore.Hosting" Version="2.1.1" />
-    <PackageReference Update="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
+    <PackageReference Update="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="2.1.1" />
     <PackageReference Update="Microsoft.Azure.WebJobs" Version="3.0.10" />
     <PackageReference Update="Microsoft.Azure.WebJobs.Extensions" Version="3.0.2" />
