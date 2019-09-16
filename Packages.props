@@ -9,9 +9,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Nuke.Common" Version="0.21.2" />
-    <PackageReference Update="Rocket.Surgery.Nuke.DotNetCore" Version="0.3.8" />
+    <PackageReference Update="Rocket.Surgery.Nuke.DotNetCore" Version="0.4.1" />
     <PackageReference Update="GitVersion.CommandLine.DotNetCore" Version="5.0.1" />
-    <PackageReference Update="ReportGenerator" Version="4.2.15" />
+    <PackageReference Update="ReportGenerator" Version="4.2.19" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />
@@ -20,32 +20,32 @@
     <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0' and '$(TargetFramework)'!='netcoreapp2.1'">
-    <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="3.0.0-preview8.19405.4" />
-    <PackageReference Update="Microsoft.Extensions.Configuration" Version="3.0.0-preview8.19405.4" />
-    <PackageReference Update="Microsoft.Extensions.Options" Version="3.0.0-preview8.19405.4" />
-    <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.0.0-preview8.19405.4" />
+    <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="3.0.0-preview9.19423.4" />
+    <PackageReference Update="Microsoft.Extensions.Configuration" Version="3.0.0-preview9.19423.4" />
+    <PackageReference Update="Microsoft.Extensions.Options" Version="3.0.0-preview9.19423.4" />
+    <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.0.0-preview9.19423.4" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="Marten" Version="3.7.0" />
-    <PackageReference Update="Marten.NodaTime" Version="1.2.0" />
-    <PackageReference Update="Marten.CommandLine" Version="3.7.0" />
+    <PackageReference Update="Marten" Version="3.7.1" />
+    <PackageReference Update="Marten.NodaTime" Version="1.2.1" />
+    <PackageReference Update="Marten.CommandLine" Version="3.7.1" />
     <PackageReference Update="Microsoft.AspNetCore.Hosting" Version="2.1.1" />
     <PackageReference Update="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
     <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="2.1.1" />
     <PackageReference Update="Microsoft.Azure.WebJobs" Version="3.0.10" />
     <PackageReference Update="Microsoft.Azure.WebJobs.Extensions" Version="3.0.2" />
-    <PackageReference Update="NodaTime" Version="2.4.6" />
-    <PackageReference Update="NodaTime.Testing" Version="2.4.6" />
+    <PackageReference Update="NodaTime" Version="2.4.7" />
+    <PackageReference Update="NodaTime.Testing" Version="2.4.7" />
     <PackageReference Update="NodaTime.Serialization.JsonNet" Version="2.2.0" />
-    <PackageReference Update="Npgsql" Version="4.0.9" />
-    <PackageReference Update="Npgsql.NodaTime" Version="4.0.9" />
-    <PackageReference Update="Rocket.Surgery.Conventions" Version="7.0.5" />
-    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="7.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="7.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="7.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="7.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="7.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="7.0.5" />
+    <PackageReference Update="Npgsql" Version="4.0.10" />
+    <PackageReference Update="Npgsql.NodaTime" Version="4.0.10" />
+    <PackageReference Update="Rocket.Surgery.Conventions" Version="7.1.0" />
+    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="7.1.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="7.1.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="7.1.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="7.1.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="7.1.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="7.1.0" />
     <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="1.0.5" />
     <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="1.0.5" />
     <PackageReference Update="Scrutor" Version="3.1.0" />
@@ -54,17 +54,17 @@
     <PackageReference Update="Docker.DotNet" Version="3.125.2" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0' and '$(TargetFramework)'!='netcoreapp2.1'">
-    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="3.0.0-preview8.19405.7" />
+    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="3.0.0-preview9.19424.4" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="Rocket.Surgery.Extensions.Testing" Version="1.2.1" />
+    <PackageReference Update="Rocket.Surgery.Extensions.Testing" Version="1.2.3" />
     <PackageReference Update="Autofac.Extras.FakeItEasy" Version="5.0.1" />
-    <PackageReference Update="Bogus" Version="28.0.2" />
+    <PackageReference Update="Bogus" Version="28.2.1" />
     <PackageReference Update="coverlet.collector" Version="1.0.1" />
     <PackageReference Update="coverlet.msbuild" Version="2.6.3" />
-    <PackageReference Update="FakeItEasy" Version="5.1.1" />
-    <PackageReference Update="FakeItEasy.Analyzer.CSharp" Version="5.1.1" />
-    <PackageReference Update="FluentAssertions" Version="5.8.0" />
+    <PackageReference Update="FakeItEasy" Version="5.2.0" />
+    <PackageReference Update="FakeItEasy.Analyzer.CSharp" Version="5.2.0" />
+    <PackageReference Update="FluentAssertions" Version="5.9.0" />
     <PackageReference Update="FluentAssertions.Analyzers" Version="0.11.4" />
     <PackageReference Update="Microsoft.NET.Test.Sdk" Version="16.2.0" />
     <PackageReference Update="xunit" Version="2.4.1" />
