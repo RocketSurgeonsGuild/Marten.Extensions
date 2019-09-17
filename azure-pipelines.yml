@@ -41,18 +41,24 @@ jobs:
         parameters:
           NuGetVersion: "5.2.0"
 
-  - template: pipeline/nuke-job.yml@rsg
+  - job: Linux
+    dependsOn: GitVersion
+    pool:
+      vmImage: "ubuntu-latest"
     parameters:
-      name: 'Linux'
-      dependsOn: GitVersion
       vmImage: "ubuntu-latest"
       Postfix: ''
-      Configuration: $(Configuration)
-      Verbosity: $(Verbosity)
-      DotNet21Version: "2.1.x"
-      DotNetVersion: "2.2.x"
-      DotNet3Version: "3.0.100-preview9-014004"
-      NuGetVersion: "5.2.0"
+    steps:
+      - template: nuke/job-steps.yml@rsg
+        parameters:
+          Configuration: $(Configuration)
+          Verbosity: $(Verbosity)
+          DotNet21Version: "2.1.x"
+          DotNetVersion: "2.2.x"
+          DotNet3Version: "3.0.100-preview9-014004"
+          NuGetVersion: "5.2.0"
+          Targets: "Default"
+          Postfix: ''
 
   - ${{ if ne(variables['System.PullRequest.IsFork'], 'true') }}:
     - job: GitHub_Draft_Release
