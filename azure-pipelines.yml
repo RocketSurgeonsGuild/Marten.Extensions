@@ -45,9 +45,6 @@ jobs:
     dependsOn: GitVersion
     pool:
       vmImage: "ubuntu-latest"
-    parameters:
-      vmImage: "ubuntu-latest"
-      Postfix: ''
     steps:
       - template: nuke/job-steps.yml@rsg
         parameters:
