@@ -21,7 +21,7 @@ using ProjectionType = Rocket.Surgery.Extensions.Marten.Projections.ProjectionTy
 
 namespace Rocket.Surgery.Extensions.Marten.Tests
 {
-    public class InlineProjectionTests : AutoTestBase
+    public class InlineProjectionTests : AutoFakeTest
     {
         private readonly IServiceProvider _serviceProvider;
 

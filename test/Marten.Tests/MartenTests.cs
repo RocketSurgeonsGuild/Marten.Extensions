@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Rocket.Surgery.Extensions.Marten.Tests
 {
-    public class MartenServicesBuilderTests : AutoTestBase
+    public class MartenServicesBuilderTests : AutoFakeTest
     {
         public MartenServicesBuilderTests(ITestOutputHelper outputHelper) : base(outputHelper) { }
 
