@@ -41,7 +41,7 @@
     <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="8.0.0" />
     <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="8.0.0" />
     <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="1.0.5" />
-    <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="1.0.5" />
+    <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="1.0.6" />
     <PackageReference Update="Scrutor" Version="3.1.0" />
     <PackageReference Update="System.Security.Claims" Version="4.3.0" />
     <PackageReference Update="Rocket.Surgery.Extensions.Testing.Docker" Version="1.1.13" />
