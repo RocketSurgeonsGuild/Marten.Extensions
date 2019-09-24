@@ -14,7 +14,7 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.9.4
+      ref: refs/tags/v0.10.2
       endpoint: github
 
 variables:
@@ -41,7 +41,10 @@ jobs:
           NuGetVersion: "5.2.0"
 
   - job: Linux
-    dependsOn: GitVersion
+    dependsOn:
+      - GitVersion
+      - ${{ if startsWith(variables['Build.SourceBranch'], 'refs/tags/v') }}:
+          - GitHub_Draft_Release
     pool:
       vmImage: "ubuntu-latest"
     steps:
@@ -49,9 +52,9 @@ jobs:
         parameters:
           Configuration: $(Configuration)
           Verbosity: $(Verbosity)
-          DotNet21Version: "2.1.x"
-          DotNetVersion: "2.2.x"
-          DotNet3Version: "3.0.100-rc1-014190"
+          DotNetSdk:
+            - "2.2.x"
+            - "3.0.x"
           NuGetVersion: "5.2.0"
           Targets: "Default"
           Postfix: ''
@@ -83,7 +86,7 @@ jobs:
             Artifacts: "$(Pipeline.Workspace)/Nupkg/"
             NuGetVersion: "5.2.0"
             Verbosity: $(Verbosity)
-            GitHubPackages: false
+            GitHubPackages: true
 
     - job: GitHub_Release
       pool:
@@ -97,6 +100,6 @@ jobs:
         - template: gitversion/restore.yml@rsg
         - template: standard/github-release.yml@rsg
           parameters:
-            DotNet21Version: "2.1.x"
-            DotNetVersion: "2.2.x"
-            DotNet3Version: "3.0.100-rc1-014190"
+            DotNetSdk:
+              - "2.2.x"
+              - "3.0.x"
