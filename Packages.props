@@ -31,15 +31,15 @@
     <PackageReference Update="NodaTime" Version="2.4.7" />
     <PackageReference Update="NodaTime.Testing" Version="2.4.7" />
     <PackageReference Update="NodaTime.Serialization.JsonNet" Version="2.2.0" />
-    <PackageReference Update="Npgsql" Version="4.0.10" />
-    <PackageReference Update="Npgsql.NodaTime" Version="4.0.10" />
-    <PackageReference Update="Rocket.Surgery.Conventions" Version="8.0.1" />
-    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="8.0.1" />
-    <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="8.0.1" />
-    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="8.0.1" />
-    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
-    <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="8.0.1" />
-    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="8.0.1" />
+    <PackageReference Update="Npgsql" Version="4.1.0" />
+    <PackageReference Update="Npgsql.NodaTime" Version="4.1.0" />
+    <PackageReference Update="Rocket.Surgery.Conventions" Version="9.0.0" />
+    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="9.0.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="9.0.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="9.0.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="9.0.0" />
     <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="1.0.6" />
     <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="1.0.6" />
     <PackageReference Update="Scrutor" Version="3.1.0" />

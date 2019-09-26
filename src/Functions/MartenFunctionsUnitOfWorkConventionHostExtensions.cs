@@ -24,9 +24,8 @@ namespace Rocket.Surgery.Conventions
         /// <returns>IConventionHostBuilder.</returns>
         public static IConventionHostBuilder AddMartenUnitOfWorkFunctionFilter(this IConventionHostBuilder builder)
         {
-            var options = builder.Get<MartenOptions>() ?? new MartenOptions();
+            var options = builder.GetOrAdd(() => new MartenOptions());
             options.AutomaticUnitOfWork = true;
-            builder.Set(options);
             builder.Scanner.AppendConvention<MartenFunctionsUnitOfWorkConvention>();
             return builder;
         }

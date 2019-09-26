@@ -37,10 +37,9 @@ namespace Rocket.Surgery.Conventions
         /// <returns>IConventionHostBuilder.</returns>
         public static IConventionHostBuilder UseMartenLightweightTracking(this IConventionHostBuilder container)
         {
-            var options = container.Get<MartenOptions>() ?? new MartenOptions();
+            var options = container.GetOrAdd(() => new MartenOptions());
             options.UseSession = true;
             options.SessionTracking = DocumentTracking.None;
-            container.Set(options);
             return container;
         }
 
@@ -51,10 +50,9 @@ namespace Rocket.Surgery.Conventions
         /// <returns>IServiceConventionContext.</returns>
         public static IServiceConventionContext UseMartenLightweightTracking(this IServiceConventionContext container)
         {
-            var options = container.Get<MartenOptions>() ?? new MartenOptions();
+            var options = container.GetOrAdd(() => new MartenOptions());
             options.UseSession = true;
             options.SessionTracking = DocumentTracking.None;
-            container.Set(options);
             return container;
         }
 
@@ -65,10 +63,9 @@ namespace Rocket.Surgery.Conventions
         /// <returns>IConventionHostBuilder.</returns>
         public static IConventionHostBuilder UseMartenWithDirtyTracking(this IConventionHostBuilder container)
         {
-            var options = container.Get<MartenOptions>() ?? new MartenOptions();
+            var options = container.GetOrAdd(() => new MartenOptions());
             options.UseSession = true;
             options.SessionTracking = DocumentTracking.DirtyTracking;
-            container.Set(options);
             return container;
         }
 
@@ -79,10 +76,9 @@ namespace Rocket.Surgery.Conventions
         /// <returns>IServiceConventionContext.</returns>
         public static IServiceConventionContext UseMartenWithDirtyTracking(this IServiceConventionContext container)
         {
-            var options = container.Get<MartenOptions>() ?? new MartenOptions();
+            var options = container.GetOrAdd(() => new MartenOptions());
             options.UseSession = true;
             options.SessionTracking = DocumentTracking.DirtyTracking;
-            container.Set(options);
             return container;
         }
 
@@ -93,9 +89,8 @@ namespace Rocket.Surgery.Conventions
         /// <returns>IConventionHostBuilder.</returns>
         public static IConventionHostBuilder UseMartenUnitOfWork(this IConventionHostBuilder container)
         {
-            var options = container.Get<MartenOptions>() ?? new MartenOptions();
+            var options = container.GetOrAdd(() => new MartenOptions());
             options.AutomaticUnitOfWork= true;
-            container.Set(options);
             return container;
         }
 
@@ -106,9 +101,8 @@ namespace Rocket.Surgery.Conventions
         /// <returns>IServiceConventionContext.</returns>
         public static IServiceConventionContext UseMartenUnitOfWork(this IServiceConventionContext container)
         {
-            var options = container.Get<MartenOptions>() ?? new MartenOptions();
+            var options = container.GetOrAdd(() => new MartenOptions());
             options.AutomaticUnitOfWork= true;
-            container.Set(options);
             return container;
         }
 
