@@ -39,7 +39,7 @@
     <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="9.0.3" />
     <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="9.0.3" />
     <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="9.0.4" />
-    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="9.0.3" />
+    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="9.0.4" />
     <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="2.0.0" />
     <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="2.0.0" />
     <PackageReference Update="System.Security.Claims" Version="4.3.0" />
