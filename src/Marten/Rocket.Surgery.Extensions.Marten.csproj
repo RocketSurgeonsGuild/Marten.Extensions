@@ -19,7 +19,6 @@
     <PackageReference Include="Rocket.Surgery.Extensions.Logging.Abstractions" />
     <PackageReference Include="Rocket.Surgery.Linq.Extensions" />
     <PackageReference Include="Rocket.Surgery.Reactive.Extensions" />
-    <PackageReference Include="Scrutor" />
     <PackageReference Include="System.Security.Claims" />
   </ItemGroup>
   <ItemGroup>
