@@ -4,7 +4,7 @@
     <GlobalPackageReference Include="Rocket.Surgery.Build.Metadata" Version="3.3.11" Condition="'$(MSBuildProjectName)'!='.build'" />
     <!-- <GlobalPackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.3" /> -->
     <GlobalPackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0-preview.2" />
-    <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19367-01" />
+    <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19554-01" />
     <GlobalPackageReference Include="Roslynator.Analyzers" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
@@ -39,13 +39,13 @@
     <PackageReference Update="NodaTime.Serialization.JsonNet" Version="2.2.0" />
     <PackageReference Update="Npgsql" Version="4.1.1" />
     <PackageReference Update="Npgsql.NodaTime" Version="4.1.1" />
-    <PackageReference Update="Rocket.Surgery.Conventions" Version="9.0.5" />
-    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="9.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="9.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="9.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="9.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="9.0.5" />
-    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="9.0.5" />
+    <PackageReference Update="Rocket.Surgery.Conventions" Version="9.0.6" />
+    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="9.0.6" />
+    <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="9.0.6" />
+    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="9.0.6" />
+    <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
+    <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="9.0.6" />
+    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="9.0.6" />
     <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="2.0.1" />
     <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="2.0.1" />
     <PackageReference Update="System.Security.Claims" Version="4.3.0" />
