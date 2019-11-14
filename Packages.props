@@ -41,7 +41,7 @@
     <PackageReference Update="NodaTime" Version="2.4.7" />
     <PackageReference Update="NodaTime.Testing" Version="2.4.7" />
     <PackageReference Update="NodaTime.Serialization.JsonNet" Version="2.2.0" />
-    <PackageReference Update="Npgsql" Version="4.1.1" />
+    <PackageReference Update="Npgsql" Version="4.1.2" />
     <PackageReference Update="Npgsql.NodaTime" Version="4.1.1" />
     <PackageReference Update="Rocket.Surgery.Conventions" Version="9.0.6" />
     <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="9.0.6" />
