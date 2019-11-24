@@ -14,7 +14,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="GitVersion.Tool" Version="5.1.2" />
-    <PackageReference Update="JetBrains.ReSharper.CommandLineTools" Version="2019.3.0-eap05" />
+    <PackageReference Update="JetBrains.ReSharper.CommandLineTools" Version="2019.3.0-eap06" />
     <PackageReference Update="Nuke.Common" Version="0.23.4" />
     <PackageReference Update="ReportGenerator" Version="4.3.6" />
     <PackageReference Update="Rocket.Surgery.Nuke.DotNetCore" Version="0.8.3" />
@@ -46,13 +46,13 @@
     <PackageReference Update="Npgsql" Version="4.1.2" />
     <PackageReference Update="Npgsql.NodaTime" Version="4.1.2" />
     <PackageReference Update="Rocket.Surgery.Conventions" Version="9.0.7" />
-    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="9.0.6" />
+    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="9.0.7" />
     <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="9.0.7" />
     <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="9.0.7" />
     <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="9.0.7" />
     <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="9.0.7" />
-    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="9.0.6" />
-    <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="2.0.1" />
+    <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="9.0.7" />
+    <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="2.1.0" />
     <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="2.1.0" />
     <PackageReference Update="System.Security.Claims" Version="4.3.0" />
     <PackageReference Update="Rocket.Surgery.Extensions.Testing.Docker" Version="1.1.13" />
