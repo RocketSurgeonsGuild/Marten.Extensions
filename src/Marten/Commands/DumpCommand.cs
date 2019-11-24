@@ -67,7 +67,10 @@ namespace Rocket.Surgery.Extensions.Marten.Commands
                 }
                 catch (Exception)
                 {
-                    _logger.LogInformation("Unable to clean the directory at {FileName} before writing new files", FileName);
+                    _logger.LogInformation(
+                        "Unable to clean the directory at {FileName} before writing new files",
+                        FileName
+                    );
                 }
 
                 _store.Schema.WriteDDL(FileName, TransactionalScript);

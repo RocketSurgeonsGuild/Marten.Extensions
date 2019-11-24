@@ -9,11 +9,11 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
 {
     /// <summary>
     /// MartenConfigureOptions.
-    /// Implements the <see cref="IConfigureOptions{StoreOptions}" />
+    /// Implements the <see cref="IConfigureOptions{TOptions}" />
     /// </summary>
     /// <seealso cref="IConfigureOptions{StoreOptions}" />
     [UsedImplicitly]
-    class MartenConfigureOptions : IConfigureOptions<StoreOptions>
+    internal class MartenConfigureOptions : IConfigureOptions<StoreOptions>
     {
         private readonly ILoggerFactory _loggerFactory;
 
@@ -21,10 +21,7 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
         /// Initializes a new instance of the <see cref="MartenConfigureOptions" /> class.
         /// </summary>
         /// <param name="loggerFactory">The logger factory.</param>
-        public MartenConfigureOptions(ILoggerFactory loggerFactory)
-        {
-            _loggerFactory = loggerFactory;
-        }
+        public MartenConfigureOptions(ILoggerFactory loggerFactory) => _loggerFactory = loggerFactory;
 
         /// <summary>
         /// Configures the specified options.
@@ -32,8 +29,8 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
         /// <param name="options">The options.</param>
         public void Configure(StoreOptions options)
         {
-            options.UseDefaultSerialization(EnumStorage.AsString, Casing.CamelCase, CollectionStorage.Default);
-            options.UseNodaTime(true);
+            options.UseDefaultSerialization(EnumStorage.AsString, Casing.CamelCase);
+            options.UseNodaTime();
             options.AutoCreateSchemaObjects = AutoCreate.CreateOrUpdate;
             options.Events.StreamIdentity = StreamIdentity.AsString;
 

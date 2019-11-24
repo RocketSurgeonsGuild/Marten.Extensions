@@ -2,7 +2,6 @@ using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Rocket.Surgery.Conventions;
-using Rocket.Surgery.Extensions.DependencyInjection;
 using Rocket.Surgery.Extensions.Marten.Functions;
 using Rocket.Surgery.Extensions.WebJobs;
 
@@ -20,13 +19,12 @@ namespace Rocket.Surgery.Extensions.Marten.Functions
         private readonly MartenOptions _options;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MartenFunctionsUnitOfWorkConvention"/> class.
+        /// Initializes a new instance of the <see cref="MartenFunctionsUnitOfWorkConvention" /> class.
         /// </summary>
         /// <param name="options">The options.</param>
         public MartenFunctionsUnitOfWorkConvention(MartenOptions? options = null)
-        {
-            _options = options ?? new MartenOptions();
-        }
+            => _options = options ?? new MartenOptions();
+
         /// <summary>
         /// Registers the specified context.
         /// </summary>

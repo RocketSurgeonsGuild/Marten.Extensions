@@ -2,17 +2,16 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using Marten;
 using Microsoft.Extensions.Options;
-using Rocket.Surgery.Conventions.Reflection;
 
 namespace Rocket.Surgery.Extensions.Marten.Builders
 {
     /// <summary>
     /// MartenRegistryConfigureOptions.
-    /// Implements the <see cref="IConfigureOptions{StoreOptions}" />
+    /// Implements the <see cref="IConfigureOptions{TOptions}" />
     /// </summary>
     /// <seealso cref="IConfigureOptions{StoreOptions}" />
     [UsedImplicitly]
-    class MartenRegistryConfigureOptions : IConfigureOptions<StoreOptions>
+    internal class MartenRegistryConfigureOptions : IConfigureOptions<StoreOptions>
     {
         private readonly IEnumerable<MartenRegistry> _martenRegistries;
 
@@ -21,9 +20,7 @@ namespace Rocket.Surgery.Extensions.Marten.Builders
         /// </summary>
         /// <param name="martenRegistries">The marten registries.</param>
         public MartenRegistryConfigureOptions(IEnumerable<MartenRegistry> martenRegistries)
-        {
-            _martenRegistries = martenRegistries;
-        }
+            => _martenRegistries = martenRegistries;
 
         /// <summary>
         /// Invoked to configure a <cref name="StoreOptions" /> instance.

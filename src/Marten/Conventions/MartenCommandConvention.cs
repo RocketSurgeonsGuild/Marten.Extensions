@@ -18,9 +18,6 @@ namespace Rocket.Surgery.Extensions.Marten.Conventions
         /// Registers the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public void Register(ICommandLineConventionContext context)
-        {
-            context.AddCommand<MartenCommand>();
-        }
+        public void Register(ICommandLineConventionContext context) => context.AddCommand<MartenCommand>();
     }
 }

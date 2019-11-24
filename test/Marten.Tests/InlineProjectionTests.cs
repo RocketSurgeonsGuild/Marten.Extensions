@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -7,7 +7,6 @@ using Marten.Events;
 using Marten.Events.Projections;
 using Marten.Events.Projections.Async;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Rocket.Surgery.Conventions;
 using Rocket.Surgery.Conventions.Reflection;
@@ -23,14 +22,38 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
 {
     public class InlineProjectionTests : AutoFakeTest
     {
-        private readonly IServiceProvider _serviceProvider;
+        [Fact]
+        public void ShouldContainerAllAggregatedTypes()
+        {
+            var options = _serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;
+
+            options.Events.InlineProjections.Should().Contain(
+                x => x.GetType() == typeof(AggregationProjection<InlineProjectionAttributed>)
+            );
+            options.Events.InlineProjections.Should().Contain(x => x.GetType() == typeof(InlineProjection));
+            options.Events.InlineProjections.Should()
+               .Contain(x => x.GetType() == typeof(OneForOneProjection<Dto, View>));
+
+            options.Events.AsyncProjections.Should().Contain(
+                x => x.GetType() == typeof(AggregationProjection<AsyncProjectionAttributed>)
+            );
+            options.Events.AsyncProjections.Should().Contain(x => x.GetType() == typeof(AsyncProjection));
+            options.Events.AsyncProjections.Should()
+               .Contain(x => x.GetType() == typeof(OneForOneProjection<Dto, View>));
+        }
 
         public InlineProjectionTests(ITestOutputHelper outputHelper) : base(outputHelper)
         {
             AutoFake.Provide<IServiceCollection>(new ServiceCollection());
             AutoFake.Provide<IAssemblyProvider>(new TestAssemblyProvider());
             AutoFake.Provide<IAssemblyCandidateFinder>(new TestAssemblyCandidateFinder());
-            AutoFake.Provide<IConventionScanner>(new AggregateConventionScanner(new TestAssemblyCandidateFinder(), new ServiceProviderDictionary(), Logger));
+            AutoFake.Provide<IConventionScanner>(
+                new AggregateConventionScanner(
+                    new TestAssemblyCandidateFinder(),
+                    new ServiceProviderDictionary(),
+                    Logger
+                )
+            );
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddTransient<IInlineProjection, InlineProjection>();
@@ -39,96 +62,67 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             servicesBuilder.Services.AddTransient<IAsyncProjection, AsyncTransform>();
             servicesBuilder.Services.AddSingleton(LoggerFactory);
             var martenBuilder = servicesBuilder
-                .WithMarten();
+               .WithMarten();
             _serviceProvider = servicesBuilder.Build();
         }
 
-        [Fact]
-        public void ShouldContainerAllAggregatedTypes()
-        {
-            var options = _serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;
+        private readonly IServiceProvider _serviceProvider;
 
-            options.Events.InlineProjections.Should().Contain(x => x.GetType() == typeof(AggregationProjection<InlineProjectionAttributed>));
-            options.Events.InlineProjections.Should().Contain(x => x.GetType() == typeof(InlineProjection));
-            options.Events.InlineProjections.Should().Contain(x => x.GetType() == typeof(OneForOneProjection<Dto, View>));
-
-            options.Events.AsyncProjections.Should().Contain(x => x.GetType() == typeof(AggregationProjection<AsyncProjectionAttributed>));
-            options.Events.AsyncProjections.Should().Contain(x => x.GetType() == typeof(AsyncProjection));
-            options.Events.AsyncProjections.Should().Contain(x => x.GetType() == typeof(OneForOneProjection<Dto, View>));
-        }
-
-        [Projection(ProjectionType.Inline)]
-        class InlineProjectionAttributed
+#nullable disable
+        [Projection()]
+        private class InlineProjectionAttributed
         {
             public string Id { get; set; }
         }
 
         [Projection(ProjectionType.Async)]
-        class AsyncProjectionAttributed
+        private class AsyncProjectionAttributed
         {
             public string Id { get; set; }
         }
 
-        class Dto
+        private class Dto
         {
             public string Id { get; set; }
         }
 
-        class View
+        private class View
         {
             public string Id { get; set; }
         }
-
-        class InlineProjection : DocumentProjection<Dto>, IDocumentProjection, IInlineProjection
+#nullable restore
+        private class InlineProjection : DocumentProjection<Dto>, IDocumentProjection, IInlineProjection
         {
             public Type[] Consumes => throw new NotImplementedException();
 
             public AsyncOptions AsyncOptions => throw new NotImplementedException();
 
-            public void Apply(IDocumentSession session, EventPage page)
-            {
-                throw new NotImplementedException();
-            }
+            public void Apply(IDocumentSession session, EventPage page) => throw new NotImplementedException();
 
             public Task ApplyAsync(IDocumentSession session, EventPage page, CancellationToken token)
-            {
-                throw new NotImplementedException();
-            }
+                => throw new NotImplementedException();
         }
 
-        class AsyncProjection : DocumentProjection<Dto>, IDocumentProjection, IAsyncProjection
+        private class AsyncProjection : DocumentProjection<Dto>, IDocumentProjection, IAsyncProjection
         {
             public Type[] Consumes => throw new NotImplementedException();
 
             public AsyncOptions AsyncOptions => throw new NotImplementedException();
 
-            public void Apply(IDocumentSession session, EventPage page)
-            {
-                throw new NotImplementedException();
-            }
+            public void Apply(IDocumentSession session, EventPage page) => throw new NotImplementedException();
 
             public Task ApplyAsync(IDocumentSession session, EventPage page, CancellationToken token)
-            {
-                throw new NotImplementedException();
-            }
+                => throw new NotImplementedException();
         }
 
-        class InlineTransform : ITransform<Dto, View>, IInlineProjection
+        private class InlineTransform : ITransform<Dto, View>, IInlineProjection
         {
-            public View Transform(EventStream stream, Event<Dto> input)
-            {
-                throw new NotImplementedException();
-            }
+            public View Transform(EventStream stream, Event<Dto> input) => throw new NotImplementedException();
         }
 
-        class AsyncTransform : ITransform<Dto, View>, IAsyncProjection
+        private class AsyncTransform : ITransform<Dto, View>, IAsyncProjection
         {
-            public View Transform(EventStream stream, Event<Dto> input)
-            {
-                throw new NotImplementedException();
-            }
+            public View Transform(EventStream stream, Event<Dto> input) => throw new NotImplementedException();
         }
-
-
     }
 }

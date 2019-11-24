@@ -1,7 +1,5 @@
 using JetBrains.Annotations;
-using Marten;
 using McMaster.Extensions.CommandLineUtils;
-using Microsoft.Extensions.Options;
 
 namespace Rocket.Surgery.Extensions.Marten.Commands
 {
@@ -14,7 +12,7 @@ namespace Rocket.Surgery.Extensions.Marten.Commands
     [Subcommand(typeof(AssertCommand))]
     [Subcommand(typeof(ApplyCommand))]
     [Subcommand(typeof(DumpCommand))]
-    class MartenCommand
+    internal class MartenCommand
     {
         private readonly CommandLineApplication _application;
 
@@ -22,10 +20,7 @@ namespace Rocket.Surgery.Extensions.Marten.Commands
         /// Initializes a new instance of the <see cref="MartenCommand" /> class.
         /// </summary>
         /// <param name="application">The application.</param>
-        public MartenCommand(CommandLineApplication application)
-        {
-            _application = application;
-        }
+        public MartenCommand(CommandLineApplication application) => _application = application;
 
         /// <summary>
         /// Called when [execute].

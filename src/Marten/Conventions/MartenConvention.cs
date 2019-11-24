@@ -6,12 +6,12 @@ using Rocket.Surgery.Conventions;
 using Rocket.Surgery.Extensions.DependencyInjection;
 using Rocket.Surgery.Extensions.Marten.Conventions;
 
-[assembly:Convention(typeof(MartenConvention))]
+[assembly: Convention(typeof(MartenConvention))]
 
 namespace Rocket.Surgery.Extensions.Marten.Conventions
 {
     /// <summary>
-    ///  MartenConvention.
+    /// MartenConvention.
     /// Implements the <see cref="IServiceConvention" />
     /// </summary>
     /// <seealso cref="IServiceConvention" />
@@ -20,13 +20,10 @@ namespace Rocket.Surgery.Extensions.Marten.Conventions
         private readonly MartenOptions _options;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MartenConvention"/> class.
+        /// Initializes a new instance of the <see cref="MartenConvention" /> class.
         /// </summary>
         /// <param name="options">The options.</param>
-        public MartenConvention(MartenOptions? options = null)
-        {
-            _options = options ?? new MartenOptions();
-        }
+        public MartenConvention(MartenOptions? options = null) => _options = options ?? new MartenOptions();
 
         /// <summary>
         /// Registers the specified context.
@@ -37,14 +34,17 @@ namespace Rocket.Surgery.Extensions.Marten.Conventions
             context.WithMarten();
 
             var connectionString =
-                !string.IsNullOrEmpty(_options.ConnectionString) ? _options.ConnectionString :
-                context.Configuration.GetValue<string?>("PostgresSql:ConnectionString", null)
-                ?? context.Configuration.GetValue<string?>("Postgres:ConnectionString", null)
-                ?? context.Configuration.GetValue<string?>("Marten:ConnectionString", null);
+                !string.IsNullOrEmpty(_options.ConnectionString)
+                    ? _options.ConnectionString
+                    : context.Configuration.GetValue<string?>("PostgresSql:ConnectionString", null)
+                 ?? context.Configuration.GetValue<string?>("Postgres:ConnectionString", null)
+                 ?? context.Configuration.GetValue<string?>("Marten:ConnectionString", null);
 
             if (_options.UseSession)
             {
-                context.Services.TryAddScoped(c => c.GetRequiredService<IDocumentStore>().OpenSession(_options.SessionTracking));
+                context.Services.TryAddScoped(
+                    c => c.GetRequiredService<IDocumentStore>().OpenSession(_options.SessionTracking)
+                );
             }
 
             if (!string.IsNullOrEmpty(connectionString))

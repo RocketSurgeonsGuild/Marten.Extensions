@@ -15,9 +15,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         /// </summary>
         /// <param name="projectionType">Type of the projection.</param>
         public ProjectionAttribute(ProjectionType projectionType = ProjectionType.Inline)
-        {
-            ProjectionType = projectionType;
-        }
+            => ProjectionType = projectionType;
 
         /// <summary>
         /// Gets or sets the type of the projection.

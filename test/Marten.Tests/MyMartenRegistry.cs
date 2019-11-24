@@ -1,9 +1,9 @@
-﻿using Marten;
+using Marten;
 using Microsoft.Extensions.Logging;
 
 namespace Rocket.Surgery.Extensions.Marten.Tests
 {
-    class MyMartenRegistry : MartenRegistry
+    internal class MyMartenRegistry : MartenRegistry
     {
         public MyMartenRegistry(ILoggerFactory factory)
         {
@@ -11,8 +11,11 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             logger.LogInformation($"Hello from {nameof(MyMartenRegistry)}");
         }
     }
-    class MartenContext : IMartenContext
+
+#nullable disable
+    internal class MartenContext : IMartenContext
     {
         public IMartenUser User { get; set; }
     }
+#nullable restore
 }

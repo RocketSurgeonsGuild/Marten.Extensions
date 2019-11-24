@@ -13,7 +13,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
     /// </summary>
     /// <seealso cref="IDaemonFactory" />
     [UsedImplicitly]
-    class DaemonFactory : IDaemonFactory
+    internal class DaemonFactory : IDaemonFactory
     {
         private readonly IDocumentStore _store;
         private readonly ILoggerFactory _factory;
@@ -37,15 +37,17 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         /// <param name="settings">The settings.</param>
         /// <param name="projections">The projections.</param>
         /// <returns>IDaemon.</returns>
-        public IDaemon CreateDaemon(Type loggerType, Type[]? viewTypes = null, DaemonSettings? settings = null, IProjection[]? projections = null)
-        {
-            return _store.BuildProjectionDaemon(
-                logger: new DaemonLogger(_factory, loggerType),
-                viewTypes: viewTypes,
-                settings: settings,
-                projections: projections
-            );
-        }
+        public IDaemon CreateDaemon(
+            Type loggerType,
+            Type[]? viewTypes = null,
+            DaemonSettings? settings = null,
+            IProjection[]? projections = null
+        ) => _store.BuildProjectionDaemon(
+            logger: new DaemonLogger(_factory, loggerType),
+            viewTypes: viewTypes,
+            settings: settings,
+            projections: projections
+        );
 
         /// <summary>
         /// Creates the daemon.
@@ -55,14 +57,16 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
         /// <param name="settings">The settings.</param>
         /// <param name="projections">The projections.</param>
         /// <returns>IDaemon.</returns>
-        public IDaemon CreateDaemon(ILogger logger, Type[]? viewTypes = null, DaemonSettings? settings = null, IProjection[]? projections = null)
-        {
-            return _store.BuildProjectionDaemon(
-                logger: new DaemonLogger(logger),
-                viewTypes: viewTypes,
-                settings: settings,
-                projections: projections
-            );
-        }
+        public IDaemon CreateDaemon(
+            ILogger logger,
+            Type[]? viewTypes = null,
+            DaemonSettings? settings = null,
+            IProjection[]? projections = null
+        ) => _store.BuildProjectionDaemon(
+            logger: new DaemonLogger(logger),
+            viewTypes: viewTypes,
+            settings: settings,
+            projections: projections
+        );
     }
 }

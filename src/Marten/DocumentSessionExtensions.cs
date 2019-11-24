@@ -1,9 +1,7 @@
-﻿using Marten;
-using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System;
 using System.Collections.Generic;
-using System.Security.Claims;
-using System.Linq;
+using Marten;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Rocket.Surgery.Extensions.Marten
 {
@@ -18,10 +16,16 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <param name="documentSession">The document session.</param>
         /// <param name="serviceProvider">The service provider.</param>
         /// <returns>IDocumentSession.</returns>
-        public static IDocumentSession RegisterListeners(this IDocumentSession documentSession, IServiceProvider serviceProvider)
+        public static IDocumentSession RegisterListeners(
+            this IDocumentSession documentSession,
+            IServiceProvider serviceProvider
+        )
         {
             foreach (var listener in serviceProvider.GetServices<IDocumentSessionListener>())
+            {
                 documentSession.Listeners.Add(listener);
+            }
+
             return documentSession;
         }
 
@@ -31,10 +35,16 @@ namespace Rocket.Surgery.Extensions.Marten
         /// <param name="documentSession">The document session.</param>
         /// <param name="documentSessionListeners">The document session listeners.</param>
         /// <returns>IDocumentSession.</returns>
-        internal static IDocumentSession RegisterListeners(this IDocumentSession documentSession, IEnumerable<IDocumentSessionListener> documentSessionListeners)
+        internal static IDocumentSession RegisterListeners(
+            this IDocumentSession documentSession,
+            IEnumerable<IDocumentSessionListener> documentSessionListeners
+        )
         {
             foreach (var listener in documentSessionListeners)
+            {
                 documentSession.Listeners.Add(listener);
+            }
+
             return documentSession;
         }
     }

@@ -32,9 +32,15 @@ namespace Rocket.Surgery.Extensions.Marten
 
         private static void DefaultServices(IServiceCollection services)
         {
-            services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<StoreOptions>, MartenConfigureOptions>());
-            services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<StoreOptions>, MartenRegistryConfigureOptions>());
-            services.TryAddEnumerable(ServiceDescriptor.Transient<IConfigureOptions<StoreOptions>, MartenProjectionsConfigureOptions>());
+            services.TryAddEnumerable(
+                ServiceDescriptor.Transient<IConfigureOptions<StoreOptions>, MartenConfigureOptions>()
+            );
+            services.TryAddEnumerable(
+                ServiceDescriptor.Transient<IConfigureOptions<StoreOptions>, MartenRegistryConfigureOptions>()
+            );
+            services.TryAddEnumerable(
+                ServiceDescriptor.Transient<IConfigureOptions<StoreOptions>, MartenProjectionsConfigureOptions>()
+            );
 
             services.TryAddScoped(c => c.GetRequiredService<IDocumentStore>().QuerySession());
 

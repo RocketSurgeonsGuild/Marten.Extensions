@@ -4,7 +4,6 @@ using FakeItEasy;
 using FluentAssertions;
 using Marten;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NodaTime;
 using NodaTime.Testing;
@@ -21,8 +20,6 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
 {
     public class MartenServicesBuilderTests : AutoFakeTest
     {
-        public MartenServicesBuilderTests(ITestOutputHelper outputHelper) : base(outputHelper) { }
-
         [Fact]
         public void MustRegisterListeners_Implicitly()
         {
@@ -33,21 +30,27 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             AutoFake.Provide<IDictionary<object, object?>>(serviceProviderDictionary);
             var scanner = AutoFake.Resolve<SimpleConventionScanner>();
             AutoFake.Provide<IConventionScanner>(scanner);
-            serviceProviderDictionary.Set(new MartenOptions()
-            {
-                SessionTracking = DocumentTracking.DirtyTracking,
-                UseSession = true
-            });
+            serviceProviderDictionary.Set(
+                new MartenOptions
+                {
+                    SessionTracking = DocumentTracking.DirtyTracking,
+                    UseSession = true
+                }
+            );
             var servicesBuilder = AutoFake.Resolve<ServicesBuilder>();
             servicesBuilder.Scanner.AppendConvention<MartenConvention>();
             servicesBuilder.Services.AddSingleton(A.Fake<IDocumentSessionListener>());
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddSingleton(LoggerFactory);
             servicesBuilder.Services.AddSingleton<IClock>(
-                new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now),
-                Duration.FromSeconds(1))
+                new FakeClock(
+                    Instant.FromDateTimeOffset(DateTimeOffset.Now),
+                    Duration.FromSeconds(1)
+                )
             );
-            servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<string>(() => "abc123") });
+            servicesBuilder.Services.AddScoped<IMartenContext>(
+                _ => new MartenContext { User = new MartenUser<string>(() => "abc123") }
+            );
 
             var serviceProvider = servicesBuilder.Build();
             var options = serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;
@@ -72,11 +75,15 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             servicesBuilder.Services.AddTransient<MartenRegistry, MyMartenRegistry>();
             servicesBuilder.Services.AddSingleton(LoggerFactory);
             servicesBuilder.Services.AddSingleton<IClock>(
-                new FakeClock(Instant.FromDateTimeOffset(DateTimeOffset.Now),
-                    Duration.FromSeconds(1))
+                new FakeClock(
+                    Instant.FromDateTimeOffset(DateTimeOffset.Now),
+                    Duration.FromSeconds(1)
+                )
             );
             var martenBuilder = servicesBuilder.WithMarten();
-            servicesBuilder.Services.AddScoped<IMartenContext>(_ => new MartenContext() { User = new MartenUser<string>(() => "abc123") });
+            servicesBuilder.Services.AddScoped<IMartenContext>(
+                _ => new MartenContext { User = new MartenUser<string>(() => "abc123") }
+            );
 
             var serviceProvider = servicesBuilder.Build();
             var options = serviceProvider.GetRequiredService<IOptions<StoreOptions>>().Value;
@@ -88,5 +95,7 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
                 session.Listeners.Count.Should().Be(1);
             }
         }
+
+        public MartenServicesBuilderTests(ITestOutputHelper outputHelper) : base(outputHelper) { }
     }
 }

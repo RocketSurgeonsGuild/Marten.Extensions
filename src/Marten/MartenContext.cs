@@ -8,7 +8,7 @@ namespace Rocket.Surgery.Extensions.Marten
     /// </summary>
     /// <seealso cref="IMartenContext" />
     [UsedImplicitly]
-    class MartenContext : IMartenContext
+    internal class MartenContext : IMartenContext
     {
         /// <summary>
         /// Gets or sets the user.

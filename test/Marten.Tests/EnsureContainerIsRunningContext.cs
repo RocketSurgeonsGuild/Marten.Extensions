@@ -5,7 +5,7 @@ using Rocket.Surgery.Extensions.Testing.Docker;
 
 namespace Rocket.Surgery.Extensions.Marten.Tests
 {
-    class EnsureContainerIsRunningContext : IEnsureContainerIsRunningContext
+    internal class EnsureContainerIsRunningContext : IEnsureContainerIsRunningContext
     {
         private readonly Func<IList<ContainerListResponse>, ContainerListResponse> _getContainer;
         private readonly Func<CreateContainerParameters, CreateContainerParameters> _createContainer;
@@ -25,24 +25,15 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             _imageCreate = imageCreate ?? throw new ArgumentNullException(nameof(imageCreate));
         }
 
-        public ContainerListResponse GetContainer(IList<ContainerListResponse> responses)
-        {
-            return _getContainer(responses);
-        }
+        public ContainerListResponse GetContainer(IList<ContainerListResponse> responses) => _getContainer(responses);
 
         public CreateContainerParameters CreateContainer(CreateContainerParameters createContainerParameters)
-        {
-            return _createContainer(createContainerParameters);
-        }
+            => _createContainer(createContainerParameters);
 
         public ContainerStartParameters StartContainer(ContainerStartParameters containerStartParameters)
-        {
-            return _startContainer(containerStartParameters);
-        }
+            => _startContainer(containerStartParameters);
 
         public ImagesCreateParameters CreateImage(ImagesCreateParameters imagesCreateParameters)
-        {
-            return _imageCreate(imagesCreateParameters);
-        }
+            => _imageCreate(imagesCreateParameters);
     }
 }

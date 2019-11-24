@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,10 +13,8 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
         public static Task<string> EnsureContainerIsRunning(
             DockerClient client,
             IEnsureContainerIsRunningContext context,
-            CancellationToken token)
-        {
-            return EnsureContainerIsRunningInternal(client, context, token);
-        }
+            CancellationToken token
+        ) => EnsureContainerIsRunningInternal(client, context, token);
 
         public static Task<string> EnsureContainerIsRunning(
             DockerClient client,
@@ -24,26 +22,25 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             Func<CreateContainerParameters, CreateContainerParameters> createContainer,
             Func<ContainerStartParameters, ContainerStartParameters> startContainer,
             Func<ImagesCreateParameters, ImagesCreateParameters> imageCreate,
-            CancellationToken token)
-        {
-            return EnsureContainerIsRunningInternal(
-                client,
-                new EnsureContainerIsRunningContext(
-                    getContainer,
-                    createContainer,
-                    startContainer,
-                    imageCreate
-                ),
-                token
-            );
-        }
+            CancellationToken token
+        ) => EnsureContainerIsRunningInternal(
+            client,
+            new EnsureContainerIsRunningContext(
+                getContainer,
+                createContainer,
+                startContainer,
+                imageCreate
+            ),
+            token
+        );
 
         private static async Task<string> EnsureContainerIsRunningInternal(
             DockerClient client,
             IEnsureContainerIsRunningContext context,
-            CancellationToken token)
+            CancellationToken token
+        )
         {
-            string id = null;
+            string? id;
 
             async Task<bool> IsContainerRunning(string identity)
             {
@@ -54,10 +51,12 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
             async Task<ContainerListResponse> GetContainer()
             {
                 var containers = await client.Containers.ListContainersAsync(
-                    new ContainersListParameters()
+                    new ContainersListParameters
                     {
-                        All = true,
-                    }, token);
+                        All = true
+                    },
+                    token
+                );
                 return context.GetContainer(containers);
             }
 
@@ -82,9 +81,9 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
                             var createImageParams = context.CreateImage(new ImagesCreateParameters());
                             await client.Images.CreateImageAsync(
                                 createImageParams,
-                                new AuthConfig()
+                                new AuthConfig
                                 {
-                                    ServerAddress = "hub.docker.com",
+                                    ServerAddress = "hub.docker.com"
                                 },
                                 new Progress<JSONMessage>(),
                                 token
@@ -100,15 +99,18 @@ namespace Rocket.Surgery.Extensions.Marten.Tests
                         }
                     }
 
-                    id = listContainer?.ID;
+                    id = listContainer?.ID!;
                     token.ThrowIfCancellationRequested();
                 } while (string.IsNullOrEmpty(id));
             }
 
             if (!await IsContainerRunning(id))
             {
-                await client.Containers.StartContainerAsync(id,
-                    context.StartContainer(new ContainerStartParameters()), token);
+                await client.Containers.StartContainerAsync(
+                    id,
+                    context.StartContainer(new ContainerStartParameters()),
+                    token
+                );
             }
 
             return id;

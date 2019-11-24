@@ -9,6 +9,7 @@
         /// The inline
         /// </summary>
         Inline,
+
         /// <summary>
         /// The asynchronous
         /// </summary>

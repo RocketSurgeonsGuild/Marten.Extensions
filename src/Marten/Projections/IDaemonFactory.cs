@@ -1,12 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
 using Marten.Events.Projections;
 using Marten.Events.Projections.Async;
 using Microsoft.Extensions.Logging;
-using Rocket.Surgery.Conventions.Reflection;
 
 namespace Rocket.Surgery.Extensions.Marten.Projections
 {
@@ -27,7 +22,8 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
             Type loggerType,
             Type[]? viewTypes = null,
             DaemonSettings? settings = null,
-            IProjection[]? projections = null);
+            IProjection[]? projections = null
+        );
 
         /// <summary>
         /// Creates the daemon.
@@ -41,6 +37,7 @@ namespace Rocket.Surgery.Extensions.Marten.Projections
             ILogger logger,
             Type[]? viewTypes = null,
             DaemonSettings? settings = null,
-            IProjection[]? projections = null);
+            IProjection[]? projections = null
+        );
     }
 }

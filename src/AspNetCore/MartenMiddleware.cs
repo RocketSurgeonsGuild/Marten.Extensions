@@ -1,9 +1,7 @@
-using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Marten;
 using Microsoft.AspNetCore.Http;
-using Rocket.Surgery.Conventions;
 
 namespace Rocket.Surgery.Extensions.Marten.AspNetCore
 {
@@ -11,7 +9,7 @@ namespace Rocket.Surgery.Extensions.Marten.AspNetCore
     /// Middleware that ensures that changes are saved after each request
     /// </summary>
     [UsedImplicitly]
-    class MartenMiddleware
+    internal class MartenMiddleware
     {
         private readonly RequestDelegate _next;
 
@@ -19,10 +17,7 @@ namespace Rocket.Surgery.Extensions.Marten.AspNetCore
         /// Initializes a new instance of the <see cref="MartenMiddleware" /> class.
         /// </summary>
         /// <param name="next">The next.</param>
-        public MartenMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
+        public MartenMiddleware(RequestDelegate next) => _next = next;
 
         /// <summary>
         /// Invokes the specified HTTP context.

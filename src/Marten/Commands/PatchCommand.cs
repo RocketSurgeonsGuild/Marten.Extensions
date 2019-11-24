@@ -3,7 +3,6 @@ using Marten;
 using Marten.Schema;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Rocket.Surgery.Extensions.Marten.Commands
 {
@@ -11,7 +10,11 @@ namespace Rocket.Surgery.Extensions.Marten.Commands
     /// PatchCommand.
     /// </summary>
     [UsedImplicitly]
-    [Command("patch", Description = "Evaluates the current configuration against the database and writes a patch and drop file if there are any differences")]
+    [Command(
+        "patch",
+        Description =
+            "Evaluates the current configuration against the database and writes a patch and drop file if there are any differences"
+    )]
     public class PatchCommand
     {
         private readonly IDocumentStore _store;
@@ -67,13 +70,15 @@ namespace Rocket.Surgery.Extensions.Marten.Commands
             try
             {
                 _store.Schema.AssertDatabaseMatchesConfiguration();
-                _logger.LogInformation("No differences were detected between the Marten configuration and the database");
+                _logger.LogInformation(
+                    "No differences were detected between the Marten configuration and the database"
+                );
 
                 return 0;
             }
             catch (SchemaValidationException)
             {
-                var patch = _store.Schema.ToPatch(Schema, withAutoCreateAll: AutoCreateAll);
+                var patch = _store.Schema.ToPatch(Schema, AutoCreateAll);
 
                 _logger.LogInformation("Wrote a patch file to {FileName}", FileName);
                 patch.WriteUpdateFile(FileName, TransactionalScript);

@@ -10,7 +10,10 @@ namespace Rocket.Surgery.Extensions.Marten.Commands
     /// DumpCommand.
     /// </summary>
     [UsedImplicitly]
-    [Command("apply", Description = "Applies all outstanding changes to the database based on the current configuration")]
+    [Command(
+        "apply",
+        Description = "Applies all outstanding changes to the database based on the current configuration"
+    )]
     public class ApplyCommand
     {
         private readonly IDocumentStore _store;

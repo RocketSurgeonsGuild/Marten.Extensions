@@ -19,6 +19,8 @@ namespace Rocket.Surgery.Extensions.Marten
         private readonly IPagedList<object> _pagedList;
         private readonly Func<object, T> _mapper;
 
+        private T[]? _values;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MappedPagedList{T}" /> class.
         /// </summary>
@@ -31,18 +33,18 @@ namespace Rocket.Surgery.Extensions.Marten
         }
 
         /// <summary>
+        /// Gets the values.
+        /// </summary>
+        /// <value>The values.</value>
+        public IEnumerable<T> Values => _values ?? ( _values = this.ToArray() );
+
+        /// <summary>
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
         /// <returns>An enumerator that can be used to iterate through the collection.</returns>
-        public IEnumerator<T> GetEnumerator()
-        {
-            return _pagedList.Select(_mapper).GetEnumerator();
-        }
+        public IEnumerator<T> GetEnumerator() => _pagedList.Select(_mapper).GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable)_pagedList).GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => ( (IEnumerable)_pagedList ).GetEnumerator();
 
         /// <summary>
         /// Gets the at the specified index.
@@ -116,12 +118,5 @@ namespace Rocket.Surgery.Extensions.Marten
         /// </summary>
         /// <value>The last item on page.</value>
         public long LastItemOnPage => _pagedList.LastItemOnPage;
-
-        private T[]? _values;
-        /// <summary>
-        /// Gets the values.
-        /// </summary>
-        /// <value>The values.</value>
-        public IEnumerable<T> Values => _values ?? (_values = this.ToArray());
     }
 }

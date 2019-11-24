@@ -22,73 +22,61 @@ namespace Rocket.Surgery.Extensions.Marten
         /// Initializes a new instance of the <see cref="MartenLogger" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
-        public MartenLogger(ILogger logger)
-        {
-            _logger = logger;
-        }
+        public MartenLogger(ILogger logger) => _logger = logger;
 
         /// <summary>
         /// Starts the session.
         /// </summary>
         /// <param name="session">The session.</param>
         /// <returns>IMartenSessionLogger.</returns>
-        public IMartenSessionLogger StartSession(IQuerySession session)
-        {
-            return this;
-        }
+        public IMartenSessionLogger StartSession(IQuerySession session) => this;
 
         /// <summary>
         /// Schemas the change.
         /// </summary>
         /// <param name="sql">The SQL.</param>
-        public void SchemaChange(string sql)
-        {
-            _logger.LogTrace("Executing DDL change:\n{Sql}", sql);
-        }
+        public void SchemaChange(string sql) => _logger.LogTrace("Executing DDL change:\n{Sql}", sql);
 
         /// <summary>
         /// Log a command that executed successfully
         /// </summary>
         /// <param name="command">The command.</param>
-        public void LogSuccess(NpgsqlCommand command)
-        {
-            _logger.LogTrace(
-                "Marten Query Success:\n{CommandText}\n{Parameter}",
-                command.CommandText,
-                string.Join(" - ", command.Parameters.OfType<NpgsqlParameter>().Select(x => $"{x.ParameterName}: {x.Value}"))
-            );
-        }
+        public void LogSuccess(NpgsqlCommand command) => _logger.LogTrace(
+            "Marten Query Success:\n{CommandText}\n{Parameter}",
+            command.CommandText,
+            string.Join(
+                " - ",
+                command.Parameters.OfType<NpgsqlParameter>().Select(x => $"{x.ParameterName}: {x.Value}")
+            )
+        );
 
         /// <summary>
         /// Log a command that failed
         /// </summary>
         /// <param name="command">The command.</param>
         /// <param name="ex">The ex.</param>
-        public void LogFailure(NpgsqlCommand command, Exception ex)
-        {
-            _logger.LogTrace(
-                (EventId)0,
-                "Marten Query Failure:\n{CommandText}\n{Parameter}",
-                ex,
-                command.CommandText,
-                string.Join(" - ", command.Parameters.OfType<NpgsqlParameter>().Select(x => $"{x.ParameterName}: {x.Value}"))
-            );
-        }
+        public void LogFailure(NpgsqlCommand command, Exception ex) => _logger.LogTrace(
+            0,
+            "Marten Query Failure:\n{CommandText}\n{Parameter}",
+            ex,
+            command.CommandText,
+            string.Join(
+                " - ",
+                command.Parameters.OfType<NpgsqlParameter>().Select(x => $"{x.ParameterName}: {x.Value}")
+            )
+        );
 
         /// <summary>
         /// Records the saved changes.
         /// </summary>
         /// <param name="session">The session.</param>
         /// <param name="commit">The commit.</param>
-        public void RecordSavedChanges(IDocumentSession session, IChangeSet commit)
-        {
-            _logger.LogTrace(
-                "Marten Save Changes:\n    Inserted: {Inserted}\n    Updated: {Updated}\n    Patched: {Patched}\n    Deleted: {Deleted}",
-                commit.Inserted.Count(),
-                commit.Updated.Count(),
-                commit.Patches.Count(),
-                commit.Deleted.Count()
-            );
-        }
+        public void RecordSavedChanges(IDocumentSession session, IChangeSet commit) => _logger.LogTrace(
+            "Marten Save Changes:\n    Inserted: {Inserted}\n    Updated: {Updated}\n    Patched: {Patched}\n    Deleted: {Deleted}",
+            commit.Inserted.Count(),
+            commit.Updated.Count(),
+            commit.Patches.Count(),
+            commit.Deleted.Count()
+        );
     }
 }

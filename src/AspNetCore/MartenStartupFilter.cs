@@ -18,13 +18,10 @@ namespace Rocket.Surgery.Extensions.Marten.AspNetCore
         /// </summary>
         /// <param name="next">The next.</param>
         /// <returns>Action{IApplicationBuilder}.</returns>
-        public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next)
+        public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next) => builder =>
         {
-            return builder =>
-            {
-                builder.UseMiddleware<MartenMiddleware>();
-                next(builder);
-            };
-        }
+            builder.UseMiddleware<MartenMiddleware>();
+            next(builder);
+        };
     }
 }

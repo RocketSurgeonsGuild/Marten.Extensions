@@ -10,9 +10,6 @@ using Marten.Schema;
 using Marten.Services;
 using Marten.Storage;
 using Marten.Transforms;
-using Microsoft.Extensions.DependencyInjection;
-using Rocket.Surgery.Conventions.Reflection;
-using Rocket.Surgery.Extensions.Logging;
 
 namespace Rocket.Surgery.Extensions.Marten
 {
@@ -32,94 +29,75 @@ namespace Rocket.Surgery.Extensions.Marten
         /// </summary>
         /// <param name="documentStore">The document store.</param>
         /// <param name="documentSessionListeners">The document session listeners.</param>
-        public TransientDocumentStore(DocumentStore documentStore, IEnumerable<IDocumentSessionListener> documentSessionListeners)
+        public TransientDocumentStore(
+            DocumentStore documentStore,
+            IEnumerable<IDocumentSessionListener> documentSessionListeners
+        )
         {
             _documentStore = documentStore;
             _documentSessionListeners = documentSessionListeners;
         }
 
-        void IDisposable.Dispose()
-        {
-            _documentStore.Dispose();
-        }
+        void IDisposable.Dispose() => _documentStore.Dispose();
 
         void IDocumentStore.BulkInsert<T>(IReadOnlyCollection<T> documents, BulkInsertMode mode, int batchSize)
-        {
-            _documentStore.BulkInsert(documents, mode, batchSize);
-        }
+            => _documentStore.BulkInsert(documents, mode, batchSize);
 
-        void IDocumentStore.BulkInsert<T>(string tenantId, IReadOnlyCollection<T> documents, BulkInsertMode mode, int batchSize)
-        {
-            _documentStore.BulkInsert(tenantId, documents, mode, batchSize);
-        }
+        void IDocumentStore.BulkInsert<T>(
+            string tenantId,
+            IReadOnlyCollection<T> documents,
+            BulkInsertMode mode,
+            int batchSize
+        ) => _documentStore.BulkInsert(tenantId, documents, mode, batchSize);
 
         IDocumentSession IDocumentStore.OpenSession(DocumentTracking tracking, IsolationLevel isolationLevel)
-        {
-            return _documentStore.OpenSession(tracking, isolationLevel).RegisterListeners(_documentSessionListeners);
-        }
+            => _documentStore.OpenSession(tracking, isolationLevel).RegisterListeners(_documentSessionListeners);
 
-        IDocumentSession IDocumentStore.OpenSession(string tenantId, DocumentTracking tracking,
-            IsolationLevel isolationLevel)
-        {
-            return _documentStore.OpenSession(tenantId, tracking, isolationLevel).RegisterListeners(_documentSessionListeners);
-        }
+        IDocumentSession IDocumentStore.OpenSession(
+            string tenantId,
+            DocumentTracking tracking,
+            IsolationLevel isolationLevel
+        ) => _documentStore.OpenSession(tenantId, tracking, isolationLevel)
+           .RegisterListeners(_documentSessionListeners);
 
         IDocumentSession IDocumentStore.OpenSession(SessionOptions options)
-        {
-            return _documentStore.OpenSession(options).RegisterListeners(_documentSessionListeners);
-        }
+            => _documentStore.OpenSession(options).RegisterListeners(_documentSessionListeners);
 
-        IDocumentSession IDocumentStore.LightweightSession(IsolationLevel isolationLevel)
-        {
-            return _documentStore.LightweightSession(isolationLevel).RegisterListeners(_documentSessionListeners);
-        }
+        IDocumentSession IDocumentStore.LightweightSession(IsolationLevel isolationLevel) => _documentStore
+           .LightweightSession(isolationLevel).RegisterListeners(_documentSessionListeners);
 
         IDocumentSession IDocumentStore.LightweightSession(string tenantId, IsolationLevel isolationLevel)
-        {
-            return _documentStore.LightweightSession(tenantId, isolationLevel).RegisterListeners(_documentSessionListeners);
-        }
+            => _documentStore.LightweightSession(tenantId, isolationLevel).RegisterListeners(_documentSessionListeners);
 
-        IDocumentSession IDocumentStore.DirtyTrackedSession(IsolationLevel isolationLevel)
-        {
-            return _documentStore.DirtyTrackedSession(isolationLevel).RegisterListeners(_documentSessionListeners);
-        }
+        IDocumentSession IDocumentStore.DirtyTrackedSession(IsolationLevel isolationLevel) => _documentStore
+           .DirtyTrackedSession(isolationLevel).RegisterListeners(_documentSessionListeners);
 
         IDocumentSession IDocumentStore.DirtyTrackedSession(string tenantId, IsolationLevel isolationLevel)
-        {
-            return _documentStore.DirtyTrackedSession(tenantId, isolationLevel).RegisterListeners(_documentSessionListeners);
-        }
+            => _documentStore.DirtyTrackedSession(tenantId, isolationLevel)
+               .RegisterListeners(_documentSessionListeners);
 
-        IQuerySession IDocumentStore.QuerySession()
-        {
-            return _documentStore.QuerySession();
-        }
+        IQuerySession IDocumentStore.QuerySession() => _documentStore.QuerySession();
 
-        IQuerySession IDocumentStore.QuerySession(string tenantId)
-        {
-            return _documentStore.QuerySession(tenantId);
-        }
+        IQuerySession IDocumentStore.QuerySession(string tenantId) => _documentStore.QuerySession(tenantId);
 
-        IQuerySession IDocumentStore.QuerySession(SessionOptions options)
-        {
-            return _documentStore.QuerySession(options);
-        }
+        IQuerySession IDocumentStore.QuerySession(SessionOptions options) => _documentStore.QuerySession(options);
 
         void IDocumentStore.BulkInsertDocuments(IEnumerable<object> documents, BulkInsertMode mode, int batchSize)
-        {
-            _documentStore.BulkInsertDocuments(documents, mode, batchSize);
-        }
+            => _documentStore.BulkInsertDocuments(documents, mode, batchSize);
 
-        void IDocumentStore.BulkInsertDocuments(string tenantId, IEnumerable<object> documents, BulkInsertMode mode,
-            int batchSize)
-        {
-            _documentStore.BulkInsertDocuments(tenantId, documents, mode, batchSize);
-        }
+        void IDocumentStore.BulkInsertDocuments(
+            string tenantId,
+            IEnumerable<object> documents,
+            BulkInsertMode mode,
+            int batchSize
+        ) => _documentStore.BulkInsertDocuments(tenantId, documents, mode, batchSize);
 
-        IDaemon IDocumentStore.BuildProjectionDaemon(Type[] viewTypes, IDaemonLogger logger, DaemonSettings settings,
-            IProjection[] projections)
-        {
-            return _documentStore.BuildProjectionDaemon(viewTypes, logger, settings, projections);
-        }
+        IDaemon IDocumentStore.BuildProjectionDaemon(
+            Type[] viewTypes,
+            IDaemonLogger logger,
+            DaemonSettings settings,
+            IProjection[] projections
+        ) => _documentStore.BuildProjectionDaemon(viewTypes, logger, settings, projections);
 
         IDocumentSchema IDocumentStore.Schema => _documentStore.Schema;
 

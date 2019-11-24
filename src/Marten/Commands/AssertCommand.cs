@@ -11,7 +11,10 @@ namespace Rocket.Surgery.Extensions.Marten.Commands
     /// DumpCommand.
     /// </summary>
     [UsedImplicitly]
-    [Command("assert", Description = "Applies all outstanding changes to the database based on the current configuration")]
+    [Command(
+        "assert",
+        Description = "Applies all outstanding changes to the database based on the current configuration"
+    )]
     public class AssertCommand
     {
         private readonly IDocumentStore _store;
@@ -46,7 +49,9 @@ namespace Rocket.Surgery.Extensions.Marten.Commands
                 _logger.LogCritical("The database does not match the configuration!");
                 _logger.LogWarning(e.ToString());
 
-                _logger.LogInformation("The changes are the patch describing the difference between the database and the current configuration");
+                _logger.LogInformation(
+                    "The changes are the patch describing the difference between the database and the current configuration"
+                );
 
                 return 1;
             }
