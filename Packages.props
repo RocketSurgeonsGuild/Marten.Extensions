@@ -17,27 +17,19 @@
     <PackageReference Update="JetBrains.ReSharper.CommandLineTools" Version="2019.3.1" />
     <PackageReference Update="Nuke.Common" Version="0.23.4" />
     <PackageReference Update="ReportGenerator" Version="4.4.0" />
-    <PackageReference Update="Rocket.Surgery.Nuke.DotNetCore" Version="0.10.1" />
+    <PackageReference Update="Rocket.Surgery.Nuke.DotNetCore" Version="0.11.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />
-    <PackageReference Update="Microsoft.Extensions.Configuration" Version="2.1.1" />
-    <PackageReference Update="Microsoft.Extensions.Options" Version="2.1.1" />
-    <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0' and '$(TargetFramework)'!='netcoreapp2.1'">
-    <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="3.0.0" />
-    <PackageReference Update="Microsoft.Extensions.Configuration" Version="3.0.0" />
-    <PackageReference Update="Microsoft.Extensions.Options" Version="3.0.0" />
-    <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.0.0" />
+    <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="3.1.0" />
+    <PackageReference Update="Microsoft.Extensions.Configuration" Version="3.1.0" />
+    <PackageReference Update="Microsoft.Extensions.Options" Version="3.1.0" />
+    <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.0" />
+    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Marten" Version="3.10.0" />
     <PackageReference Update="Marten.NodaTime" Version="1.5.0" />
     <PackageReference Update="Marten.CommandLine" Version="3.10.0" />
-    <PackageReference Update="Microsoft.AspNetCore.Hosting" Version="2.1.1" />
-    <PackageReference Update="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
-    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="2.1.1" />
     <PackageReference Update="Microsoft.Azure.WebJobs" Version="3.0.14" />
     <PackageReference Update="Microsoft.Azure.WebJobs.Extensions" Version="3.0.5" />
     <PackageReference Update="NodaTime" Version="2.4.7" />
@@ -58,14 +50,11 @@
     <PackageReference Update="Rocket.Surgery.Extensions.Testing.Docker" Version="1.1.13" />
     <PackageReference Update="Docker.DotNet" Version="3.125.2" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'!='netstandard2.0' and '$(TargetFramework)'!='netcoreapp2.1'">
-    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="3.0.0" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Rocket.Surgery.Extensions.Testing.FakeItEasy" Version="3.3.0" />
     <PackageReference Update="Bogus" Version="28.4.4" />
-    <PackageReference Update="coverlet.collector" Version="1.1.0" />
-    <PackageReference Update="coverlet.msbuild" Version="2.7.0" />
+    <PackageReference Update="coverlet.collector" Version="1.2.0" />
+    <PackageReference Update="coverlet.msbuild" Version="2.8.0" />
     <PackageReference Update="FakeItEasy" Version="5.5.0" />
     <PackageReference Update="FakeItEasy.Analyzer.CSharp" Version="5.5.0" />
     <PackageReference Update="FluentAssertions" Version="5.10.0" />
@@ -75,4 +64,5 @@
     <PackageReference Update="xunit.analyzers" Version="0.10.0" />
     <PackageReference Update="xunit.runner.visualstudio" Version="2.4.1" />
   </ItemGroup>
+  <Import Project="$(MSBuildThisFileDirectory)/$(LegacySupportPackagesProps)" Condition="Exists('$(MSBuildThisFileDirectory)/$(LegacySupportPackagesProps)')" />
 </Project>
