@@ -1,15 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿
 <Project>
   <ItemGroup>
+    <GlobalPackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8" />
+    <GlobalPackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" />
+    <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" />
     <GlobalPackageReference Include="Rocket.Surgery.MSBuild.CI" Version="0.3.0" />
     <GlobalPackageReference Include="Rocket.Surgery.MSBuild.GitVersion" Version="0.3.0" />
     <GlobalPackageReference Include="Rocket.Surgery.MSBuild.JetBrains.Annotations" Version="0.3.0" Condition="'$(MSBuildProjectName)'!='.build'" />
+    <!-- <GlobalPackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="2.9.8" /> -->
     <GlobalPackageReference Include="Rocket.Surgery.MSBuild.Metadata" Version="0.3.0" />
     <GlobalPackageReference Include="Rocket.Surgery.MSBuild.SourceLink" Version="0.3.0" />
-    <GlobalPackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8" />
-    <!-- <GlobalPackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="2.9.8" /> -->
-    <GlobalPackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" />
-    <GlobalPackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" />
     <GlobalPackageReference Include="Roslynator.Analyzers" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
@@ -20,38 +20,37 @@
     <PackageReference Update="Rocket.Surgery.Nuke.DotNetCore" Version="0.11.1" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="3.1.0" />
     <PackageReference Update="Microsoft.Extensions.Caching.Memory" Version="3.1.0" />
     <PackageReference Update="Microsoft.Extensions.Configuration" Version="3.1.0" />
     <PackageReference Update="Microsoft.Extensions.Options" Version="3.1.0" />
     <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.0" />
-    <PackageReference Update="Microsoft.AspNetCore.TestHost" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Update="Docker.DotNet" Version="3.125.2" />
     <PackageReference Update="Marten" Version="3.10.0" />
+    
     <PackageReference Update="Marten.NodaTime" Version="1.5.0" />
-    <PackageReference Update="Marten.CommandLine" Version="3.10.0" />
-    <PackageReference Update="Microsoft.Azure.WebJobs" Version="3.0.14" />
-    <PackageReference Update="Microsoft.Azure.WebJobs.Extensions" Version="3.0.5" />
+    
+    
     <PackageReference Update="NodaTime" Version="2.4.7" />
-    <PackageReference Update="NodaTime.Testing" Version="2.4.7" />
     <PackageReference Update="NodaTime.Serialization.JsonNet" Version="2.2.0" />
+    <PackageReference Update="NodaTime.Testing" Version="2.4.7" />
     <PackageReference Update="Npgsql" Version="4.1.2" />
     <PackageReference Update="Npgsql.NodaTime" Version="4.1.2" />
-    <PackageReference Update="Rocket.Surgery.Conventions" Version="9.1.1" />
-    <PackageReference Update="Rocket.Surgery.Conventions.Abstractions" Version="9.1.1" />
+    
+    
     <PackageReference Update="Rocket.Surgery.Extensions.CommandLine.Abstractions" Version="9.1.1" />
     <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection" Version="9.1.1" />
     <PackageReference Update="Rocket.Surgery.Extensions.DependencyInjection.Abstractions" Version="9.1.1" />
     <PackageReference Update="Rocket.Surgery.Extensions.Logging.Abstractions" Version="9.1.1" />
+    <PackageReference Update="Rocket.Surgery.Extensions.Testing.Docker" Version="1.1.13" />
     <PackageReference Update="Rocket.Surgery.Extensions.WebJobs.Abstractions" Version="9.1.1" />
     <PackageReference Update="Rocket.Surgery.Linq.Extensions" Version="2.2.0" />
     <PackageReference Update="Rocket.Surgery.Reactive.Extensions" Version="2.2.0" />
     <PackageReference Update="System.Security.Claims" Version="4.3.0" />
-    <PackageReference Update="Rocket.Surgery.Extensions.Testing.Docker" Version="1.1.13" />
-    <PackageReference Update="Docker.DotNet" Version="3.125.2" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="Rocket.Surgery.Extensions.Testing.FakeItEasy" Version="3.4.0" />
     <PackageReference Update="Bogus" Version="28.4.4" />
     <PackageReference Update="coverlet.collector" Version="1.2.0" />
     <PackageReference Update="coverlet.msbuild" Version="2.8.0" />
@@ -60,6 +59,7 @@
     <PackageReference Update="FluentAssertions" Version="5.10.0" />
     <PackageReference Update="FluentAssertions.Analyzers" Version="0.11.4" />
     <PackageReference Update="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Update="Rocket.Surgery.Extensions.Testing.FakeItEasy" Version="3.4.0" />
     <PackageReference Update="xunit" Version="2.4.1" />
     <PackageReference Update="xunit.analyzers" Version="0.10.0" />
     <PackageReference Update="xunit.runner.visualstudio" Version="2.4.1" />
