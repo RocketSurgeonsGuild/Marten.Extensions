@@ -15,11 +15,11 @@
 <!-- history badges -->
 
 <!-- nuget packages -->
-| Package | NuGet | MyGet |
-| ------- | ----- | ----- |
-| Rocket.Surgery.Extensions.Marten.AspNetCore | [![nuget-version-fauwf2qvyx2w-badge]![nuget-downloads-fauwf2qvyx2w-badge]][nuget-fauwf2qvyx2w] | [![myget-version-fauwf2qvyx2w-badge]![myget-downloads-fauwf2qvyx2w-badge]][myget-fauwf2qvyx2w] |
-| Rocket.Surgery.Extensions.Marten.Functions | [![nuget-version-ucuyig1uhjog-badge]![nuget-downloads-ucuyig1uhjog-badge]][nuget-ucuyig1uhjog] | [![myget-version-ucuyig1uhjog-badge]![myget-downloads-ucuyig1uhjog-badge]][myget-ucuyig1uhjog] |
-| Rocket.Surgery.Extensions.Marten | [![nuget-version-2fvbdu9mm6yq-badge]![nuget-downloads-2fvbdu9mm6yq-badge]][nuget-2fvbdu9mm6yq] | [![myget-version-2fvbdu9mm6yq-badge]![myget-downloads-2fvbdu9mm6yq-badge]][myget-2fvbdu9mm6yq] |
+| Package | NuGet |
+| ------- | ----- |
+| Rocket.Surgery.Extensions.Marten | [![nuget-version-2fvbdu9mm6yq-badge]![nuget-downloads-2fvbdu9mm6yq-badge]][nuget-2fvbdu9mm6yq] |
+| Rocket.Surgery.AspNetCore.Marten | [![nuget-version-4qxswyaerp2g-badge]![nuget-downloads-4qxswyaerp2g-badge]][nuget-4qxswyaerp2g] |
+| Rocket.Surgery.Functions.Marten | [![nuget-version-/hmz6gbt3zxq-badge]![nuget-downloads-/hmz6gbt3zxq-badge]][nuget-/hmz6gbt3zxq] |
 <!-- nuget packages -->
 
 # Whats next?
@@ -40,24 +40,15 @@ TBD
 [appveyor-badge]: https://img.shields.io/appveyor/ci/RocketSurgeonsGuild/marten-extensions.svg?color=00b3e0&label=appveyor&logo=appveyor&logoColor=00b3e0&style=flat "AppVeyor Status"
 [appveyor-history]: https://ci.appveyor.com/project/RocketSurgeonsGuild/marten-extensions/history
 [appveyor-history-badge]: https://buildstats.info/appveyor/chart/RocketSurgeonsGuild/marten-extensions?includeBuildsFromPullRequest=false "AppVeyor History"
-[nuget-fauwf2qvyx2w]: https://www.nuget.org/packages/Rocket.Surgery.Extensions.Marten.AspNetCore/
-[nuget-version-fauwf2qvyx2w-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.Extensions.Marten.AspNetCore.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
-[nuget-downloads-fauwf2qvyx2w-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.Extensions.Marten.AspNetCore.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
-[myget-fauwf2qvyx2w]: https://www.myget.org/feed/rocket-surgeons-guild/package/nuget/Rocket.Surgery.Extensions.Marten.AspNetCore
-[myget-version-fauwf2qvyx2w-badge]: https://img.shields.io/myget/rocket-surgeons-guild/vpre/Rocket.Surgery.Extensions.Marten.AspNetCore.svg?label=myget&color=004880&logo=nuget&style=flat-square "MyGet Pre-Release Version"
-[myget-downloads-fauwf2qvyx2w-badge]: https://img.shields.io/myget/rocket-surgeons-guild/dt/Rocket.Surgery.Extensions.Marten.AspNetCore.svg?color=004880&logo=nuget&style=flat-square "MyGet Downloads"
-[nuget-ucuyig1uhjog]: https://www.nuget.org/packages/Rocket.Surgery.Extensions.Marten.Functions/
-[nuget-version-ucuyig1uhjog-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.Extensions.Marten.Functions.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
-[nuget-downloads-ucuyig1uhjog-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.Extensions.Marten.Functions.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
-[myget-ucuyig1uhjog]: https://www.myget.org/feed/rocket-surgeons-guild/package/nuget/Rocket.Surgery.Extensions.Marten.Functions
-[myget-version-ucuyig1uhjog-badge]: https://img.shields.io/myget/rocket-surgeons-guild/vpre/Rocket.Surgery.Extensions.Marten.Functions.svg?label=myget&color=004880&logo=nuget&style=flat-square "MyGet Pre-Release Version"
-[myget-downloads-ucuyig1uhjog-badge]: https://img.shields.io/myget/rocket-surgeons-guild/dt/Rocket.Surgery.Extensions.Marten.Functions.svg?color=004880&logo=nuget&style=flat-square "MyGet Downloads"
 [nuget-2fvbdu9mm6yq]: https://www.nuget.org/packages/Rocket.Surgery.Extensions.Marten/
 [nuget-version-2fvbdu9mm6yq-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.Extensions.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
 [nuget-downloads-2fvbdu9mm6yq-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.Extensions.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
-[myget-2fvbdu9mm6yq]: https://www.myget.org/feed/rocket-surgeons-guild/package/nuget/Rocket.Surgery.Extensions.Marten
-[myget-version-2fvbdu9mm6yq-badge]: https://img.shields.io/myget/rocket-surgeons-guild/vpre/Rocket.Surgery.Extensions.Marten.svg?label=myget&color=004880&logo=nuget&style=flat-square "MyGet Pre-Release Version"
-[myget-downloads-2fvbdu9mm6yq-badge]: https://img.shields.io/myget/rocket-surgeons-guild/dt/Rocket.Surgery.Extensions.Marten.svg?color=004880&logo=nuget&style=flat-square "MyGet Downloads"
+[nuget-4qxswyaerp2g]: https://www.nuget.org/packages/Rocket.Surgery.AspNetCore.Marten/
+[nuget-version-4qxswyaerp2g-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.AspNetCore.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
+[nuget-downloads-4qxswyaerp2g-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.AspNetCore.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
+[nuget-/hmz6gbt3zxq]: https://www.nuget.org/packages/Rocket.Surgery.Functions.Marten/
+[nuget-version-/hmz6gbt3zxq-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.Functions.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
+[nuget-downloads-/hmz6gbt3zxq-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.Functions.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
 <!-- generated references -->
 
 <!-- nuke-data
@@ -71,6 +62,4 @@ azurepipelines:
 appveyor:
   account: RocketSurgeonsGuild
   build: marten-extensions
-myget:
-  account: rocket-surgeons-guild
 -->
