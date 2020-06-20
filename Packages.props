@@ -29,7 +29,7 @@
   <ItemGroup>
     <PackageReference Update="Docker.DotNet" Version="3.125.2" />
     <PackageReference Update="Marten" Version="3.12.1" />
-    <PackageReference Update="Marten.NodaTime" Version="1.6.0" />
+    <PackageReference Update="Marten.NodaTime" Version="1.7.1" />
     <PackageReference Update="NodaTime" Version="3.0.0" />
     <PackageReference Update="NodaTime.Serialization.JsonNet" Version="2.3.0" />
     <PackageReference Update="NodaTime.Testing" Version="3.0.0" />
