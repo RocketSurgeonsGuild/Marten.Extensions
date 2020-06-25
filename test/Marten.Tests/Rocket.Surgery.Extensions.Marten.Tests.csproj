@@ -8,7 +8,7 @@
     <!--<ProjectReference Include="..\..\src\AspNetCore\Rocket.Surgery.Extensions.Marten.AspNetCore.csproj" />-->
     <ProjectReference Include="..\..\src\Marten\Rocket.Surgery.Extensions.Marten.csproj" />
     <PackageReference Include="NodaTime.Testing" />
-    <PackageReference Include="Rocket.Surgery.Extensions.DependencyInjection" />
+    <PackageReference Include="Rocket.Surgery.Conventions" />
     <PackageReference Include="Rocket.Surgery.Extensions.Testing.Docker" />
     <PackageReference Include="Docker.DotNet" />
   </ItemGroup>
