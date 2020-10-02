@@ -74,7 +74,6 @@ public partial class Solution
             With = new Dictionary<string, string>
             {
                 ["name"] = "actions-${{ matrix.os }}",
-                ["fail_ci_if_error"] = "true",
             }
         });
 
