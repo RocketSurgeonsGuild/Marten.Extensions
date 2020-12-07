@@ -17,8 +17,8 @@
 <!-- nuget packages -->
 | Package | NuGet |
 | ------- | ----- |
-| Rocket.Surgery.Extensions.Marten | [![nuget-version-2fvbdu9mm6yq-badge]![nuget-downloads-2fvbdu9mm6yq-badge]][nuget-2fvbdu9mm6yq] |
 | Rocket.Surgery.AspNetCore.Marten | [![nuget-version-4qxswyaerp2g-badge]![nuget-downloads-4qxswyaerp2g-badge]][nuget-4qxswyaerp2g] |
+| Rocket.Surgery.Extensions.Marten | [![nuget-version-2fvbdu9mm6yq-badge]![nuget-downloads-2fvbdu9mm6yq-badge]][nuget-2fvbdu9mm6yq] |
 | Rocket.Surgery.Functions.Marten | [![nuget-version-/hmz6gbt3zxq-badge]![nuget-downloads-/hmz6gbt3zxq-badge]][nuget-/hmz6gbt3zxq] |
 <!-- nuget packages -->
 
@@ -32,19 +32,19 @@ TBD
 [github-license-badge]: https://img.shields.io/github/license/RocketSurgeonsGuild/Marten.Extensions.svg?style=flat "License"
 [codecov]: https://codecov.io/gh/RocketSurgeonsGuild/Marten.Extensions
 [codecov-badge]: https://img.shields.io/codecov/c/github/RocketSurgeonsGuild/Marten.Extensions.svg?color=E03997&label=codecov&logo=codecov&logoColor=E03997&style=flat "Code Coverage"
-[azurepipelines]: https://rocketsurgeonsguild.visualstudio.com/Libraries/_build/latest?definitionId=19&branchName=master
+[azurepipelines]: https://dev.azure.com/rocketsurgeonsguild/Libraries/_build/latest?definitionId=19&branchName=master
 [azurepipelines-badge]: https://img.shields.io/azure-devops/build/rocketsurgeonsguild/Libraries/19.svg?color=98C6FF&label=azure%20pipelines&logo=azuredevops&logoColor=98C6FF&style=flat "Azure Pipelines Status"
-[azurepipelines-history]: https://rocketsurgeonsguild.visualstudio.com/Libraries/_build?definitionId=19&branchName=master
+[azurepipelines-history]: https://dev.azure.com/rocketsurgeonsguild/Libraries/_build?definitionId=19&branchName=master
 [azurepipelines-history-badge]: https://buildstats.info/azurepipelines/chart/rocketsurgeonsguild/Libraries/19?includeBuildsFromPullRequest=false "Azure Pipelines History"
 [github]: https://github.com/RocketSurgeonsGuild/Marten.Extensions/actions?query=workflow%3Aci
 [github-badge]: https://img.shields.io/github/workflow/status/RocketSurgeonsGuild/Marten.Extensions/ci.svg?label=github&logo=github&color=b845fc&logoColor=b845fc&style=flat "GitHub Actions Status"
 [github-history-badge]: https://buildstats.info/github/chart/RocketSurgeonsGuild/Marten.Extensions?includeBuildsFromPullRequest=false "GitHub Actions History"
-[nuget-2fvbdu9mm6yq]: https://www.nuget.org/packages/Rocket.Surgery.Extensions.Marten/
-[nuget-version-2fvbdu9mm6yq-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.Extensions.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
-[nuget-downloads-2fvbdu9mm6yq-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.Extensions.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
 [nuget-4qxswyaerp2g]: https://www.nuget.org/packages/Rocket.Surgery.AspNetCore.Marten/
 [nuget-version-4qxswyaerp2g-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.AspNetCore.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
 [nuget-downloads-4qxswyaerp2g-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.AspNetCore.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
+[nuget-2fvbdu9mm6yq]: https://www.nuget.org/packages/Rocket.Surgery.Extensions.Marten/
+[nuget-version-2fvbdu9mm6yq-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.Extensions.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
+[nuget-downloads-2fvbdu9mm6yq-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.Extensions.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
 [nuget-/hmz6gbt3zxq]: https://www.nuget.org/packages/Rocket.Surgery.Functions.Marten/
 [nuget-version-/hmz6gbt3zxq-badge]: https://img.shields.io/nuget/v/Rocket.Surgery.Functions.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Version"
 [nuget-downloads-/hmz6gbt3zxq-badge]: https://img.shields.io/nuget/dt/Rocket.Surgery.Functions.Marten.svg?color=004880&logo=nuget&style=flat-square "NuGet Downloads"
