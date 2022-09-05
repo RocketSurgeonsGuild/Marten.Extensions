@@ -25,7 +25,7 @@
     <PackageReference Update="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.5" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="Docker.DotNet" Version="3.125.5" />
+    <PackageReference Update="Docker.DotNet" Version="3.125.11" />
     <PackageReference Update="Marten" Version="3.13.4" />
     <PackageReference Update="Marten.NodaTime" Version="1.8.4" />
     <PackageReference Update="NodaTime" Version="3.0.7" />
