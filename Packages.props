@@ -28,7 +28,7 @@
     <PackageReference Update="Docker.DotNet" Version="3.125.5" />
     <PackageReference Update="Marten" Version="3.13.4" />
     <PackageReference Update="Marten.NodaTime" Version="1.8.4" />
-    <PackageReference Update="NodaTime" Version="3.0.7" />
+    <PackageReference Update="NodaTime" Version="3.1.4" />
     <PackageReference Update="NodaTime.Serialization.JsonNet" Version="3.0.0" />
     <PackageReference Update="NodaTime.Testing" Version="3.0.7" />
     <PackageReference Update="Npgsql" Version="5.0.10" />
